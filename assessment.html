@@ -38,23 +38,215 @@
 		</div>
 		<main>
 			<!-- bootstrap card -->
-<!-- 			<div class="card text-center zone animated fadeInLeft">
-				<div class="card-header">
-					<h2 id="title">RULA - Rapid Upper Limb Assessment</h2>
+			<div class="card">
+				<div class="card-header main-header">
+					<h2 id="title" class="text-center">RULA - Rapid Upper Limb Assessment</h2>
 				</div>
-				<div class="card-body" id="card-body">
-					<div class="container" id="container">
-						<div id="question-container" class="hide">
-							<div><h3 id="question">Question</h3></div>
-							<div id="answer-buttons" class="btn-grid">
-								<div class="btn quiz-zone">Answer 1</div>
-								<div class="btn quiz-zone">Answer 2</div>
-								<div class="btn quiz-zone">Answer 3</div>
-								<div class="btn quiz-zone">Answer 4</div>
-								<div class="btn quiz-zone">Answer 5</div>
+				<div class="card-header">
+					<ul class="nav nav-tabs card-header-tabs" id="question-list" role="tablist">
+						<li class="nav-item">
+							<p class="card-text mr-2">Steps: </p>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" href="#step-one" role="tab" aria-controls="step-one" aria-selected="true" alt="Step 1: Locate Upper Arm Position">1</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link"  href="#step-two" role="tab" aria-controls="step-two" aria-selected="false">2</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#step-three" role="tab" aria-controls="step-three" aria-selected="false">3</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#step-four" role="tab" aria-controls="step-four" aria-selected="false">4</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#step-five" role="tab" aria-controls="step-five" aria-selected="false">5</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#step-six" role="tab" aria-controls="step-six" aria-selected="false">6</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#step-seven" role="tab" aria-controls="step-seven" aria-selected="false">7</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#step-eight" role="tab" aria-controls="step-eight" aria-selected="false">8</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#step-nine" role="tab" aria-controls="step-nine" aria-selected="false">9</a>
+						</li>
+					</ul>
+				</div>
+				<div class="card-body">
+
+					<div class="tab-content mt-3">
+
+						<div class="tab-pane active" id="step-one" role="tabpanel">
+							<!-- step one start -->
+							<div id="question-container-q1">
+								<div><h3 id="q1" class="text-center">Step 1: Locate Upper Arm Position</h3></div>
+								<div class="answer-grid">
+									<span class="btn quiz-zone">
+										<input type="radio" name="radio-q1" class="radio option-input" value="1" id="radio1-q1">
+										<label for="radio1-q1" class="radioImg img">
+											<img src="./media/Q1/upperarm1.jpg" alt="upperarm" class="img">
+										</label>
+									</span>
+									<span class="btn quiz-zone">
+										<input type="radio" name="radio-q1" class="radio option-input" value="2" id="radio2-q1">
+										<label for="radio2-q1" class="radioImg img">
+											<img src="./media/Q1/upperarm2.jpg" alt="" class="img">
+										</label>
+									</span>
+									<span class="btn quiz-zone">
+										<input type="radio" name="radio-q1" class="radio option-input" value="2" id="radio3-q1">
+										<label for="radio3-q1" class="radioImg img">
+											<img src="./media/Q1/upperarm3.jpg" alt="" class="img">
+										</label>
+									</span>
+									<span class="btn quiz-zone">
+										<input type="radio" name="radio-q1" class="radio option-input" value="3" id="radio4-q1">
+										<label for="radio4-q1" class="radioImg img">
+											<img src="./media/Q1/upperarm4.jpg" alt="" class="img">
+										</label>
+									</span>
+									<span class="btn quiz-zone">
+										<input type="radio" name="radio-q1" class="radio option-input" value="4" id="radio5-q1">
+										<label for="radio5-q1" class="radioImg img">
+											<img src="./media/Q1/upperarm5.jpg" alt="" class="img">
+										</label>
+									</span>
+								</div>
+								<div id="optional-fields" style="text-align: center;">
+									<h3 id="optional-question" style="margin-top: 10px">Step 1a: Also tick the following boxes if appropriate</h3>
+									<div id="checkbox-q1" class="checkbox">
+										<div class="custom-control custom-checkbox">
+											<input type="checkbox" class="custom-control-input" name="customCheck-q1" id="customCheck1-q1" value="1">
+											<label class="custom-control-label" for="customCheck1-q1">
+												Shoulder is raised
+											</label>
+										</div>
+										<div class="custom-control custom-checkbox">
+											<input type="checkbox" class="custom-control-input" name="customCheck" id="customCheck2-q1" value="1">
+											<label class="custom-control-label" for="customCheck2-q1">
+												Upper arm is abducted (away from the side of the body)
+											</label>
+										</div>
+										<div class="custom-control custom-checkbox">
+											<input type="checkbox" class="custom-control-input" name="customCheck" id="customCheck3-q1" value="-1">
+											<label class="custom-control-label" for="customCheck3-q1">
+												Leaning or supporting the weight of the arm
+											</label>
+										</div>
+									</div>
+								</div>
 							</div>
-							<div id="optional-fields" style="text-align: center;" class="hide">
-								<h3 id="optional-question" style="margin-top: 10px">Optional question:</h3>
+							<!-- step one end -->
+						</div>
+
+						<div class="tab-pane" id="step-two" role="tabpanel" aria-labelledby="step-two-tab">  
+							<!-- step two start -->
+							<div id="question-container-q2">
+								<div><h3 id="q2" class="text-center">Step 2: Locate Lower Arm Position</h3></div>
+								<div class="answer-grid">
+									<span class="btn quiz-zone">
+										<input type="radio" name="radio-q2" class="radio option-input" value="1" id="radio1-q2">
+										<label for="radio1-q2" class="radioImg img">
+											<img src="./media/Q2/lowerarm1.jpg" alt="" class="img">
+										</label>
+									</span>
+									<span class="btn quiz-zone">
+										<input type="radio" name="radio-q2" class="radio option-input" value="2" id="radio2-q2">
+										<label for="radio2-q2" class="radioImg img">
+											<img src="./media/Q2/lowerarm2.jpg" alt="" class="img">
+										</label>
+									</span>
+									<span class="btn quiz-zone">
+										<input type="radio" name="radio-q2" class="radio option-input" value="2" id="radio3-q2">
+										<label for="radio3-q2" class="radioImg img">
+											<img src="./media/Q2/lowerarm3.jpg" alt="" class="img">
+										</label>
+									</span>
+								</div>
+								<div id="optional-fields" style="text-align: center;">
+									<h3 id="optional-question" style="margin-top: 10px">Step 2a: Also tick the following box if appropriate</h3>
+									<div id="checkbox-q2" class="checkbox custom-control custom-checkbox">
+										<input type="checkbox" class="custom-control-input" name="customCheck-q2" id="customCheck1-q2" value="1">
+										<label class="custom-control-label" for="customCheck1-q2">
+											Is either arm working across midline or out to side of body?<br>
+											<img src="./media/Q2/lowerarm4.jpg" alt="" class="checkbox-img">
+										</label>
+									</div>
+								</div>
+							</div>
+							<!-- step two end -->
+						</div>
+
+						<div class="tab-pane" id="step-three" role="tabpanel" aria-labelledby="step-three-tab">
+							<!-- step three start -->
+							<div id="question-container-three">
+								<div><h3 id="question-three" class="text-center">Step 3: Locate Wrist Position</h3></div>
+								<div class="answer-grid">
+									<span class="btn quiz-zone">
+										<input type="radio" name="radio-q3" class="radio option-input" value="1" id="radio1-q3">
+										<label for="radio1-q3" class="radioImg img">
+											<img src="./media/Q3/wrist1.jpg" alt="wrist 0 degrees" class="img">
+										</label>
+									</span>
+									<span class="btn quiz-zone">
+										<input type="radio" name="radio-q3" class="radio option-input" value="2" id="radio2-q3">
+										<label for="radio2-q3" class="radioImg img">
+											<img src="./media/Q3/wrist2.jpg" alt="wrist 15 down to 15 up degrees" class="img">
+										</label>
+									</span>
+									<span class="btn quiz-zone">
+										<input type="radio" name="radio-q3" class="radio option-input" value="3" id="radio3-q3">
+										<label for="radio3-q3" class="radioImg img">
+											<img src="./media/Q3/wrist3.jpg" alt="wrist 15 degrees down" class="img">
+										</label>
+									</span>
+									<span class="btn quiz-zone">
+										<input type="radio" name="radio-q3" class="radio option-input" value="3" id="radio4-q3">
+										<label for="radio4-q3" class="radioImg img">
+											<img src="./media/Q3/wrist4.jpg" alt="wrist 15 degrees up" class="img">
+										</label>
+									</span>
+								</div>
+								<div id="optional-fields-three" style="text-align: center;">
+									<h3 id="optional-question-three" style="margin-top: 10px">Step 3a: Also tick the following box if appropriate</h3>
+
+									<div id="checkbox-q3" class="checkbox custom-control custom-checkbox">
+										<input type="checkbox" class="custom-control-input" name="customCheck-q3" id="customCheck1-q3" value="1">
+										<label class="custom-control-label" for="customCheck1-q3">
+											Is wrist bent away from midline?
+											<img src="./media/Q3/wrist5.jpg" alt="lowerarm midline or out to side" class="checkbox-img">
+										</label>
+									</div>
+								</div>
+							</div>
+							<!-- step three end -->
+
+						</div>
+
+						<div class="tab-pane" id="step-four" role="tabpanel" aria-labelledby="step-four-tab">
+							<!-- step four start -->
+							<div class="question-container-q4">
+								<div><h3 id="q4" class="text-center">Step 4: Wrist Twist</h3></div>
+								<div class="answer-grid">
+									<span class="btn quiz-zone">
+										<input type="radio" name="radio-q4" class="radio option-input" value="1" id="radio1-q4">
+										<label for="radio1-q4" class="radioImg img">
+											<img src="./media/Q4/wrist_twist1.jpg" alt="" class="img">
+										</label>
+									</span>
+									<span class="btn quiz-zone">
+										<input type="radio" name="radio-q4" class="radio option-input" value="2" id="radio2-q4">
+										<label for="radio2-q4" class="radioImg img">
+											<img src="./media/Q4/wrist_twist2.jpg" alt="" class="img">
+										</label>
+									</span>
+								</div>
+								<div id="optional-fields" style="text-align: center;">
+									<h3 id="optional-question" style="margin-top: 10px">Optional question:</h3>
 									<div id="checkbox" class="checkbox">
 										<div class="custom-control custom-checkbox">
 											Optional answer 1
@@ -68,137 +260,184 @@
 									</div>
 								</div>
 							</div>
-							<div class="controls">
-								<div id="start-btn" class="start-btn btn btn-outline-success">
-									Complete Assessment of Left & Right Sides
-								</div> -->
-<!-- 								<button id="prev-btn" class="btn btn-outline-success hide">Back</button> 
-								<button id="next-btn" class="next-btn btn-success btn hide">Next</button>
-								<button id="submit-btn" class="next-btn btn-success btn hide">Submit</button>  
-							</div>
+							<!-- step four end -->
 						</div>
-					</div>
-					<div id="card-footer" class="card-footer text-muted">
-						<p></p>
-					</div>
-				</div> -->
-				<div class="container">
-					<div class="row">
-						<div class="card">
-							<div class="card-header" id="main-header">
-								<h4 id="title">RULA - Rapid Upper Limb Assessment</h4>
-							</div>
 
-							<div class="card-header">
-								<ul class="nav nav-tabs card-header-tabs" id="question-list" role="tablist">
-									<li class="nav-item">
-										<a class="nav-link active" href="#step-one" role="tab" aria-controls="step-one" aria-selected="true">Step 1</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link"  href="#history" role="tab" aria-controls="history" aria-selected="false">History</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="#deals" role="tab" aria-controls="deals" aria-selected="false">Deals</a>
-									</li>
-								</ul>
-							</div>
-
-
-
-							<div class="card-body">
-								<div class="tab-content mt-3">
-									<!-- Question 1 -->
-									<div class="tab-pane active" id="description" role="tabpanel">
-										<div id="question-container" class="hide">
-											<div><h3 id="question">Question</h3></div>
-											<div id="answer-grid">
-												<span class="answer">
-													<input type="radio" name="radio" class="radio option-input" value="1" id="radio1">
-													<label for="radio1" class="radioImg img">
-														<img src="./media/Q1/upperarm1.jpg" alt="upperarm" class="img">
-													</label>
-												</span>
-												<span class="answer">
-													<input type="radio" name="radio" class="radio option-input" value="1" id="radio1">
-													<label for="radio1" class="radioImg img">
-														<img src="./media/Q1/upperarm1.jpg" alt="upperarm" class="img">
-													</label>
-												</span>
-												<span class="answer">
-													<input type="radio" name="radio" class="radio option-input" value="1" id="radio1">
-													<label for="radio1" class="radioImg img">
-														<img src="./media/Q1/upperarm1.jpg" alt="upperarm" class="img">
-													</label>
-												</span>
-												<span class="answer">
-													<input type="radio" name="radio" class="radio option-input" value="1" id="radio1">
-													<label for="radio1" class="radioImg img">
-														<img src="./media/Q1/upperarm1.jpg" alt="upperarm" class="img">
-													</label>
-												</span>
-												<span class="answer">
-													<input type="radio" name="radio" class="radio option-input" value="1" id="radio1">
-													<label for="radio1" class="radioImg img">
-														<img src="./media/Q1/upperarm1.jpg" alt="upperarm" class="img">
-													</label>
-												</span>
-											</div>
-										</div>
-										<div id="optional-fields" style="text-align: center;" class="hide">
-											<h3 id="optional-question" style="margin-top: 10px">Optional question:</h3>
-											<div id="checkbox" class="checkbox">
-												<div class="custom-control custom-checkbox">
-													Optional answer 1
-												</div>
-												<div class="custom-control custom-checkbox">
-													Optional answer 2
-												</div>
-												<div class="custom-control custom-checkbox">
-													Optional answer 3
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- Question 2 -->
-									<div class="tab-pane" id="history" role="tabpanel" aria-labelledby="history-tab">  
-
-									</div>
-									<!-- Question 3 -->
-									<div class="tab-pane" id="deals" role="tabpanel" aria-labelledby="deals-tab">
-
-									</div>
-
-								<!-- end of tab content -->
+						<div class="tab-pane" id="step-five" role="tabpanel" aria-labelledby="step-five-tab">
+							<!-- step five start -->
+							<div class="question-container">
+								<div><h3 id="question" class="text-center">Question</h3></div>
+								<div class="answer-grid">
+									<div class="btn quiz-zone">Answer 1</div>
+									<div class="btn quiz-zone">Answer 2</div>
+									<div class="btn quiz-zone">Answer 3</div>
+									<div class="btn quiz-zone">Answer 4</div>
+									<div class="btn quiz-zone">Answer 5</div>
 								</div>
-
+								<div class="optional-fields" style="text-align: center;">
+									<h3 id="optional-question" style="margin-top: 10px">Optional question:</h3>
+									<div id="checkbox" class="checkbox">
+										<div class="custom-control custom-checkbox">
+											Optional answer 1
+										</div>
+										<div class="custom-control custom-checkbox">
+											Optional answer 2
+										</div>
+										<div class="custom-control custom-checkbox">
+											Optional answer 3
+										</div>
+									</div>
+								</div>
 							</div>
-							<div id="card-footer" class="card-footer text-muted">
-								<p></p>
-							</div>
+							<!-- step five end -->
 						</div>
+
+						<div class="tab-pane" id="step-six" role="tabpanel" aria-labelledby="step-six-tab">
+							<!-- step six start -->
+							<div class="question-container">
+								<div><h3 id="question" class="text-center">Question</h3></div>
+								<div class="answer-grid">
+									<div class="btn quiz-zone">Answer 1</div>
+									<div class="btn quiz-zone">Answer 2</div>
+									<div class="btn quiz-zone">Answer 3</div>
+									<div class="btn quiz-zone">Answer 4</div>
+									<div class="btn quiz-zone">Answer 5</div>
+								</div>
+								<div class="optional-fields" style="text-align: center;">
+									<h3 class="optional-question" style="margin-top: 10px">Optional question:</h3>
+									<div id="checkbox" class="checkbox">
+										<div class="custom-control custom-checkbox">
+											Optional answer 1
+										</div>
+										<div class="custom-control custom-checkbox">
+											Optional answer 2
+										</div>
+										<div class="custom-control custom-checkbox">
+											Optional answer 3
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- step six end -->
+						</div>
+
+						<div class="tab-pane" id="step-seven" role="tabpanel" aria-labelledby="step-seven-tab">
+							<!-- step seven start -->
+							<div id="question-container">
+								<div><h3 id="question" class="text-center">Question</h3></div>
+								<div class="answer-grid">
+									<div class="btn quiz-zone">Answer 1</div>
+									<div class="btn quiz-zone">Answer 2</div>
+									<div class="btn quiz-zone">Answer 3</div>
+									<div class="btn quiz-zone">Answer 4</div>
+									<div class="btn quiz-zone">Answer 5</div>
+								</div>
+								<div id="optional-fields" style="text-align: center;">
+									<h3 id="optional-question" style="margin-top: 10px">Optional question:</h3>
+									<div id="checkbox" class="checkbox">
+										<div class="custom-control custom-checkbox">
+											Optional answer 1
+										</div>
+										<div class="custom-control custom-checkbox">
+											Optional answer 2
+										</div>
+										<div class="custom-control custom-checkbox">
+											Optional answer 3
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- step seven end -->
+						</div>
+
+						<div class="tab-pane" id="step-eight" role="tabpanel" aria-labelledby="step-eight-tab">
+							<!-- step eight start -->
+							<div id="question-container">
+								<div><h3 id="question" class="text-center">Question</h3></div>
+								<div class="answer-grid">
+									<div class="btn quiz-zone">Answer 1</div>
+									<div class="btn quiz-zone">Answer 2</div>
+									<div class="btn quiz-zone">Answer 3</div>
+									<div class="btn quiz-zone">Answer 4</div>
+									<div class="btn quiz-zone">Answer 5</div>
+								</div>
+								<div id="optional-fields" style="text-align: center;">
+									<h3 id="optional-question" style="margin-top: 10px">Optional question:</h3>
+									<div id="checkbox" class="checkbox">
+										<div class="custom-control custom-checkbox">
+											Optional answer 1
+										</div>
+										<div class="custom-control custom-checkbox">
+											Optional answer 2
+										</div>
+										<div class="custom-control custom-checkbox">
+											Optional answer 3
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- step eight end -->
+						</div>
+
+						<div class="tab-pane" id="step-nine" role="tabpanel" aria-labelledby="step-nine-tab">
+							<!-- step nine start -->
+							<div id="question-container">
+								<div><h3 id="question" class="text-center">Question</h3></div>
+								<div class="answer-grid">
+									<div class="btn quiz-zone">Answer 1</div>
+									<div class="btn quiz-zone">Answer 2</div>
+									<div class="btn quiz-zone">Answer 3</div>
+									<div class="btn quiz-zone">Answer 4</div>
+									<div class="btn quiz-zone">Answer 5</div>
+								</div>
+								<div id="optional-fields" style="text-align: center;">
+									<h3 id="optional-question" style="margin-top: 10px">Optional question:</h3>
+									<div id="checkbox" class="checkbox">
+										<div class="custom-control custom-checkbox">
+											Optional answer 1
+										</div>
+										<div class="custom-control custom-checkbox">
+											Optional answer 2
+										</div>
+										<div class="custom-control custom-checkbox">
+											Optional answer 3
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- step nine end -->
+						</div>
+
+
+
 
 					</div>
 				</div>
-
-			</main>
-			<footer>
-				<div class="zone footer">
-					<span class="social-media">
-						<ul class="social-media-list">
-							<li><a href="https://www.facebook.com/OsmondErgonomics/" target="_blank"><img src="./media/soc-med/facebook.png" alt="Facebook"></a></li>
-							<li><a href="https://twitter.com/osmondgroup?lang=en" target="_blank"><img src="./media/soc-med/twitter.png" alt="Twitter"></a></li>
-							<li><a href="https://www.linkedin.com/company/osmond-group-limited/" target="_blank"><img src="./media/soc-med/linkedin.png" alt="LinkedIn"></a></li>
-							<li><a href="https://www.instagram.com/osmond_ergonomics/?hl=en" target="_blank"><img src="./media/soc-med/instagram.png" alt="Instagram"></a></li>
-							<li><a href="https://www.ergonomics.co.uk/contact_osmond_ergonomics.html" target="_blank"><img src="./media/soc-med/email.png" alt="Contact us"></a></li>	
-						</ul>
-					</span>
-					<div class="break"></div> <!-- break -->
-					<p class="footerTxt">Copyright © 2019 Osmond Group Limited. | Registered Company Number 00736813 | VAT Number 189738788 | Website built by <a href="https://www.linkedin.com/in/waldemar-walczak-697651192/" target="_blank">Waldemar Walczak</a></p>
+				<!-- end of card body -->
+				<div id="card-footer" class="card-footer text-muted">
+					<p></p>
 				</div>
-			</footer>
-			<script type="text/javascript" defer src="./js/main.js"></script>
-			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-		</body>
-		</html>
+			</div>
+			<!-- end of card -->
+		</main>
+		<footer>
+			<div class="zone footer">
+				<span class="social-media">
+					<ul class="social-media-list">
+						<li><a href="https://www.facebook.com/OsmondErgonomics/" target="_blank"><img src="./media/soc-med/facebook.png" alt="Facebook"></a></li>
+						<li><a href="https://twitter.com/osmondgroup?lang=en" target="_blank"><img src="./media/soc-med/twitter.png" alt="Twitter"></a></li>
+						<li><a href="https://www.linkedin.com/company/osmond-group-limited/" target="_blank"><img src="./media/soc-med/linkedin.png" alt="LinkedIn"></a></li>
+						<li><a href="https://www.instagram.com/osmond_ergonomics/?hl=en" target="_blank"><img src="./media/soc-med/instagram.png" alt="Instagram"></a></li>
+						<li><a href="https://www.ergonomics.co.uk/contact_osmond_ergonomics.html" target="_blank"><img src="./media/soc-med/email.png" alt="Contact us"></a></li>	
+					</ul>
+				</span>
+				<div class="break"></div> <!-- break -->
+				<p class="footerTxt">Copyright © 2019 Osmond Group Limited. | Registered Company Number 00736813 | VAT Number 189738788 | Website built by <a href="https://www.linkedin.com/in/waldemar-walczak-697651192/" target="_blank">Waldemar Walczak</a></p>
+			</div>
+		</footer>
+		<script type="text/javascript" defer src="./js/main.js"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+	</body>
+	</html>
