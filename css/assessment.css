@@ -1,6 +1,23 @@
-.card {
+html {
+  scroll-behavior: smooth;
+}
+
+main {
+	display: grid;
+	grid-template-columns: 1.5fr 2fr 1.5fr;
+	grid-template-rows: repeat(1, 1fr);
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+}
+
+.main-card {
 	min-width: 600px;
-	max-width: 800px;
+	max-width: 100%;
+}
+
+.results-card {
+	max-width: 200px;
+	opacity: 1;
 }
 
 .main-header {
@@ -31,7 +48,6 @@
 	display: flex;
 	align-items: center;
 	justify-content : space-around;
-	align-content   : center;
 }
 
 .img {
@@ -87,13 +103,22 @@
 /*Radio button end*/
 
 li {
-	justify-content: flex-start;
+	
 	text-align: left;
 	color: black;
 }
 
+ul {
+	padding-left: 0px;
+}
+
 h5 {
 	text-align: left;
+}
+
+.li-head {
+	list-style: none;
+
 }
 
 .checkbox {
@@ -120,9 +145,67 @@ h5 {
 	display: none;
 }
 
+
+
+.item {
+	display: flex;
+	justify-content : space-between;
+	border: 1px solid white;
+	padding: 5px;
+	border-radius: 4px;
+	width: 100%;
+	/*font-weight: bold;*/
+	color: white;
+}
+
+.partA {
+	background-color: #29a746;
+
+	
+}
+
+.partB {
+	background-color: #017cff;
+
+}
+
+.score {
+	margin-right: 10px;
+}
+
+.table-sum {
+	/*font-weight: bold;*/
+	/*background-color: white;
+	color: black;*/
+}
+
+.sum {
+	/*font-weight: bold;*/
+	background-color: white;
+	color: black;
+	font-size: large;
+
+}
+
+
+
+@media screen and (max-width: 1000px) {
+	.results-card {
+		display: none;
+	}
+
+}
+
 @media screen and (max-width: 800px) {
-
-
+	.answer-grid {
+		display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(1, 1fr);
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+	margin-left: 15%;
+	margin-right: 15%;
+	}
 }
 
 @media screen and (max-width: 600px) {
@@ -135,10 +218,14 @@ h5 {
 
 	}
 
-	.answer-grid {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-around;
+	main, .answer-grid {
+		display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(1, 1fr);
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+	margin-left: 0;
+	margin-right: 0;
 	}
 
 	.card {
@@ -147,10 +234,6 @@ h5 {
 		max-width: 100%;
 	}
 
-	.btn-grid {
-		display: flex;
-		flex-direction: column;
-	}
 	.btn {
 		margin: 5px 0 5px 0;
 	}

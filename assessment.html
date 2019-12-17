@@ -37,8 +37,9 @@
 			</div>
 		</div>
 		<main>
+			<div class="empty-row"></div>
 			<!-- bootstrap card -->
-			<div class="card">
+			<div class="card main-card">
 				<div class="card-header main-header">
 					<h2 id="title" class="text-center">RULA - Rapid Upper Limb Assessment</h2>
 				</div>
@@ -51,7 +52,7 @@
 							<a class="nav-link active" href="#step-1" role="tab" aria-controls="step-1" aria-selected="true" alt="Step 1: Locate Upper Arm Position">1</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link"  href="#step-2" role="tab" aria-controls="step-2" aria-selected="false">2</a>
+							<a class="nav-link" href="#step-2" role="tab" aria-controls="step-2" aria-selected="false">2</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#step-3" role="tab" aria-controls="step-3" aria-selected="false">3</a>
@@ -126,13 +127,13 @@
 											</label>
 										</div>
 										<div class="custom-control custom-checkbox">
-											<input type="checkbox" class="custom-control-input" name="customCheck" id="customCheck2-q1" value="1">
+											<input type="checkbox" class="custom-control-input" name="customCheck-q1" id="customCheck2-q1" value="1">
 											<label class="custom-control-label" for="customCheck2-q1">
 												Upper arm is abducted (away from the side of the body)
 											</label>
 										</div>
 										<div class="custom-control custom-checkbox">
-											<input type="checkbox" class="custom-control-input" name="customCheck" id="customCheck3-q1" value="-1">
+											<input type="checkbox" class="custom-control-input" name="customCheck-q1" id="customCheck3-q1" value="-1">
 											<label class="custom-control-label" for="customCheck3-q1">
 												Leaning or supporting the weight of the arm
 											</label>
@@ -499,7 +500,7 @@
 									</span>
 								</div>
 								<div id="optional-fields-q9" style="text-align: center;">
-									<h3 id="optional-q9" style="margin-top: 10px">Optional question:</h3>
+									<h3 id="optional-q9" style="margin-top: 10px">Step 9a: Select this box if it reflects your muscle use</h3>
 									<div id="checkbox-q9" class="checkbox">
 										<div class="custom-control custom-checkbox">
 											<input type="checkbox" class="custom-control-input" name="customCheck-q9" id="customCheck1-q9" value="1">
@@ -516,10 +517,11 @@
 							<!-- step nine end -->
 						</div>
 					</div>
-					<div class="controls text-center">
-						<button id="prev-btn" class="btn btn-outline-success">Back</button> 
-						<button id="next-btn" class="next-btn btn-success btn">Next</button>
+					<div class="controls text-center hide" id="controls">
+						<button id="prev-btn" type="submit" class="btn btn-outline-success hide">BACK</button> 
+						<button id="next-btn" type="submit" class="next-btn btn-success btn">Next</button>
 					</div>
+					<div></div>
 				</div>
 				<!-- end of card body -->
 				<div id="card-footer" class="card-footer text-muted">
@@ -527,6 +529,33 @@
 				</div>
 			</div>
 			<!-- end of card -->
+			<div class="results-row" style="margin-left: 5%;">
+				<div class="card results-card">
+					<div class="card-header main-header">
+					<h2 class="title text-center">Results so far:</h2>
+				</div>
+					<div class="card-body text-center">
+						<ul class="results-list">
+							<li class="li-head"><h4 class="text-center">Part A:</h4></li>
+							<li class="item partA">1. Upper Arm: <span id="upper-arm" class="score">0</span></li>
+							<li class="item partA">2. Lower Arm: <span id="lower-arm" class="score">0</span></li>
+							<li class="item partA">3. Wrist: <span id="wrist" class="score">0</span></li>
+							<li class="item partA">4. Wrist Twist: <span id="wrist-twist" class="score">0</span></li>
+							<li class="item partA">5. Muscle Use + Force/Load: <span id="muscle-a" class="score">0</span></li>
+							<li class="item table-sum partA">Posture Score A (Table A): <span id="posture-a" class="score">0</span></li>
+							<li class="item sum partA">Final Arm & Wrist Score: <span id="part-a-score" class="score">0</span></li>
+							<li class="li-head"><hr></li>
+							<li class="li-head"><h4 class="text-center">Part B:</h4></li>
+							<li class="item partB">6. Neck: <span class="score">0</span></li>
+							<li class="item partB">7. Trunk: <span class="score">0</span></li>
+							<li class="item partB">8. Leg: <span class="score">0</span></li>
+							<li class="item partB">9. Muscle Use + Force/Load: <span class="score">0</span></li>
+							<li class="item table-sum partB">Posture Score B (Table B): <span class="score">0</span></li>
+							<li class="item sum partB">Final Neck, Trunk & Leg Score: <span class="score">0</span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</main>
 		<footer>
 			<div class="zone footer">
