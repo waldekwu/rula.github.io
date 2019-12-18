@@ -75,10 +75,12 @@
 						<li class="nav-item">
 							<a class="nav-link" href="#step-9" role="tab" aria-controls="step-9" aria-selected="false">9</a>
 						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#step-10" role="tab" aria-controls="step-10" aria-selected="false">Results</a>
+						</li>
 					</ul>
 				</div>
 				<div class="card-body">
-
 					<div class="tab-content mt-3">
 
 						<div class="tab-pane active" id="step-1" role="tabpanel">
@@ -516,10 +518,18 @@
 							</div>
 							<!-- step nine end -->
 						</div>
+
+
+						<div class="tab-pane" id="step-10" role="tabpanel" aria-labelledby="step-10-tab">
+							<!-- step nine start -->
+
+							<!-- step nine end -->
+						</div>
 					</div>
-					<div class="controls text-center hide" id="controls">
-						<button id="prev-btn" type="submit" class="btn btn-outline-success hide">BACK</button> 
-						<button id="next-btn" type="submit" class="next-btn btn-success btn">Next</button>
+					<div class="controls text-center" id="controls">
+						<button id="prev-btn" type="submit" class="btn btn-outline-success hide">Back</button> 
+						<button id="next-btn" type="submit" class="next-btn btn-success btn hide">Next</button>
+						<button id="results-btn" type="submit" class="next-btn btn-success btn hide">Get Results</button>
 					</div>
 					<div></div>
 				</div>
@@ -532,8 +542,8 @@
 			<div class="results-row" style="margin-left: 10px;">
 				<div class="card results-card">
 					<div class="card-header main-header">
-					<h2 class="title text-center">Results so far:</h2>
-				</div>
+						<h2 class="title text-center">Results so far:</h2>
+					</div>
 					<div class="card-body text-center">
 						<ul class="results-list">
 							<li class="li-head"><h4 class="text-center">Part A:</h4></li>
@@ -557,6 +567,11 @@
 				</div>
 			</div>
 		</main>
+		<div class="card mobile-results">
+			<div class="card-body text-center mobile-body">
+				<h6><strong>See results so far</strong></h6>
+			</div>
+		</div>
 		<footer>
 			<div class="zone footer">
 				<span class="social-media">

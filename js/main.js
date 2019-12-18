@@ -10,40 +10,40 @@
  * Last modified  : 2019-12-18 15:31:40
  */
 
-let nextBtn = document.getElementById("next-btn");
-let prevBtn = document.getElementById("prev-btn");
-let controls = document.getElementById("controls");
-let questionContainer = document.getElementsByClassName("radio");
+ let nextBtn = document.getElementById("next-btn");
+ let prevBtn = document.getElementById("prev-btn");
+ let controls = document.getElementById("controls");
+ let questionContainer = document.getElementsByClassName("radio");
 
-let currentQuestionIndex = 1;
+ let currentQuestionIndex = 1;
 
-let upperArmValue = 0;
-let upperArmAdjValue = 0;
+ let upperArmValue = 0;
+ let upperArmAdjValue = 0;
 
-let lowerArmValue = 0;
-let lowerArmAdjValue = 0;
+ let lowerArmValue = 0;
+ let lowerArmAdjValue = 0;
 
-let wristValue = 0;
-let wristAdjValue = 0;
+ let wristValue = 0;
+ let wristAdjValue = 0;
 
-let wristTwistValue = 0;
+ let wristTwistValue = 0;
 
-let forceLoadValue = 0;
-let muscleUseValue = 0;
+ let forceLoadValue = 0;
+ let muscleUseValue = 0;
 
-let neckValue = 0;
-let neckAdjValue = 0;
+ let neckValue = 0;
+ let neckAdjValue = 0;
 
-let trunkValue = 0;
-let trunkAdjValue = 0;
+ let trunkValue = 0;
+ let trunkAdjValue = 0;
 
-let legsValue = 0;
+ let legsValue = 0;
 
-let forceLoadB = 0;
-let muscleUseB = 0;
+ let forceLoadB = 0;
+ let muscleUseB = 0;
 
-let AScore = 0;
-let BScore = 0;
+ let AScore = 0;
+ let BScore = 0;
 
 //Part A total
 let wristArmScore = 0;
@@ -128,6 +128,7 @@ let tables = [
 
 for (var i = 0; i < $('.question-container').length; i++) {
 	$('.question-container')[i].classList.add("animated", "fadeIn");
+	controls.classList.add('animated','fadeIn');
 }
 
 for (var i = 0; i < $('.radio').length; i++) {
@@ -137,7 +138,12 @@ for (var i = 0; i < $('.radio').length; i++) {
 $('.next-btn').on('click', (e) => {
 	e.preventDefault();
 
-	currentQuestionIndex++;
+	if (currentQuestionIndex < 10) {
+		currentQuestionIndex++;
+	}
+
+	console.log(currentQuestionIndex);
+
 	topFunction();
 	controlButtons();
 	setOutput();
@@ -149,13 +155,16 @@ $('.next-btn').on('click', (e) => {
 
 $("#prev-btn").on('click', (e) => {
 	e.preventDefault();
-
-	currentQuestionIndex--;
+	if (currentQuestionIndex > 0) {
+		currentQuestionIndex--;
+	}
 	topFunction();
 	controlButtons();
 	selectAnswer();
 
 	$('a[href="#step-' + currentQuestionIndex + '"]').tab('show');
+
+	console.log(currentQuestionIndex);
 })
 
 function selectAnswer() {
@@ -163,9 +172,12 @@ function selectAnswer() {
 	if (document.querySelector('input[name="radio-q' + currentQuestionIndex + '"]:checked')) {
 
 		document.getElementById("optional-fields-q" + currentQuestionIndex).classList.remove('hide');
-		controls.classList.remove('hide');
-		controls.classList.add('animated','fadeIn');
+		// controls.classList.remove('hide');
+
+		nextBtn.classList.add('animated','fadeIn');
 		document.getElementById("optional-fields-q" + currentQuestionIndex).classList.add('animated','fadeIn');
+		nextBtn.classList.remove('hide');
+
 
 
 		if (currentQuestionIndex === 0) {
@@ -173,7 +185,13 @@ function selectAnswer() {
 		}
 
 	} else {
-		nextBtn.classList.add('hide');
+		if (currentQuestionIndex < 9) {
+			nextBtn.classList.add('hide');
+		}
+	}
+
+	if (currentQuestionIndex === 10) {
+		nextBtn.classList.add("hide");
 	}
 }
 
@@ -316,7 +334,6 @@ function getInput() {
 		break;
 
 		case 10:
-
 		forceLoadB = parseInt(document.querySelector('input[name="radio-q9"]:checked').value);
 
 		if (document.querySelector('input[name="customCheck-q9"]:checked')) {
