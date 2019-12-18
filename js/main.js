@@ -1,7 +1,18 @@
+/**
+ * Copyright (c) 2019
+ *
+ * RULA Employee Assessment (long description)
+ *
+ * @summary RULA Employee Assessment (short description)
+ * @author Waldemar Walczak <wswalczak@outlook.com>
+ *
+ * Created at     : 2019-12-13 02:21:56 
+ * Last modified  : 2019-12-18 15:31:40
+ */
+
 let nextBtn = document.getElementById("next-btn");
 let prevBtn = document.getElementById("prev-btn");
 let controls = document.getElementById("controls");
-
 let questionContainer = document.getElementsByClassName("radio");
 
 let currentQuestionIndex = 1;
@@ -30,6 +41,10 @@ let legsValue = 0;
 
 let forceLoadB = 0;
 let muscleUseB = 0;
+
+let AScore = 0;
+let BScore = 0;
+
 //Part A total
 let wristArmScore = 0;
 //Part B total
@@ -37,17 +52,10 @@ let neckTrunkLegsScore = 0;
 
 let finalScore = 0;
 
-let checkboxValues = [];
-
-let AScore = 0;
-
-wristArmScore = 0;
-
 let tables = [
 { 
     //Table A
-    //'0123' - 0 is upper arm, 1 is lower arm, 2 is wrist and 3 is wrist twist 
-    //upper arm 0
+    //'0123' - 0 is upper arm, 1 is lower arm, 2 is wrist and 3 is wrist twist
     '0111': 1, '0112': 2, '0121': 2, '0122': 2, '0131': 2, '0132': 3, '0141': 3, '0142': 3,
     '0211': 2, '0212': 2, '0221': 2, '0222': 2, '0231': 3, '0232': 3, '0241': 3, '0242': 3,
     '0311': 2, '0312': 3, '0321': 3, '0322': 3, '0331': 3, '0332': 3, '0341': 4, '0342': 4,
@@ -106,18 +114,17 @@ let tables = [
     '13x1': 5, '13x2': 5, '13x3': 6, '13x4': 7, '13x5': 7, '13x6': 7, '13x7': 7,     '13x8': 7, '13x9': 7, '13x10': 7, '13x11': 7, '13x12': 7, '13x13': 7,
 } ];
 
+/*///////////////////////////////////////////////////////////////////////
+*                            Flow control                               *
+*////////////////////////////////////////////////////////////////////////
 
+//unlocks clickable tabs
 // $('#question-list a').on('click', function (e) {
 // 	e.preventDefault();
 // 	$(this).tab('show');
 // 	currentQuestionIndex = parseInt($(this).text());
 // 	console.log(currentQuestionIndex);
-
 // })
-//card body
-// questionContainer.addEventListener('click', selectAnswer);
-
-
 
 for (var i = 0; i < $('.question-container').length; i++) {
 	$('.question-container')[i].classList.add("animated", "fadeIn");
@@ -135,10 +142,9 @@ $('.next-btn').on('click', (e) => {
 	controlButtons();
 	setOutput();
 	selectAnswer();
-	setAScore();
+	setTableScores();
 
-	$('a[href="#step-'+currentQuestionIndex + '"]').tab('show');
-
+	$('a[href="#step-' + currentQuestionIndex + '"]').tab('show');
 })
 
 $("#prev-btn").on('click', (e) => {
@@ -149,15 +155,17 @@ $("#prev-btn").on('click', (e) => {
 	controlButtons();
 	selectAnswer();
 
-	$('a[href="#step-'+currentQuestionIndex + '"]').tab('show');
-
+	$('a[href="#step-' + currentQuestionIndex + '"]').tab('show');
 })
 
 function selectAnswer() {
 
-	if (document.querySelector('input[name="radio-q'+currentQuestionIndex+'"]:checked')) {
+	if (document.querySelector('input[name="radio-q' + currentQuestionIndex + '"]:checked')) {
+
+		document.getElementById("optional-fields-q" + currentQuestionIndex).classList.remove('hide');
 		controls.classList.remove('hide');
 		controls.classList.add('animated','fadeIn');
+		document.getElementById("optional-fields-q" + currentQuestionIndex).classList.add('animated','fadeIn');
 
 
 		if (currentQuestionIndex === 0) {
@@ -165,7 +173,7 @@ function selectAnswer() {
 		}
 
 	} else {
-		controls.classList.add('hide');
+		nextBtn.classList.add('hide');
 	}
 }
 
@@ -189,6 +197,9 @@ function topFunction() {
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 
+/*///////////////////////////////////////////////////////////////////////
+//////////////////// Everything below handles scores ////////////////////
+*////////////////////////////////////////////////////////////////////////
 function getInput() {
 
 	switch (currentQuestionIndex) {
@@ -200,7 +211,7 @@ function getInput() {
 		if (document.querySelector('input[name="customCheck-q1"]:checked')) {
 			upperArmAdjValue = 0;
 			let options = document.getElementsByName("customCheck-q1");
-			
+
 			for (var i = 0; i < options.length; i++) {
 				if (options[i].type === 'checkbox' && options[i].checked === true) {
 					upperArmAdjValue += parseInt(options[i].value);
@@ -208,77 +219,120 @@ function getInput() {
 			} 
 
 		} else {
-			lowerArmAdjValue = 0; }	
+			lowerArmAdjValue = 0; 
+		}	
 
-			break;
+		break;
 
-			case 3:
-			lowerArmValue = parseInt(document.querySelector('input[name="radio-q2"]:checked').value);
-			checkboxValues = [];
+		case 3:
+		lowerArmValue = parseInt(document.querySelector('input[name="radio-q2"]:checked').value);
 
-			if (document.querySelector('input[name="customCheck-q2"]:checked')) {
+		if (document.querySelector('input[name="customCheck-q2"]:checked')) {
+			lowerArmAdjValue = parseInt(document.querySelector('input[name="customCheck-q2"]:checked').value);
 
-				lowerArmAdjValue = parseInt(document.querySelector('input[name="customCheck-q2"]:checked').value);
+		} else {
+			lowerArmAdjValue = 0; 
+		}
 
-			} else {
-				lowerArmAdjValue = 0; }
+		break;
 
-				break;
+		case 4:
+		wristValue = parseInt(document.querySelector('input[name="radio-q3"]:checked').value);
 
-				case 4:
-				wristValue = parseInt(document.querySelector('input[name="radio-q3"]:checked').value);
+		if (document.querySelector('input[name="customCheck-q3"]:checked')) {
+			wristAdjValue = parseInt(document.querySelector('input[name="customCheck-q3"]:checked').value);
 
-				if (document.querySelector('input[name="customCheck-q3"]:checked')) {
+		} else {
+			wristAdjValue = 0; 
+		}
 
-					wristAdjValue = parseInt(document.querySelector('input[name="customCheck-q3"]:checked').value);
+		break;
 
-				} else {
-					wristAdjValue = 0; }
+		case 5:
 
-					break;
+		wristTwistValue = parseInt(document.querySelector('input[name="radio-q4"]:checked').value);
 
-					case 5:
+		break;
 
-					wristTwistValue = parseInt(document.querySelector('input[name="radio-q4"]:checked').value);
+		case 6:
 
-					break;
+		forceLoadValue = parseInt(document.querySelector('input[name="radio-q5"]:checked').value);
 
-					case 6:
+		if (document.querySelector('input[name="customCheck-q5"]:checked')) {
+			muscleUseValue = parseInt(document.querySelector('input[name="customCheck-q5"]:checked').value);
 
-					forceLoadValue = parseInt(document.querySelector('input[name="radio-q5"]:checked').value);
+		} else {
+			muscleUseValue = 0; 
+		}
 
-					if (document.querySelector('input[name="customCheck-q5"]:checked')) {
+		break;
 
-						muscleUseValue = parseInt(document.querySelector('input[name="customCheck-q5"]:checked').value);
+		case 7:
 
-					} else {
-						muscleUseValue = 0; }
+		neckValue = parseInt(document.querySelector('input[name="radio-q6"]:checked').value);
 
-						break;
+		//checkboxes
+		if (document.querySelector('input[name="customCheck-q6"]:checked')) {
+			neckAdjValue = 0;
+			let options = document.getElementsByName("customCheck-q6");
 
-						case 7:
-
-						break;
-
-						case 8:
-
-						break;
-
-						case 9:
-
-						break;
-
-						case 10:
-
-						break;
-
-
-						default:
-						alert("Something went wrong");
-
-					}
+			for (var i = 0; i < options.length; i++) {
+				if (options[i].type === 'checkbox' && options[i].checked === true) {
+					neckAdjValue += parseInt(options[i].value);
 				}
-function setAScore() {
+			} 
+
+		} else {
+			neckAdjValue = 0; 
+		}
+
+		break;
+
+		case 8:
+
+		trunkValue = parseInt(document.querySelector('input[name="radio-q7"]:checked').value);
+
+		//checkboxes
+		if (document.querySelector('input[name="customCheck-q7"]:checked')) {
+			trunkAdjValue = 0;
+			let options = document.getElementsByName("customCheck-q7");
+
+			for (var i = 0; i < options.length; i++) {
+				if (options[i].type === 'checkbox' && options[i].checked === true) {
+					trunkAdjValue += parseInt(options[i].value);
+				}
+			} 
+
+		} else {
+			trunkAdjValue = 0; 
+		}
+
+		break;
+
+		case 9:
+
+		legsValue = parseInt(document.querySelector('input[name="radio-q8"]:checked').value);
+
+		break;
+
+		case 10:
+
+		forceLoadB = parseInt(document.querySelector('input[name="radio-q9"]:checked').value);
+
+		if (document.querySelector('input[name="customCheck-q9"]:checked')) {
+			muscleUseB = parseInt(document.querySelector('input[name="customCheck-q9"]:checked').value);
+		} else {
+			muscleUseB = 0; 
+		}
+
+		break;
+
+		default:
+		alert("Something went wrong");
+	}
+}
+
+function setTableScores() {
     // console.log('You scored: ' + (upperArmValue + armAdjValue).toString() + 
     //     (lowerArmValue + lowerArmAdjValue).toString() + 
     //     (wristValue + wristAdjValue).toString() +
@@ -289,24 +343,59 @@ function setAScore() {
     wristTwistValue.toString();
 
     AScore = parseInt(tables[0][totalAValue]);
-    console.log('Therefore AScore = ' + AScore); 
+    // console.log('AScore = ' + AScore); 
+
+        // console.log('You scored: ' + (neckValue + neckAdjValue).toString() +
+    //     (trunkValue + trunkAdjValue).toString() +
+    //     legsValue.toString());
+    totalBValue = (neckValue + neckAdjValue).toString() +
+    (trunkValue + trunkAdjValue).toString() +
+    legsValue.toString();
+
+    BScore = parseInt(tables[1][totalBValue]);
+    // console.log('BScore = ' + BScore); 
+
 }
 
 function setOutput() {
+
 	getInput();
-	document.getElementById("upper-arm").innerHTML = parseInt(upperArmValue + upperArmAdjValue);
-	document.getElementById("lower-arm").innerHTML = parseInt(lowerArmValue + lowerArmAdjValue);
-	document.getElementById("wrist").innerHTML = parseInt(wristValue + wristAdjValue);
-	document.getElementById("wrist-twist").innerHTML = parseInt(wristTwistValue);
-	document.getElementById("muscle-a").innerHTML = parseInt(forceLoadValue + muscleUseValue);
+	//part a
+	$("#upper-arm").html(parseInt(upperArmValue + upperArmAdjValue));
+	$("#lower-arm").html(parseInt(lowerArmValue + lowerArmAdjValue));
+	$("#wrist").html(parseInt(wristValue + wristAdjValue));
+	$("#wrist-twist").html(parseInt(wristTwistValue));
+	$("#muscle-a").html(parseInt(forceLoadValue + muscleUseValue));
+	//part b
+	$("#neck").html(parseInt(neckValue + neckAdjValue));
+	$("#trunk").html(parseInt(trunkValue + trunkAdjValue));
+	$("#leg").html(parseInt(legsValue));
+	$("#muscle-b").html(parseInt(forceLoadB + muscleUseB));
+	
+	//these ifs avoid displaying NaN instead of 0 on results table
+	if (AScore !== AScore) {
+		$("part-b-score").html('0');
 
-
-	if (AScore !== AScore){
-		document.getElementById("part-a-score").innerHTML = '0';
 	} else {
-	wristArmScore = AScore + parseInt(forceLoadValue + muscleUseValue);
-	document.getElementById("part-a-score").innerHTML = wristArmScore;
-	document.getElementById("posture-a").innerHTML = parseInt(AScore);
-}
-}
+		wristArmScore = AScore + parseInt(forceLoadValue + muscleUseValue);
 
+		$("#posture-a").html(parseInt(AScore));
+		$("#part-a-score").html(wristArmScore);
+	}
+
+	if (BScore !== BScore) {
+		$("part-b-score").html('0');
+
+	} else {
+		neckTrunkLegsScore = BScore + parseInt(forceLoadB + muscleUseB);
+
+		$("#posture-b").html(parseInt(BScore));
+		$("#part-b-score").html(neckTrunkLegsScore);
+
+		let tableCScore = wristArmScore + "x" + neckTrunkLegsScore;
+
+		finalScore = parseInt(tables[2][tableCScore]);
+
+	}
+	console.log(finalScore);
+}

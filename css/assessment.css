@@ -13,11 +13,16 @@ main {
 .main-card {
 	min-width: 600px;
 	max-width: 100%;
+	min-width: 320px;
+    margin-left: 4%;
+    margin-right: 4%;
+
 }
+
 
 .results-card {
 	max-width: 200px;
-	opacity: 1;
+
 }
 
 .main-header {
@@ -108,7 +113,7 @@ li {
 	color: black;
 }
 
-ul {
+.results-list {
 	padding-left: 0px;
 }
 
@@ -228,7 +233,8 @@ h5 {
 	margin-right: 0;
 	}
 
-	.card {
+	.card, .main-card {
+		margin-left: 0;
 		justify-content: center;
 		min-width: 100%;
 		max-width: 100%;

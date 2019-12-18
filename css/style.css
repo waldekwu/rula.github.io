@@ -72,10 +72,7 @@ a:hover {
 .card {
     max-width: 850px;
     min-width: 320px;
-/*    margin-left: auto;
-    margin-right: auto;*/
     margin-top: 30px;
-    margin-bottom: 30px;
 }
 hr {
     border-color: #adb5bd;
@@ -105,7 +102,7 @@ p {
     display: flex;
     justify-content: center;
     font-size: 0.9em;
-    margin: auto auto 0 auto;
+    margin: 30px auto 0 auto;
     flex-wrap: wrap;
 }
 .footerTxt {
