@@ -12,6 +12,7 @@
 
  let nextBtn = document.getElementById("next-btn");
  let prevBtn = document.getElementById("prev-btn");
+ let resultsBtn = document.getElementById("results-btn");
  let controls = document.getElementById("controls");
  let questionContainer = document.getElementsByClassName("radio");
 
@@ -119,12 +120,12 @@ let tables = [
 *////////////////////////////////////////////////////////////////////////
 
 //unlocks clickable tabs
-// $('#question-list a').on('click', function (e) {
-// 	e.preventDefault();
-// 	$(this).tab('show');
-// 	currentQuestionIndex = parseInt($(this).text());
-// 	console.log(currentQuestionIndex);
-// })
+$('#question-list a').on('click', function (e) {
+	e.preventDefault();
+	$(this).tab('show');
+	currentQuestionIndex = parseInt($(this).text());
+	console.log(currentQuestionIndex);
+})
 
 for (var i = 0; i < $('.question-container').length; i++) {
 	$('.question-container')[i].classList.add("animated", "fadeIn");
@@ -169,13 +170,25 @@ $("#prev-btn").on('click', (e) => {
 
 function selectAnswer() {
 
+
 	if (document.querySelector('input[name="radio-q' + currentQuestionIndex + '"]:checked')) {
 
+		document.getElementById('nav'+currentQuestionIndex).style.color = "#2aa747";
+		document.getElementById('nav'+currentQuestionIndex).style.cursor = "pointer";
+		document.getElementById('nav'+currentQuestionIndex).classList.add("animated", "flipInY", "font-weight-bold");
+
+		$('#nav'+currentQuestionIndex).on('click', function (e) {
+			e.preventDefault();
+			$(this).tab('show');
+			currentQuestionIndex = parseInt($(this).text());
+			console.log(currentQuestionIndex);
+		})
+
 		document.getElementById("optional-fields-q" + currentQuestionIndex).classList.remove('hide');
-		// controls.classList.remove('hide');
+		document.getElementById("optional-fields-q" + currentQuestionIndex).scrollIntoView();
+		document.getElementById("optional-fields-q" + currentQuestionIndex).classList.add('animated','fadeIn');
 
 		nextBtn.classList.add('animated','fadeIn');
-		document.getElementById("optional-fields-q" + currentQuestionIndex).classList.add('animated','fadeIn');
 		nextBtn.classList.remove('hide');
 
 
@@ -187,12 +200,15 @@ function selectAnswer() {
 	} else {
 		if (currentQuestionIndex < 9) {
 			nextBtn.classList.add('hide');
+
+		} else if (currentQuestionIndex > 9) {
+			nextBtn.classList.remove('hide');
 		}
 	}
 
 	if (currentQuestionIndex === 10) {
 		nextBtn.classList.add("hide");
-	}
+	} 
 }
 
 
@@ -214,41 +230,41 @@ function topFunction() {
 
 function toggleResultsMobile() {
 
-	$('#results-card').find('.card-header').remove();
+	// $('#results-card').find('.card-header').remove();
 
-	 if ($('#results-card').hasClass('slideInUp')) {
+	if ($('#results-card').hasClass('slideInUp')) {
 
-	 	$(".results-card").toggleClass("slideInUp slideOutDown");
+		$(".results-card").toggleClass("slideInUp slideOutDown");
 
-	 	$('#show-results').html(
-	 		`<div class="animated flipInX">
-	 			<img src="./media/arrow-up.png"><br>
-	 			<h6><strong>See results so far</strong></h6>
-	 		</div>`
-	 		);
+		$('#show-results').html(
+			`<div class="animated flipInX">
+			<img src="./media/arrow-up.png"><br>
+			<h6><strong>See scores</strong></h6>
+			</div>`
+			);
 
-	 } else if ($('#results-card').hasClass("slideOutDown")) {
+	} else if ($('#results-card').hasClass("slideOutDown")) {
 
-	 	$(".results-card").toggleClass("slideOutDown slideInUp");
+		$(".results-card").toggleClass("slideOutDown slideInUp");
 
-	 	$('#show-results').html(
-	 		`<div class="animated flipInX">
-	 			<img src="./media/arrow-down.png"><br>
-	 			<h6><strong>Hide results</strong></h6>
-	 		</div>`
-	 	);
+		$('#show-results').html(
+			`<div class="animated flipInX">
+			<img src="./media/arrow-down.png"><br>
+			<h6><strong>Hide scores</strong></h6>
+			</div>`
+			);
 
-	 } else {
-	 	$(".results-card").toggleClass("slideInUp");
-	 	$(".results-card").toggleClass("results-card-hide results-card-show");
+	} else {
+		$(".results-card").toggleClass("slideInUp");
+		$(".results-card").toggleClass("results-card-hide results-card-show");
 
-	 	$('#show-results').html(`
-	 		<div class="animated flipInX">
-	 			<img src="./media/arrow-down.png"><br>
-	 			<h6><strong>Hide results</strong></h6>
-	 		</div>`
-	 		);
-	 }
+		$('#show-results').html(`
+			<div class="animated flipInX">
+			<img src="./media/arrow-down.png"><br>
+			<h6><strong>Hide scores</strong></h6>
+			</div>`
+			);
+	}
 }
 
 /*///////////////////////////////////////////////////////////////////////
@@ -377,6 +393,18 @@ function getInput() {
 		} else {
 			muscleUseB = 0; 
 		}
+
+		document.getElementById('nav10').style.color = "#2aa747";
+		document.getElementById('nav10').style.cursor = "pointer";
+		document.getElementById('nav10').classList.add("animated", "flipInY", "font-weight-bold");
+
+
+		$('#nav10').on('click', function (e) {
+			e.preventDefault();
+			$(this).tab('show');
+			currentQuestionIndex = parseInt($(this).text());
+			console.log(currentQuestionIndex);
+		})
 
 		break;
 
