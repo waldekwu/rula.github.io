@@ -202,17 +202,53 @@ function controlButtons() {
 	} else if (currentQuestionIndex > 1) {
 		prevBtn.classList.remove("hide");
 	} 
-	// if ($('#step-9').hasClass('active')) {
-	// 	nextBtn.classList.add("hide");
-	// } else if (currentQuestionIndex < 9) {
-	// 	nextBtn.classList.remove("hide");
-	// }
+
 }
 //go to the top of the page
 function topFunction() {
 
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
+
+function toggleResultsMobile() {
+
+	$('#results-card').find('.card-header').remove();
+
+	 if ($('#results-card').hasClass('slideInUp')) {
+
+	 	$(".results-card").toggleClass("slideInUp slideOutDown");
+
+	 	$('#show-results').html(
+	 		`<div class="animated flipInX">
+	 			<img src="./media/arrow-up.png"><br>
+	 			<h6><strong>See results so far</strong></h6>
+	 		</div>`
+	 		);
+
+	 } else if ($('#results-card').hasClass("slideOutDown")) {
+
+	 	$(".results-card").toggleClass("slideOutDown slideInUp");
+
+	 	$('#show-results').html(
+	 		`<div class="animated flipInX">
+	 			<img src="./media/arrow-down.png"><br>
+	 			<h6><strong>Hide results</strong></h6>
+	 		</div>`
+	 	);
+
+	 } else {
+	 	$(".results-card").toggleClass("slideInUp");
+	 	$(".results-card").toggleClass("results-card-hide results-card-show");
+
+	 	$('#show-results').html(`
+	 		<div class="animated flipInX">
+	 			<img src="./media/arrow-down.png"><br>
+	 			<h6><strong>Hide results</strong></h6>
+	 		</div>`
+	 		);
+	 }
 }
 
 /*///////////////////////////////////////////////////////////////////////
