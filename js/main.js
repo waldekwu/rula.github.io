@@ -15,6 +15,7 @@
  let resultsBtn = document.getElementById("results-btn");
  let controls = document.getElementById("controls");
  let questionContainer = document.getElementsByClassName("radio");
+let scoreContainer = document.getElementById("score-container");
 
  let currentQuestionIndex = 1;
 
@@ -146,7 +147,6 @@ $('.next-btn').on('click', (e) => {
 	console.log(currentQuestionIndex);
 
 	topFunction();
-	controlButtons();
 	setOutput();
 	selectAnswer();
 	setTableScores();
@@ -156,11 +156,10 @@ $('.next-btn').on('click', (e) => {
 
 $("#prev-btn").on('click', (e) => {
 	e.preventDefault();
-	if (currentQuestionIndex > 0) {
+	if (currentQuestionIndex > 1) {
 		currentQuestionIndex--;
 	}
 	topFunction();
-	controlButtons();
 	selectAnswer();
 
 	$('a[href="#step-' + currentQuestionIndex + '"]').tab('show');
@@ -169,57 +168,60 @@ $("#prev-btn").on('click', (e) => {
 })
 
 function selectAnswer() {
+	changeTitle();
+	nextBtn.classList.add("hide");
 
+	if (currentQuestionIndex > 1) {
+		prevBtn.classList.remove("hide");
+
+	} else {
+		prevBtn.classList.add("hide");
+	}
 
 	if (document.querySelector('input[name="radio-q' + currentQuestionIndex + '"]:checked')) {
 
-		document.getElementById('nav'+currentQuestionIndex).style.color = "#2aa747";
-		document.getElementById('nav'+currentQuestionIndex).style.cursor = "pointer";
-		document.getElementById('nav'+currentQuestionIndex).classList.add("animated", "flipInY", "font-weight-bold");
+		document.getElementById('nav' + currentQuestionIndex).style.color = "#2aa747";
+		document.getElementById('nav' + currentQuestionIndex).style.cursor = "pointer";
+		document.getElementById('nav' + currentQuestionIndex).classList.add("animated", "flipInY", "font-weight-bold");
+
+		document.getElementById("optional-fields-q" + currentQuestionIndex).classList.remove('hide');
+		document.getElementById("optional-fields-q" + currentQuestionIndex).scrollIntoView();
+		document.getElementById("optional-fields-q" + currentQuestionIndex).classList.add('animated','fadeIn');
 
 		$('#nav'+currentQuestionIndex).on('click', function (e) {
 			e.preventDefault();
 			$(this).tab('show');
 			currentQuestionIndex = parseInt($(this).text());
 			console.log(currentQuestionIndex);
+			changeTitle();
+			if (currentQuestionIndex < 10) {
+
+				nextBtn.classList.remove("hide");
+
+			} else if (currentQuestionIndex === 10) {
+
+				nextBtn.classList.add("hide");
+			}
+
+			if (currentQuestionIndex === 1) {
+
+				prevBtn.classList.add("hide");
+
+			} else {
+				prevBtn.classList.remove("hide");
+			}
+
 		})
 
-		document.getElementById("optional-fields-q" + currentQuestionIndex).classList.remove('hide');
-		document.getElementById("optional-fields-q" + currentQuestionIndex).scrollIntoView();
-		document.getElementById("optional-fields-q" + currentQuestionIndex).classList.add('animated','fadeIn');
+		if (currentQuestionIndex === 10) {
 
-		nextBtn.classList.add('animated','fadeIn');
-		nextBtn.classList.remove('hide');
-
-
-
-		if (currentQuestionIndex === 0) {
-			prevBtn.classList.add('hide');
+			nextBtn.classList.add("hide");
+		} else {
+			nextBtn.classList.remove("hide");
 		}
-
-	} else {
-		if (currentQuestionIndex < 9) {
-			nextBtn.classList.add('hide');
-
-		} else if (currentQuestionIndex > 9) {
-			nextBtn.classList.remove('hide');
-		}
-	}
-
-	if (currentQuestionIndex === 10) {
-		nextBtn.classList.add("hide");
-	} 
+	}  
 }
 
-
-function controlButtons() {
-	if (currentQuestionIndex === 1) {
-		prevBtn.classList.add("hide");
-	} else if (currentQuestionIndex > 1) {
-		prevBtn.classList.remove("hide");
-	} 
-
-}
 //go to the top of the page
 function topFunction() {
 
@@ -239,7 +241,7 @@ function toggleResultsMobile() {
 		$('#show-results').html(
 			`<div class="animated flipInX">
 			<img src="./media/arrow-up.png"><br>
-			<h6><strong>See scores</strong></h6>
+			<h6><strong>Show scores</strong></h6>
 			</div>`
 			);
 
@@ -264,6 +266,18 @@ function toggleResultsMobile() {
 			<h6><strong>Hide scores</strong></h6>
 			</div>`
 			);
+	}
+}
+
+function changeTitle() {
+
+	if (currentQuestionIndex > 0 && currentQuestionIndex < 6){
+		$('#title').text('Part A. Arm & Wrist Analysis');
+
+	} else if (currentQuestionIndex > 5 && currentQuestionIndex < 10) {
+		$('#title').text('Part B. Neck, Trunk & Leg Analysis');
+	} else {
+		$('#title').text('RULA - Rapid Upper Limb Assessment');
 	}
 }
 
@@ -307,6 +321,9 @@ function getInput() {
 		break;
 
 		case 4:
+
+		document.getElementById("show-results").classList.remove("bounce");
+
 		wristValue = parseInt(document.querySelector('input[name="radio-q3"]:checked').value);
 
 		if (document.querySelector('input[name="customCheck-q3"]:checked')) {
@@ -320,7 +337,11 @@ function getInput() {
 
 		case 5:
 
+
+		document.getElementById("show-results").classList.add("bounce");
+
 		wristTwistValue = parseInt(document.querySelector('input[name="radio-q4"]:checked').value);
+
 
 		break;
 
@@ -386,7 +407,10 @@ function getInput() {
 		break;
 
 		case 10:
+
 		forceLoadB = parseInt(document.querySelector('input[name="radio-q9"]:checked').value);
+
+		document.getElementById("nav11").classList.remove("hide");
 
 		if (document.querySelector('input[name="customCheck-q9"]:checked')) {
 			muscleUseB = parseInt(document.querySelector('input[name="customCheck-q9"]:checked').value);
@@ -399,12 +423,34 @@ function getInput() {
 		document.getElementById('nav10').classList.add("animated", "flipInY", "font-weight-bold");
 
 
+
 		$('#nav10').on('click', function (e) {
 			e.preventDefault();
 			$(this).tab('show');
-			currentQuestionIndex = parseInt($(this).text());
+			changeTitle();
+			currentQuestionIndex = 10;
 			console.log(currentQuestionIndex);
+			nextBtn.classList.add("hide");
+			prevBtn.classList.remove("hide");
 		})
+
+		break;
+
+		case 11:
+
+		$('#nav10').on('click', function (e) {
+			e.preventDefault();
+			$(this).tab('show');
+			changeTitle();
+			currentQuestionIndex = 11;
+			console.log(currentQuestionIndex);
+
+		})
+
+		const resultsContainer = document.createElement('div');
+		resultsContainer.setAttribute("id", "results-container");
+		document.getElementById("step-11").appendChild(resultsContainer);
+		$('#results-cotainer').html($('#results-list').html());
 
 		break;
 
@@ -453,7 +499,7 @@ function setOutput() {
 	$("#leg").html(parseInt(legsValue));
 	$("#muscle-b").html(parseInt(forceLoadB + muscleUseB));
 	
-	//these ifs avoid displaying NaN instead of 0 on results table
+	//these ifs avoid displaying 'NaN' instead of 0 on results table
 	if (AScore !== AScore) {
 		$("part-b-score").html('0');
 
@@ -479,4 +525,82 @@ function setOutput() {
 
 	}
 	console.log(finalScore);
+}
+
+
+function showResults() {
+	currentQuestionIndex = 11;
+	topFunction();
+	rulaScore();
+	document.getElementById("results-card").classList.add("hide");
+	document.getElementById("show-results").classList.add("hide");
+
+	$("#results-list-cont>ul>li.hide").removeClass("hide");
+
+	$('#final-results').html($('#results-list-cont').html());
+	// $('#div2').html($('#div1').html());
+
+}
+
+function rulaScore() {
+	    if (finalScore < 3) {
+        // resultsContainer.classList.add("acceptable-posture");
+        // resultsImageContainer.innerHTML = "<img src='media/manikin_logo.png' class='card-img'>"
+        scoreContainer.innerHTML = 
+        `
+        <h4>Final RULA score:</h4>
+        <div class="bg-success rula-card">
+        <ul style="list-style: none; padding: 15px;">
+        <li style="color: white;"><h5>RULA Score: ${finalScore}</h5>
+        Action level 1: The posture is acceptable if it is not maintained or repeated for long periods</li>
+        </ul></div>`;
+        
+    } else if (finalScore > 2 && finalScore < 5) {
+        // resultsContainer.classList.add("f-investigation");
+        // resultsImageContainer.innerHTML = "<img src='media/manikin_logo.png' class='card-img'>"
+        scoreContainer.innerHTML = 
+        `<h4>Final results:</h4>
+        <div class='card text-white bg-warning mb-3 score-card'>
+            <div class='card-body'>
+                <h4 class='card-title'><strong>RULA Score: ${finalScore}</strong></h4>
+                <h5 class='card-text'>
+                    Action level 2:
+                    Further investigation is needed and changes may be required
+                </h5>
+            </div>
+        </div>
+        `;
+    } 
+    else if (finalScore > 4 && finalScore < 7) {
+        // resultsContainer.classList.add("change-soon");
+        // resultsImageContainer.innerHTML = "<img src='media/manikin_logo.png' class='card-img'>"
+        scoreContainer.innerHTML = 
+        `<h4>Final results:</h4>
+        <div class='card text-white bg-warning mb-3 score-card'>
+            <div class='card-body'>
+                <h4 class='card-title'><strong>RULA Score: ${finalScore}</strong></h4>
+                <h5 class='card-text'>
+                    Action level 3:
+                    Further investigation and changes are required soon
+                </h5>
+            </div>
+        </div>
+        `;
+    }
+    else if (finalScore >= 7) {
+        // resultsContainer.classList.add("investigate-change");
+        // resultsImageContainer.innerHTML = "<img src='media/manikin_logo.png' class='card-img'>"
+        scoreContainer.innerHTML = 
+        `<h4>Final results:</h4>
+        <div class='card text-white bg-danger mb-3 score-card'>
+            <div class='card-body'>
+                <h4 class='card-title'><strong>RULA Score: ${finalScore}</strong></h4>
+                <h5 class='card-text'>
+                    Action level 4:
+                    Further investigation and changes are required immediately
+                </h5>
+            </div>
+        </div>
+        `;
+    }
 }
