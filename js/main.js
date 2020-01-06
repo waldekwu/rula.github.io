@@ -121,12 +121,12 @@ let tables = [
 *////////////////////////////////////////////////////////////////////////
 
 //unlocks clickable tabs
-$('#question-list a').on('click', function (e) {
-	e.preventDefault();
-	$(this).tab('show');
-	currentQuestionIndex = parseInt($(this).text());
-	console.log(currentQuestionIndex);
-})
+// $('#question-list a').on('click', function (e) {
+// 	e.preventDefault();
+// 	$(this).tab('show');
+// 	currentQuestionIndex = parseInt($(this).text());
+// 	console.log(currentQuestionIndex);
+// })
 
 for (var i = 0; i < $('.question-container').length; i++) {
 	$('.question-container')[i].classList.add("animated", "fadeIn");
@@ -152,6 +152,7 @@ $('.next-btn').on('click', (e) => {
 	setTableScores();
 
 	$('a[href="#step-' + currentQuestionIndex + '"]').tab('show');
+
 })
 
 $("#prev-btn").on('click', (e) => {
@@ -165,6 +166,7 @@ $("#prev-btn").on('click', (e) => {
 	$('a[href="#step-' + currentQuestionIndex + '"]').tab('show');
 
 	console.log(currentQuestionIndex);
+
 })
 
 function selectAnswer() {
@@ -455,7 +457,7 @@ function getInput() {
 		break;
 
 		default:
-		alert("Something went wrong");
+		alert("Something went wrong. Reload page to start over.");
 	}
 }
 
@@ -481,7 +483,6 @@ function setTableScores() {
 
     BScore = parseInt(tables[1][totalBValue]);
     // console.log('BScore = ' + BScore); 
-
 }
 
 function setOutput() {
@@ -538,6 +539,7 @@ function showResults() {
 	$("#results-list-cont>ul>li.hide").removeClass("hide");
 
 	$('#final-results').html($('#results-list-cont').html());
+
 	// $('#div2').html($('#div1').html());
 
 }
@@ -547,13 +549,15 @@ function rulaScore() {
         // resultsContainer.classList.add("acceptable-posture");
         // resultsImageContainer.innerHTML = "<img src='media/manikin_logo.png' class='card-img'>"
         scoreContainer.innerHTML = 
-        `
-        <h4>Final RULA score:</h4>
+        `<h4 style="text-align: left;"><img src="./media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Final RULA score:</h4>
         <div class="bg-success rula-card">
-        <ul style="list-style: none; padding: 15px;">
-        <li style="color: white;"><h5>RULA Score: ${finalScore}</h5>
-        Action level 1: The posture is acceptable if it is not maintained or repeated for long periods</li>
-        </ul></div>`;
+        	<ul style="list-style: none; padding: 15px;">
+        		<li style="color: white;">
+        			<h5>RULA Score: ${finalScore}</h5>
+       				Action level 1: The posture is acceptable if it is not maintained or repeated for long periods
+        		</li>
+        	</ul>
+        </div>`;
         
     } else if (finalScore > 2 && finalScore < 5) {
         // resultsContainer.classList.add("f-investigation");

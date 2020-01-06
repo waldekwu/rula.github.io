@@ -151,18 +151,18 @@ h5 {
 	justify-content : space-between;
 	border: 1px solid white;
 	padding: 5px;
-	border-radius: 4px;
 	width: 100%;
+	margin: 2px;
 	/*font-weight: bold;*/
-	color: white;
+	/*color: white;*/
 }
 
 .partA {
-	background-color: #29a746;
+	border-top: 1px solid #fc466b;
 }
 
 .partB {
-	background-color: #017cff;
+	border-top: 1px solid #3f5efb;
 }
 
 .score {
@@ -246,8 +246,8 @@ input {
 
 .results-page {
 	display: grid;
-	grid-template-columns: 60% 40%;
-	grid-template-rows: repeat(2, 1fr);
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 40% 60%;
 	grid-column-gap: 0px;
 	grid-row-gap: 0px;
 }
@@ -277,8 +277,15 @@ input {
 .rula-card {
 	border: 1px solid #d8d8d8;
 	border-radius: 5px;
-	justify-content: center;
-	margin: 0 10% 10px 10%;
+	justify-content: left;
+	max-width: 350px;
+	margin-right: 5px;
+	/*margin: 0 0 0 0;*/
+}
+
+.personal-details {
+	margin-bottom: 2px;
+	font-style: italic;
 }
 
 @media screen and (max-width: 900px) {
@@ -353,6 +360,7 @@ input {
 		bottom:2%;
 		right:0;   
 	}
+
 }
 
 @media screen and (max-width: 600px) {
@@ -376,6 +384,10 @@ input {
 		margin-right: 10%;
 		margin-left: 10%;
 
+	}
+	.results-page {
+		display: flex;
+		flex-direction: column;
 	}
 
 }

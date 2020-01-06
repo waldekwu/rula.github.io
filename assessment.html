@@ -526,7 +526,7 @@
 						<div class="tab-pane text-center" id="step-10" role="tabpanel" aria-labelledby="step-10-tab">
 							<!-- step ten start -->
 							<div class="form-container text-center animated fadeIn">
-								<div><h3 id="q4" class="text-center">10. Your details*</h3></div>
+								<div><h3 id="q4" class="text-center">10. Personal details*</h3></div>
 								<br>
 								<form id="form">
 									<div class="form-group">
@@ -565,19 +565,17 @@
 							<!-- step ten start -->
 							<div class="form-container text-center animated fadeIn results-page" style="margin-right: 0; margin-left: 0;">
 									<div id="score-container"></div>
+									<div id="final-results"></div>
 									<div id="your-details">
-										<ul style="padding: 0px; list-style: none;">
-											<li><h4>Your details:</h4></li>
-											<li>Email: <span id="email"></span></li>
-											<li>Subject: <span id="subject"></span></li>
-											<li>Scorer: <span id="scorer"></span></li>
-											<li>Department: <span id="department"></span></li>
-											<li>Company: <span id="company"></span></li>
-											<li>Date: <span id="date"></span></li>
+										<h4 style="text-align: left;"><img src="./media/icons/details.png" alt="Personal Details Icon" style="float: left; margin-right: 5px;">Personal details:</h4>
+										<ul style="padding: 15px; list-style: none;">
+											<li class="personal-details">Email: <span id="email"></span></li>
+											<li class="personal-details">Subject: <span id="subject"></span></li>
+											<li class="personal-details">Scorer: <span id="scorer"></span></li>
+											<li class="personal-details">Department: <span id="department"></span></li>
+											<li class="personal-details">Company: <span id="company"></span></li>
+											<li class="personal-details">Date: <span id="date"></span></li>
 										</ul>
-									</div>
-									<div id="final-results">
-										
 									</div>
 							</div>
 							<!-- step ten end -->
@@ -598,12 +596,13 @@
 			<div class="results-row" style="margin-left: 10px;">
 				<div class="card results-card results-card-hide animated" id="results-card">
 					<div class="card-header main-header">
-						<h2 class="title text-center">Scores so far:</h2>
+						<h2 id="scores-so-far" class="title text-center">Scores so far:</h2>
 					</div>
 					<div class="card-body text-center" id="results-list-cont">
-						<ul class="results-list">
-							<li class="li-head"><h4 class="text-center">Part A:</h4></li>
-							<li class="item partA">1. Upper Arm: <span id="upper-arm" class="score">0</span></li>
+						<ul class="results-list" style="max-width: 350px;">
+							<h4 style="text-align: left;"><img src="./media/icons/table.png" alt="Table Icon" style="float: left; margin-right: 5px;"> Table scores:</h4>
+							<li class="li-head" id="li-head-a"><h5>Part A:</h5></li>
+							<li class="item partA" style="border-top: none;">1. Upper Arm: <span id="upper-arm" class="score">0</span></li>
 							<li class="item partA">2. Lower Arm: <span id="lower-arm" class="score">0</span></li>
 							<li class="item partA">3. Wrist: <span id="wrist" class="score">0</span></li>
 							<li class="item partA">4. Wrist Twist: <span id="wrist-twist" class="score">0</span></li>
@@ -611,8 +610,8 @@
 							<li class="item table-sum partA hide">Posture Score A (Table A): <span id="posture-a" class="score">0</span></li>
 							<li class="item sum partA hide">Final Arm & Wrist Score: <span id="part-a-score" class="score">0</span></li>
 							<li class="li-head"><hr></li>
-							<li class="li-head"><h4 class="text-center">Part B:</h4></li>
-							<li class="item partB">6. Neck: <span id="neck" class="score">0</span></li>
+							<li class="li-head" id="li-head-b"><h5>Part B:</h5></li>
+							<li class="item partB" style="border-top: none;">6. Neck: <span id="neck" class="score">0</span></li>
 							<li class="item partB">7. Trunk: <span id="trunk" class="score">0</span></li>
 							<li class="item partB">8. Leg: <span id="leg" class="score">0</span></li>
 							<li class="item partB">9. Muscle Use + Force/Load: <span id="muscle-b" class="score">0</span></li>
