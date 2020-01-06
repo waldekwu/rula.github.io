@@ -561,24 +561,24 @@
 							<!-- step ten end -->
 						</div>
 
-						<div class="tab-pane" id="step-11" role="tabpanel" aria-labelledby="step-11-tab">
+						<div class="tab-pane text-center" id="step-11" role="tabpanel" aria-labelledby="step-11-tab">
 							<!-- step ten start -->
-							<div class="form-container text-center animated fadeIn results-page" style="margin-right: 0; margin-left: 0;">
-									<div id="score-container"></div>
-									<div id="your-details">
-										<ul style="padding: 0px; list-style: none;">
+							<div class="form-container text-center animated fadeIn">
+								<div id="results-page">
+									<div>
+										<ul style="padding: 0px;">
 											<li><h4>Your details:</h4></li>
-											<li>Email: <span id="email"></span></li>
-											<li>Subject: <span id="subject"></span></li>
-											<li>Scorer: <span id="scorer"></span></li>
-											<li>Department: <span id="department"></span></li>
-											<li>Company: <span id="company"></span></li>
-											<li>Date: <span id="date"></span></li>
+											<li><h5>Email: </h5></li>
+											<li><h5>Subject: </h5></li>
+											<li><h5>Scorer: </h5></li>
+											<li><h5>Department: </h5></li>
+											<li><h5>Company: </h5></li>
 										</ul>
 									</div>
 									<div id="final-results">
 										
 									</div>
+								</div>
 							</div>
 							<!-- step ten end -->
 						</div>
