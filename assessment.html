@@ -313,8 +313,8 @@
 									<h3 id="optional-q5" style="margin-top: 10px">Step 5a: Select this box if it reflects your muscle use</h3>
 									<div id="checkbox-q5" class="checkbox">
 										<div class="custom-control custom-checkbox">
-											<input type="checkbox" class="custom-control-input" name="customCheck" id="customCheck1-q5" value="1">
-											<label class="custom-control-label" for="customCheck1-q5">
+											<input type="checkbox" class="custom-control-input" name="customCheck-q5" id="customCheck-q5" value="1">
+											<label class="custom-control-label" for="customCheck-q5">
 												<ul class="checkBoxList">
 													<h5><strong>Score 1</strong></h5>
 													Posture is mainly static, e.g. held for longer than 1 minute or repeated more than 4 times per minute.
@@ -531,28 +531,28 @@
 								<form id="form">
 									<div class="form-group">
 										<label for="form-email" class="form-label"><h5>Email address</h5></label>
-										<input type="email" class="form-control" id="form-email" aria-describedby="emailHelp" placeholder="e.g., name@example.com">
+										<input type="email" class="form-control" id="form-email" aria-describedby="emailHelp" placeholder="e.g., name@example.com" maxlength="50">
 										<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 									</div>
 									<div class="form-group">
 										<label for="form-subject" class="form-label"><h5>Subject</h5></label>
-										<input class="form-control" type="text" placeholder="e.g., John Doe" id="form-subject">
+										<input class="form-control" type="text" placeholder="e.g., John Doe" id="form-subject" maxlength="50">
 									</div>
 									<div class="form-group">
 										<label for="form-scorer" class="form-label"><h5>Scorer</h5></label>
-										<input class="form-control" type="text" placeholder="e.g., Jane Doe" id="form-scorer">
+										<input class="form-control" type="text" placeholder="e.g., Jane Doe" id="form-scorer" maxlength="50">
 									</div>
 									<div class="form-group">
 										<label for="form-department" class="form-label"><h5>Department</h5></label>
-										<input class="form-control" type="text" placeholder="e.g., HR" id="form-department">
+										<input class="form-control" type="text" placeholder="e.g., HR" id="form-department" maxlength="50">
 									</div>
 									<div class="form-group">
 										<label for="form-company" class="form-label"><h5>Company</h5></label>
-										<input class="form-control" type="text" placeholder="e.g., Lorem Ipsum Ltd" id="form-company">
+										<input class="form-control" type="text" placeholder="e.g., Lorem Ipsum Ltd" id="form-company" maxlength="50">
 									</div>
 									<div class="form-group">
 										<label for="form-company" class="form-label"><h5>Date</h5></label>
-										<input class="form-control" type="date" placeholder="e.g., 12/06/2020" id="form-date">
+										<input class="form-control" type="date" placeholder="e.g., 12/06/2020" id="form-date" maxlength="50">
 									</div>
 									<p style=""><strong>*This step is optional for a beta version.</strong><br>Your details are passed into the PDF file for your use only.<br>No data is retained.<br><br>Leave fields blank to skip.</p>
 									<button id="results-btn" type="submit" class="next-btn btn-success btn" onclick="showResults()">Show Results</button>
@@ -561,7 +561,7 @@
 							<!-- step ten end -->
 						</div>
 
-						<div class="tab-pane" id="step-11" role="tabpanel" aria-labelledby="step-11-tab">
+						<div class="tab-pane" id="step-11" role="tabpanel" aria-labelledby="step-11-tab" style="align-items: center;">
 							<!-- step ten start -->
 							<div class="form-container text-center animated fadeIn results-page" style="margin-right: 0; margin-left: 0;">
 									<div id="score-container"></div>
@@ -574,9 +574,12 @@
 											<li class="personal-details">Scorer: <span id="scorer"></span></li>
 											<li class="personal-details">Department: <span id="department"></span></li>
 											<li class="personal-details">Company: <span id="company"></span></li>
-											<li class="personal-details">Date: <span id="date"></span></li>
+											<li class="personal-details" style="margin-bottom: 10px;">Date: <span id="date"></span></li>
 										</ul>
 									</div>
+							</div>
+							<div class="controls text-center">
+							<button id="" type="submit" class="text-center next-btn btn-success btn">Print to PDF</button>
 							</div>
 							<!-- step ten end -->
 						</div>

@@ -150,18 +150,22 @@ $('.next-btn').on('click', (e) => {
 	setOutput();
 	selectAnswer();
 	setTableScores();
+	rulaScore();
 
 	$('a[href="#step-' + currentQuestionIndex + '"]').tab('show');
 
 })
 
 $("#prev-btn").on('click', (e) => {
+	topFunction();
+	selectAnswer();
 	e.preventDefault();
 	if (currentQuestionIndex > 1) {
 		currentQuestionIndex--;
 	}
-	topFunction();
-	selectAnswer();
+
+	// setOutput();
+	// rulaScore();
 
 	$('a[href="#step-' + currentQuestionIndex + '"]').tab('show');
 
@@ -193,6 +197,7 @@ function selectAnswer() {
 		$('#nav'+currentQuestionIndex).on('click', function (e) {
 			e.preventDefault();
 			$(this).tab('show');
+
 			currentQuestionIndex = parseInt($(this).text());
 			console.log(currentQuestionIndex);
 			changeTitle();
@@ -283,6 +288,19 @@ function changeTitle() {
 	}
 }
 
+function getFormInput() {
+
+    inputEmail = document.getElementById('form-email').value;
+    inputSubject = document.getElementById('form-subject').value;
+    inputScorer = document.getElementById('form-scorer').value;
+    inputDepartment = document.getElementById('form-department').value;
+    inputCompany = document.getElementById('form-company').value;
+    inputDate = document.getElementById('form-date').value;
+
+
+    console.log(inputEmail, inputSubject, inputScorer);
+}
+
 /*///////////////////////////////////////////////////////////////////////
 //////////////////// Everything below handles scores ////////////////////
 *////////////////////////////////////////////////////////////////////////
@@ -291,21 +309,22 @@ function getInput() {
 	switch (currentQuestionIndex) {
 
 		case 2:
-		upperArmValue = parseInt(document.querySelector('input[name="radio-q1"]:checked').value);
 
+		upperArmValue = parseInt(document.querySelector('input[name="radio-q1"]:checked').value);
+		upperArmAdjValue = 0;
 		//checkboxes
+
 		if (document.querySelector('input[name="customCheck-q1"]:checked')) {
-			upperArmAdjValue = 0;
-			let options = document.getElementsByName("customCheck-q1");
+			options = document.getElementsByName("customCheck-q1");
 
 			for (var i = 0; i < options.length; i++) {
 				if (options[i].type === 'checkbox' && options[i].checked === true) {
 					upperArmAdjValue += parseInt(options[i].value);
 				}
-			} 
+			}
 
 		} else {
-			lowerArmAdjValue = 0; 
+			upperArmAdjValue = 0; 
 		}	
 
 		break;
@@ -440,6 +459,18 @@ function getInput() {
 
 		case 11:
 
+		getFormInput();
+
+		prevBtn.classList.add("hide");
+
+		$('#email').html(`<h6 class="user-input">${inputEmail}</h6>`);
+		$('#subject').html(`<h6 class="user-input">${inputSubject}</h6>`);
+		$('#scorer').html(`<h6 class="user-input">${inputScorer}</h6>`);
+		$('#department').html(`<h6 class="user-input">${inputDepartment}</h6>`);
+		$('#company').html(`<h6 class="user-input">${inputCompany}</h6>`);
+		$('#date').html(`<h6 class="user-input">${inputDate}</h6>`);
+
+
 		$('#nav10').on('click', function (e) {
 			e.preventDefault();
 			$(this).tab('show');
@@ -530,6 +561,8 @@ function setOutput() {
 
 
 function showResults() {
+	setOutput();
+	setTableScores();
 	currentQuestionIndex = 11;
 	topFunction();
 	rulaScore();
@@ -563,48 +596,45 @@ function rulaScore() {
         // resultsContainer.classList.add("f-investigation");
         // resultsImageContainer.innerHTML = "<img src='media/manikin_logo.png' class='card-img'>"
         scoreContainer.innerHTML = 
-        `<h4>Final results:</h4>
-        <div class='card text-white bg-warning mb-3 score-card'>
-            <div class='card-body'>
-                <h4 class='card-title'><strong>RULA Score: ${finalScore}</strong></h4>
-                <h5 class='card-text'>
-                    Action level 2:
+        `<h4 style="text-align: left;"><img src="./media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Final RULA score:</h4>
+        <div class="bg-warning rula-card">
+        	<ul style="list-style: none; padding: 15px;">
+        		<li style="color: white;">
+        			<h5>RULA Score: ${finalScore}</h5>
+       				Action level 2:
                     Further investigation is needed and changes may be required
-                </h5>
-            </div>
-        </div>
-        `;
+        		</li>
+        	</ul>
+        </div>`;
     } 
     else if (finalScore > 4 && finalScore < 7) {
         // resultsContainer.classList.add("change-soon");
         // resultsImageContainer.innerHTML = "<img src='media/manikin_logo.png' class='card-img'>"
         scoreContainer.innerHTML = 
-        `<h4>Final results:</h4>
-        <div class='card text-white bg-warning mb-3 score-card'>
-            <div class='card-body'>
-                <h4 class='card-title'><strong>RULA Score: ${finalScore}</strong></h4>
-                <h5 class='card-text'>
-                    Action level 3:
+        `<h4 style="text-align: left;"><img src="./media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Final RULA score:</h4>
+        <div class="bg-warning rula-card">
+        	<ul style="list-style: none; padding: 15px;">
+        		<li style="color: white;">
+        			<h5>RULA Score: ${finalScore}</h5>
+       				Action level 3:
                     Further investigation and changes are required soon
-                </h5>
-            </div>
-        </div>
-        `;
+        		</li>
+        	</ul>
+        </div>`;
     }
     else if (finalScore >= 7) {
         // resultsContainer.classList.add("investigate-change");
         // resultsImageContainer.innerHTML = "<img src='media/manikin_logo.png' class='card-img'>"
         scoreContainer.innerHTML = 
-        `<h4>Final results:</h4>
-        <div class='card text-white bg-danger mb-3 score-card'>
-            <div class='card-body'>
-                <h4 class='card-title'><strong>RULA Score: ${finalScore}</strong></h4>
-                <h5 class='card-text'>
-                    Action level 4:
+        `<h4 style="text-align: left;"><img src="./media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Final RULA score:</h4>
+        <div class="bg-danger rula-card">
+        	<ul style="list-style: none; padding: 15px;">
+        		<li style="color: white;">
+        			<h5>RULA Score: ${finalScore}</h5>
+       				Action level 4:
                     Further investigation and changes are required immediately
-                </h5>
-            </div>
-        </div>
-        `;
+        		</li>
+        	</ul>
+        </div>`;
     }
 }
