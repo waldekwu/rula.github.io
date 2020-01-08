@@ -1,3 +1,10 @@
+.main-card {
+	min-width: 850px;
+	max-width: 1000px;
+
+	justify-self: center;
+}
+
 .mb-3 {
 	border: none;
 }
