@@ -25,7 +25,7 @@ let scoreContainer = document.getElementById("score-container");
  let lowerArmValue = 0;
  let lowerArmAdjValue = 0;
 
- let wristValue = 0;
+ let wristValue = 0; 
  let wristAdjValue = 0;
 
  let wristTwistValue = 0;
@@ -120,7 +120,7 @@ let tables = [
 *                            Flow control                               *
 *////////////////////////////////////////////////////////////////////////
 
-//unlocks clickable tabs
+// unlocks clickable tabs
 // $('#question-list a').on('click', function (e) {
 // 	e.preventDefault();
 // 	$(this).tab('show');
@@ -638,3 +638,23 @@ function rulaScore() {
         </div>`;
     }
 }
+
+
+
+// $("#2canvas-btn").click(function(e) {
+
+// 	e.preventDefault();
+	
+// 	let delay = 1000;
+
+// 	window.scrollTo(0, 0);
+
+// 	setTimeout(function() {
+
+// 	html2canvas(document.querySelector(".results-page")).then(canvas => {
+//     document.body.appendChild(canvas)
+// 	});
+
+// 	}, delay);
+
+// }); 
