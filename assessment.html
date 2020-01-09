@@ -88,7 +88,7 @@
 
 						<div class="tab-pane active" id="step-1" role="tabpanel">
 							<!-- step one start -->
-							<div class="question-container">
+							<div id="question-one" class="question-container">
 								<div><h3 id="q1" class="text-center">Step 1: Locate Upper Arm Position</h3></div>
 								<div class="answer-grid">
 									<span class="btn quiz-zone">
@@ -531,28 +531,28 @@
 								<form id="form">
 									<div class="form-group">
 										<label for="form-email" class="form-label"><h5>Email address</h5></label>
-										<input type="email" class="form-control" id="form-email" aria-describedby="emailHelp" placeholder="e.g., name@example.com" maxlength="50">
+										<input type="email" class="form-control" id="form-email" aria-describedby="emailHelp" placeholder="e.g., name@example.com" maxlength="40">
 										<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 									</div>
 									<div class="form-group">
 										<label for="form-subject" class="form-label"><h5>Subject</h5></label>
-										<input class="form-control" type="text" placeholder="e.g., John Doe" id="form-subject" maxlength="50">
+										<input class="form-control" type="text" placeholder="e.g., John Doe" id="form-subject" maxlength="40">
 									</div>
 									<div class="form-group">
 										<label for="form-scorer" class="form-label"><h5>Scorer</h5></label>
-										<input class="form-control" type="text" placeholder="e.g., Jane Doe" id="form-scorer" maxlength="50">
+										<input class="form-control" type="text" placeholder="e.g., Jane Doe" id="form-scorer" maxlength="40">
 									</div>
 									<div class="form-group">
 										<label for="form-department" class="form-label"><h5>Department</h5></label>
-										<input class="form-control" type="text" placeholder="e.g., HR" id="form-department" maxlength="50">
+										<input class="form-control" type="text" placeholder="e.g., HR" id="form-department" maxlength="40">
 									</div>
 									<div class="form-group">
 										<label for="form-company" class="form-label"><h5>Company</h5></label>
-										<input class="form-control" type="text" placeholder="e.g., Lorem Ipsum Ltd" id="form-company" maxlength="50">
+										<input class="form-control" type="text" placeholder="e.g., Lorem Ipsum Ltd" id="form-company" maxlength="40">
 									</div>
 									<div class="form-group">
 										<label for="form-company" class="form-label"><h5>Date</h5></label>
-										<input class="form-control" type="date" placeholder="e.g., 12/06/2020" id="form-date" maxlength="50">
+										<input class="form-control" type="date" placeholder="e.g., 12/06/2020" id="form-date" maxlength="40">
 									</div>
 									<p style=""><strong>*This step is optional for a beta version.</strong><br>Your details are passed into the PDF file for your use only.<br>No data is retained.<br><br>Leave fields blank to skip.</p>
 									<button id="results-btn" type="submit" class="next-btn btn-success btn" onclick="showResults()">Show Results</button>
@@ -564,22 +564,32 @@
 						<div class="tab-pane" id="step-11" role="tabpanel" aria-labelledby="step-11-tab" style="align-items: center;">
 							<!-- step ten start -->
 							<div class="form-container text-center animated fadeIn results-page" id="results-page" style="margin-right: 0; margin-left: 0; padding-top: 10px;">
-									<div id="score-container"></div>
-									<div id="final-results"></div>
-									<div id="your-details">
-										<h4 style="text-align: left;"><img src="./media/icons/details.png" alt="Personal Details Icon" style="float: left; margin-right: 5px;">Personal details:</h4>
-										<ul style="padding: 15px; list-style: none;">
-											<li class="personal-details">Email: <span id="email"></span></li>
-											<li class="personal-details">Subject: <span id="subject"></span></li>
-											<li class="personal-details">Scorer: <span id="scorer"></span></li>
-											<li class="personal-details">Department: <span id="department"></span></li>
-											<li class="personal-details">Company: <span id="company"></span></li>
-											<li class="personal-details" style="margin-bottom: 10px;">Date: <span id="date"></span></li>
+								<div id="final-results"></div>
+								<div id="score-container"></div>
+								<div id="score-list" style="padding-top: 10px;">
+									<small>
+										<ul style="display: flex; flex-direction: column; list-style: none; padding-left: 15px;">
+											<li style="font-style: italic; margin: 3px 30px 5px 0">Score 1 or 2: Action level 1; The posture is acceptable if it is not maintained or repeated for long periods</li>
+											<li style="font-style: italic; margin: 3px 30px 5px 0">Score 3 or 4: Action level 2; Further investigation is needed and changes may be required</li>
+											<li style="font-style: italic; margin: 3px 30px 5px 0">Score 5 or 6: Action level 3; Further investigation and changes are required soon</li>
+											<li style="font-style: italic; margin: 3px 30px 5px 0">Score 7 or more: Action level 4; Further investigation and changes are required immediately</li>
 										</ul>
-									</div>
+									</small>
+								</div>
+								<div id="your-details">
+									<h4 style="text-align: left;"><img src="./media/icons/details.png" alt="Personal Details Icon" style="float: left; margin-right: 5px;">Personal details:</h4>
+									<ul style="padding: 15px; list-style: none;">
+										<li class="personal-details">Email: <span id="email"></span></li>
+										<li class="personal-details">Subject: <span id="subject"></span></li>
+										<li class="personal-details">Scorer: <span id="scorer"></span></li>
+										<li class="personal-details">Department: <span id="department"></span></li>
+										<li class="personal-details">Company: <span id="company"></span></li>
+										<li class="personal-details" style="margin-bottom: 10px;">Date: <span id="date"></span></li>
+									</ul>
+								</div>
 							</div>
 							<div class="controls text-center">
-							<button id="2canvas-btn" type="button" class="text-center btn-success btn">Save to PDF (COMING SOON)</button>
+								<button id="2canvas-btn" type="button" class="text-center btn-success btn" onclick="getPDF()">Save to PDF (COMING SOON)</button>
 							</div>
 							<!-- step ten end -->
 						</div>
@@ -644,6 +654,8 @@
 		</footer>
 		<script type="text/javascript" defer src="./js/main.js"></script>
 		<script type="text/javascript" defer src="./js/html2canvas.js"></script>
+		<script type="text/javascript" defer src="./js/jspdf.min.js"></script>
+		<script type="text/javascript" defer src="./js/base64-utf8.module.js"></script>
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>

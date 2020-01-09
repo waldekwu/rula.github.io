@@ -247,19 +247,37 @@ input {
 .results-page {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 35% 65%;
+	grid-template-rows: 0.7fr 1fr 1.6fr;
 	grid-column-gap: 0px;
 	grid-row-gap: 0px;
+
+/*	display: flex;
+	flex-wrap: row wrap;
+	justify-content: space-around; */
 }
 
+/*.results-page > * {
+	flex: 2 100%;
+}*/
+
 #final-results {
-	grid-area: 1 / 2 / 3 / 3;
+	grid-area: 1 / 2 / 4 / 3;
+}
+
+#score-container {
+	grid-area: 1 / 1 / 2 / 2;
+	height: 100%;
+}
+
+#score-list {
+	grid-area: 2 / 1 / 3 / 2;
 }
 
 #your-details {
-	grid-area: 2 / 1 / 3 / 2;
-	max-height: 350px;
+	grid-area: 3 / 1 / 4 / 2;
 }
+
+
 
 
 .rula-card {
@@ -274,9 +292,11 @@ input {
 .personal-details {
 	margin-bottom: 2px;
 	font-style: italic;
+	font-weight: bold;
 }
 .user-input {
 	font-style: normal; 
+	font-weight: normal;
 	display: inline-block;
 	margin-left: 5px;
 	max-width: 480px;
