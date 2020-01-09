@@ -689,7 +689,7 @@ function getPDF() {
 	let source = document.getElementById("subject");
 
 	doc.addImage(testImg, 'JPEG', 0, 0, 842, 595);
-	
+
 
 	doc.fromHTML(source,
     221, // x coord
@@ -698,6 +698,12 @@ function getPDF() {
     width: margins.width,// max width of content on PDF
     'elementHandlers': elementHandler
 });
+
+	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+
+		doc.save("test.pdf");
+		
+	} else {
 
 
     // doc.save("test.pdf");
@@ -709,6 +715,6 @@ function getPDF() {
     x.document.open();
     x.document.write(iframe);
     x.document.close();
-
+}
 }
 
