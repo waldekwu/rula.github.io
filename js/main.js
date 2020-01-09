@@ -699,10 +699,10 @@ function getPDF() {
     'elementHandlers': elementHandler
 });
 
-	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	if (/Mobi|Android/i.test(navigator.userAgent)) {
 
 		doc.save("test.pdf");
-		
+
 	} else {
 
 
