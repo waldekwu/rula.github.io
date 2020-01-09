@@ -699,7 +699,7 @@ function getPDF() {
     'elementHandlers': elementHandler
 });
 
-	if (/Mobi|Android/i.test(navigator.userAgent)) {
+	if (/Mobi|Android/i.test(navigator.userAgent) || /Edge/.test(navigator.userAgent)) {
 
 		doc.save("test.pdf");
 
