@@ -672,17 +672,17 @@ function rulaScore() {
 
 $("#html2canvas").click(function(e) {
 
-var element = document.getElementById('modal-body');
-var opt = {
-  margin:       [0.53, 0.3, 0.2, 0.3], //anticlockwise
-  filename:     'myfile.pdf',
-  image:        { type: 'jpeg', quality: 1 },
-  html2canvas:  {  },
-  jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-};
+// var element = document.getElementById('modal-body');
+// var opt = {
+//   margin:       [0.53, 0.3, 0.2, 0.3], //anticlockwise
+//   filename:     'myfile.pdf',
+//   image:        { type: 'jpeg', quality: 1 },
+//   html2canvas:  {  },
+//   jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+// };
  
-// New Promise-based usage:
-html2pdf().from(element).set(opt).save();
+// // New Promise-based usage:
+// html2pdf().from(element).set(opt).save();
 
 
 
@@ -727,7 +727,7 @@ window.onclick = function(event) {
 
 switch (document.querySelector('input[name="radio-q1"]:checked').id) {
 	case "radio1-q1":
-		$("#sum-1-img").html(`<img crossorigin="anonymous" src="./media/summary/sum-1/sum-1-1.jpg" alt="" height="130px">`);
+		$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-1.jpg" alt="" height="100px">`);
 
 		break;
 
