@@ -314,12 +314,19 @@ function getInput() {
 		upperArmAdjValue = 0;
 		//checkboxes
 
+		document.getElementById("sum-customCheck1-q1").classList.add("sum-li");
+		document.getElementById("sum-customCheck2-q1").classList.add("sum-li");
+		document.getElementById("sum-customCheck3-q1").classList.add("sum-li");
+
+
 		if (document.querySelector('input[name="customCheck-q1"]:checked')) {
 			options = document.getElementsByName("customCheck-q1");
 
 			for (var i = 0; i < options.length; i++) {
 				if (options[i].type === 'checkbox' && options[i].checked === true) {
 					upperArmAdjValue += parseInt(options[i].value);
+					//summary
+					document.getElementById("sum-"+options[i].id).classList.toggle("sum-li");
 				}
 			}
 
@@ -649,23 +656,70 @@ function rulaScore() {
 
 
 
-// $("#2canvas-btn").click(function(e) {
+// $("#html2canvas").click(function(e) {
 
 // 	e.preventDefault();
 
-// 	let delay = 1000;
-
-// 	window.scrollTo(0, 0);
-
-// 	setTimeout(function() {
-
-// 	html2canvas(document.querySelector("#question-one")).then(canvas => {
+// 	html2canvas(document.getElementById("results-modal"), { letterRendering: 1, allowTaint : true, onrendered : function (canvas) { } }).then(canvas => {
 //     document.body.appendChild(canvas)
 // 	});
 
-// 	}, delay);
 
 // }); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$("#html2canvas").click(function(e) {
+
+var element = document.getElementById('modal-body');
+var opt = {
+  margin:       1,
+  filename:     'myfile.pdf',
+  image:        { type: 'jpeg', quality: 0.98 },
+  html2canvas:  { scale: 2 },
+  jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+};
+ 
+// New Promise-based usage:
+html2pdf().from(element).set(opt).save();
+
+
+
+}); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -939,6 +993,7 @@ span.onclick = function() {
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
+
   }
 }
 
@@ -947,6 +1002,39 @@ window.onclick = function(event) {
   // let cln = itm.cloneNode(true);
   // document.getElementById("modal-body").appendChild(cln);
 
+switch (document.querySelector('input[name="radio-q1"]:checked').id) {
+	case "radio1-q1":
+		$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-1.jpg" alt="" height="130px">`);
+
+		break;
+
+		case "radio2-q1":
+		$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-2.jpg" alt="" height="130px">`);
+
+		break;
+
+		case "radio3-q1":
+		$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-3.jpg" alt="" height="130px">`);
+
+		break;
+
+		case "radio4-q1":
+		$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-4.jpg" alt="" height="130px">`);
+
+		break;
+
+		case "radio5-q1":
+		$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-5.jpg" alt="" height="130px">`);
+
+		break;
+
+		default:
+		console.log("Error");
+	}
+
+
 
 
 }
+
+

@@ -635,34 +635,43 @@
 					</div>
 				</div>
 			</div>
-
-
-
-			<!-- The Modal -->
+		</main>
+		<button class="mobile-results text-center animated bounce" id="show-results" onclick="toggleResultsMobile()"><img src="./media/arrow-up.png"><br><h6><strong>Show scores</strong></h6>
+		</button>
+					<!-- The Modal -->
 			<div id="results-modal" class="modal">
 
 				<!-- Modal content -->
 				<div class="modal-content">
 					<div class="modal-header">
-						<h2>Modal Header</h2>
+						<h2 style="width: 100%; text-align: center;">RULA - Summary</h2>
 						<span class="close">&times;</span>
 					</div>
 					<div class="modal-body" id="modal-body">
-						<p>Some text in the Modal Body</p>
-						<p>Some other text...</p>
-						<iframe src="./results.html"></iframe>
+						<div id="sum-sum">Clone the details here</div>
+
+						<div id="sum-1 text-sm">
+							<h5>Step 1: Locate Upper Arm Position</h5>
+							<span id="sum-1-img"></span>
+							<br>
+							<h5>Step 1a: Also tick the following boxes if appropriate</h5>
+							<ul style="list-style: none;">
+							<li class="sum-li" id="sum-customCheck1-q1">Shoulder is raised</li>
+							<li class="sum-li" id="sum-customCheck2-q1">Upper arm is abducted (away from the side of the body)</li>
+							<li class="sum-li" id="sum-customCheck3-q1">Leaning or supporting the weight of the arm</li>
+							</ul>
+						</div>
+
+
+
+
 					</div>
 					<div class="modal-footer">
-						<h3>Modal Footer</h3>
+						<h3 onclick="html2canvas();" id="html2canvas">Save to PDF</h3>
 					</div>
 				</div>
 
 			</div>
-
-
-		</main>
-		<button class="mobile-results text-center animated bounce" id="show-results" onclick="toggleResultsMobile()"><img src="./media/arrow-up.png"><br><h6><strong>Show scores</strong></h6>
-		</button>
 		<footer>
 			<div class="zone footer">
 				<span class="social-media">
@@ -679,11 +688,10 @@
 			</div>
 		</footer>
 		<script type="text/javascript" defer src="./js/main.js"></script>
-		<script type="text/javascript" defer src="./js/results.js"></script>
-		<script type="text/javascript" defer src="./js/html2canvas.js"></script>
-		<script type="text/javascript" defer src="./js/jspdf.min.js"></script>
-		<script type="text/javascript" defer src="./js/html.js"></script>
-		<script type="text/javascript" defer src="./js/base64-utf8.module.js"></script>
+		<script type="text/javascript" defer src="./js/plugins/html2canvas.js"></script>
+		<script type="text/javascript" defer src="./js/plugins/jspdf.min.js"></script>
+		<script type="text/javascript" defer src="./js/plugins/html2pdf.bundle.min.js"></script>
+		<!-- <script type="text/javascript" defer src="./js/html.js"></script> -->
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
