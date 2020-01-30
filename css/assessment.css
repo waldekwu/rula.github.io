@@ -251,14 +251,7 @@ input {
 	grid-column-gap: 0px;
 	grid-row-gap: 0px;
 
-/*	display: flex;
-	flex-wrap: row wrap;
-	justify-content: space-around; */
 }
-
-/*.results-page > * {
-	flex: 2 100%;
-}*/
 
 #final-results {
 	grid-area: 1 / 2 / 4 / 3;
@@ -275,9 +268,11 @@ input {
 
 #your-details {
 	grid-area: 3 / 1 / 4 / 2;
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
 }
-
-
 
 
 .rula-card {
@@ -286,107 +281,124 @@ input {
 	justify-content: left;
 	max-width: 350px;
 	margin-right: 5px;
-	/*margin: 0 0 0 0;*/
 }
 
 .personal-details {
 	margin-bottom: 2px;
 	font-style: italic;
 	font-weight: bold;
+	width: 100%;
+	display: flex;
+	flex-wrap: nowrap; 
+	margin-bottom: 0px;
 }
+
 .user-input {
 	font-style: normal; 
 	font-weight: normal;
-	display: inline-block;
+	list-style: none;
 	margin-left: 5px;
-	max-width: 480px;
-
+	min-width: 200px;
+	max-width: 300px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 }
 
+.next-steps-btn {
+	margin: 0 0 10px 0;
+}
 
 
 /* Modal- start (background) */
 .modal {
- /* display: none;*/ /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 50px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%;  Full width 
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+	/* display: none;*/ /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 50px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%;  Full width 
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
 }
 
 /* Modal Content */
 .modal-content {
-  position: relative;
-  background-color: white;
-  margin: auto;
-  padding: 0;
-  border: 1px solid #888;
-  max-width: 800px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s
-
+	position: relative;
+	background-color: white;
+	margin: auto;
+	padding: 0;
+	border: 1px solid #888;
+	max-width: 800px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+	-webkit-animation-name: animatetop;
+	-webkit-animation-duration: 0.4s;
+	animation-name: animatetop;
+	animation-duration: 0.4s
 }
-
 
 /* Add Animation */
 @-webkit-keyframes animatetop {
-  from {top:-200px; opacity:0} 
-  to {top:0; opacity:1}
+	from {top:-200px; opacity:0} 
+	to {top:0; opacity:1}
 }
 
 @keyframes animatetop {
-  from {top:-200px; opacity:0}
-  to {top:0; opacity:1}
+	from {top:-200px; opacity:0}
+	to {top:0; opacity:1}
 }
 
 /* The Close Button */
 .close {
-  color: #bbb;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+	color: #bbb;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
 }
 
 .modal-header {
-  padding: 10px 16px 5px 16px;
-  background-color: #f7f6f7;
-  width: 100%;
-  justify-content: center;
+	padding: 10px 16px 5px 16px;
+	background-color: #f7f6f7;
+	width: 100%;
+	justify-content: center;
 
 }
 
 .modal-body {
-padding: 2px 16px;
-font-size: smaller;
-overflow: auto;
+	padding: 2px 16px;
+	font-size: smaller;
+	overflow: auto;
 }
 
 .sum-answers {
-display: flex;
-flex-wrap: wrap;
-align-content: space-between;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: space-between;
 }
 
 .modal-footer {
-  padding: 2px 16px;
-  background-color: #f7f6f7;
+	padding: 2px 16px;
+	background-color: #f7f6f7;
 
+}
+
+.sum-cont {
+	width: 50%;
+}
+
+.sum-header {
+	margin-bottom: 5px;
+	font-weight: bold;
 }
 
 .sum-li {
@@ -412,8 +424,6 @@ align-content: space-between;
 
 	}
 }
-
-
 
 @media screen and (max-width: 900px) {
 
@@ -474,11 +484,6 @@ align-content: space-between;
 		order: 1;
 	}
 
-	#generate-btn {
-		display: flex;
-		order: 4;
-
-	}
 	.results-card-show {
 		bottom: calc(2% + 60px);
 	}
@@ -492,6 +497,15 @@ align-content: space-between;
 		max-width: 400px;
 	}
 
+
+
+}
+
+@media screen and (max-width: 700px) {
+
+	.sum-cont {
+		width: 100%;
+	}
 }
 
 @media screen and (max-width: 600px) {
@@ -524,4 +538,5 @@ align-content: space-between;
 		max-width: 250px;
 
 	}
+
 }

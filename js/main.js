@@ -128,6 +128,15 @@ let tables = [
 // 	console.log(currentQuestionIndex);
 // })
 
+
+//set today's date in form (step 10)
+let today = new Date();
+let dd = ("0" + (today.getDate())).slice(-2);
+let mm = ("0" + (today.getMonth() +　1)).slice(-2);
+let yyyy = today.getFullYear();
+today = yyyy + '-' + mm + '-' + dd ;
+$("#form-date").attr("value", today);
+
 for (var i = 0; i < $('.question-container').length; i++) {
 	$('.question-container')[i].classList.add("animated", "fadeIn");
 	controls.classList.add('animated','fadeIn');
@@ -720,35 +729,33 @@ window.onclick = function(event) {
   }
 }
 
+//clone personal details
+  // let itm = 0;
+  // let cln = 0;
 
-  // let itm = document.getElementById("step-1");
-  // let cln = itm.cloneNode(true);
-  // document.getElementById("modal-body").appendChild(cln);
+  // itm = document.getElementById("details-list");
+  // cln = itm.cloneNode(true);
+  // document.getElementById("sum-sum").appendChild(cln);
 
 switch (document.querySelector('input[name="radio-q1"]:checked').id) {
 	case "radio1-q1":
-		$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-1.jpg" alt="" height="100px">`);
-
+		$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-1.jpg" alt="" height="90px">`);
 		break;
 
 		case "radio2-q1":
-		$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-2.jpg" alt="" height="130px" crossorigin="anonymous">`);
-
+		$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-2.jpg" alt="" height="90px">`);
 		break;
 
 		case "radio3-q1":
-		$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-3.jpg" alt="" height="130px" crossorigin="anonymous">`);
-
+		$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-3.jpg" alt="" height="90px">`);
 		break;
 
 		case "radio4-q1":
-		$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-4.jpg" alt="" height="130px" crossorigin="anonymous">`);
-
+		$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-4.jpg" alt="" height="90px">`);
 		break;
 
 		case "radio5-q1":
-		$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-5.jpg" alt="" height="130px" crossorigin="anonymous">`);
-
+		$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-5.jpg" alt="" height="90px">`);
 		break;
 
 		default:
