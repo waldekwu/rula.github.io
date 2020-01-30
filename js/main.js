@@ -672,17 +672,17 @@ function rulaScore() {
 
 $("#html2canvas").click(function(e) {
 
-// var element = document.getElementById('modal-body');
-// var opt = {
-//   margin:       [0.53, 0.3, 0.2, 0.3], //anticlockwise
-//   filename:     'myfile.pdf',
-//   image:        { type: 'jpeg', quality: 1 },
-//   html2canvas:  {  },
-//   jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-// };
+let element = document.getElementById('modal-body');
+let opt = {
+  margin:       [0.53, 0.3, 0.2, 0.3], //anticlockwise
+  filename:     'myfile.pdf',
+  image:        { type: 'jpeg', quality: 1 },
+  html2canvas:  {  },
+  jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+};
  
-// // New Promise-based usage:
-// html2pdf().from(element).set(opt).save();
+// New Promise-based usage:
+html2pdf().from(element).set(opt).save();
 
 
 
