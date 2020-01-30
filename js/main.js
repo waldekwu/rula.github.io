@@ -293,7 +293,7 @@ function changeTitle() {
 	} else if (currentQuestionIndex > 5 && currentQuestionIndex < 10) {
 		$('#title').text('Part B. Neck, Trunk & Leg Analysis');
 	} else {
-		$('#title').text('RULA - Rapid Upper Limb Assessment');
+		$('#title').text('Rapid Upper Limb Assessment - Short Summary');
 	}
 }
 
