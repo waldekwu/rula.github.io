@@ -153,7 +153,7 @@ $('.next-btn').on('click', (e) => {
 		currentQuestionIndex++;
 	}
 
-	console.log(currentQuestionIndex);
+	console.log("Current question index: " + currentQuestionIndex);
 
 	topFunction();
 	setOutput();
@@ -235,7 +235,7 @@ function selectAnswer() {
 		} else {
 			nextBtn.classList.remove("hide");
 		}
-	}  
+	} 
 }
 
 //go to the top of the page
@@ -320,7 +320,6 @@ function getInput() {
 		upperArmValue = parseInt(document.querySelector('input[name="radio-q1"]:checked').value);
 		upperArmAdjValue = 0;
 		//checkboxes
-
 
 		if (document.querySelector('input[name="customCheck-q1"]:checked')) {
 			options = document.getElementsByName("customCheck-q1");
@@ -482,16 +481,17 @@ function getInput() {
 
 		case 10:
 
-		forceLoadB = parseInt(document.querySelector('input[name="radio-q9"]:checked').value);
-
 		document.getElementById("nav11").classList.remove("hide");
+
+		forceLoadB = parseInt(document.querySelector('input[name="radio-q9"]:checked').value);
 
 		if (document.querySelector('input[name="customCheck-q9"]:checked')) {
 			muscleUseB = parseInt(document.querySelector('input[name="customCheck-q9"]:checked').value);
 			//summary
-			//document.getElementById("sum-customCheck-q9").classList.remove("sum-li");
+			document.getElementById("sum-customCheck-q9").classList.remove("sum-li");
 		} else {
 			muscleUseB = 0; 
+			document.getElementById("sum-customCheck-q9").classList.add("sum-li");
 		}
 
 		document.getElementById('nav10').style.color = "#2aa747";
@@ -523,8 +523,6 @@ function getInput() {
 		document.getElementById('nav11').style.cursor = "pointer";
 		document.getElementById('nav11').style.color = "black";
 
-		console.log("THIS IS IT: " + document.querySelector('input[name="radio-q1"]:checked').id);
-
 		prevBtn.classList.add("hide");
 
 		$('#email').html(`<li class="user-input">${inputEmail}</li>`);
@@ -535,19 +533,15 @@ function getInput() {
 		$('#date').html(`<li class="user-input">${inputDate}</li>`);
 
 
-		$('#nav10').on('click', function (e) {
-			e.preventDefault();
-			$(this).tab('show');
-			changeTitle();
-			currentQuestionIndex = 11;
-			console.log(currentQuestionIndex);
-
-		})
-
 		const resultsContainer = document.createElement('div');
 		resultsContainer.setAttribute("id", "results-container");
 		document.getElementById("step-11").appendChild(resultsContainer);
-		$('#results-cotainer').html($('#results-list').html());
+
+
+		const sumTable = document.createElement('div');
+		sumTable.setAttribute("id", "sum-table");
+		document.getElementById("modal-body").appendChild(sumTable);
+
 
 		break;
 
@@ -627,16 +621,18 @@ function setOutput() {
 function showResults() {
 	setOutput();
 	setTableScores();
-	currentQuestionIndex = 11;
 	topFunction();
-
 	rulaScore();
+
+	currentQuestionIndex = 11;
+
 	document.getElementById("results-card").classList.add("hide");
 	document.getElementById("show-results").classList.add("hide");
 
 	$("#results-list-cont>ul>li.hide").removeClass("hide");
 
-	$('#final-results').html($('#results-list-cont').html());
+
+
 
 }
 
@@ -729,11 +725,9 @@ html2pdf().from(element).set(opt).save();
 }); 
 
 
-$("#modal-btn, #results-btn").click(function(e) {
+$("#modal-btn, #results-btn, #full-sum-btn").click(function(e) {
 
-	var elmnt = document.getElementById("modal-body");
-	var x = elmnt.scrollLeft;
-	var y = elmnt.scrollTop;
+	e.preventDefault();
 
 //clone personal details
   // let itm = 0;
@@ -741,7 +735,21 @@ $("#modal-btn, #results-btn").click(function(e) {
 
   // itm = document.getElementById("details-list");
   // cln = itm.cloneNode(true);
-  // document.getElementById("sum-sum").appendChild(cln);
+  // document.getElementById("sum-sum").appendChild(cln);v
+
+
+
+  if ($('#modal-body>#results-list-cont')) {
+
+  	$('#modal-body>#results-list-cont').remove();
+
+  }
+
+  	itm = document.getElementById("results-list-cont");
+	cln = itm.cloneNode(true);
+	document.getElementById("modal-body").appendChild(cln);
+
+
 
   switch (document.querySelector('input[name="radio-q1"]:checked').id) {
   	case "radio1-q1":
@@ -874,7 +882,7 @@ $("#modal-btn, #results-btn").click(function(e) {
   	console.log("Error");
   }
 
-    switch (document.querySelector('input[name="radio-q7"]:checked').id) {
+  switch (document.querySelector('input[name="radio-q7"]:checked').id) {
   	case "radio1-q7":
   	$("#sum-7-img").html(`<img src="./media/summary/sum-7/sum-7-1.jpg" alt="" height="90px">`);
   	break;
@@ -895,7 +903,7 @@ $("#modal-btn, #results-btn").click(function(e) {
   	console.log("Error");
   }
 
-    switch (document.querySelector('input[name="radio-q8"]:checked').id) {
+  switch (document.querySelector('input[name="radio-q8"]:checked').id) {
   	case "radio1-q8":
   	$("#sum-8-img").html(`Legs and feet are well supported and in an evenly balanced posture.<br>
   		<img src="./media/summary/sum-8/sum-8-1.jpg" alt="" height="90px">`);
@@ -910,7 +918,7 @@ $("#modal-btn, #results-btn").click(function(e) {
   	console.log("Error");
   }
 
-    switch (document.querySelector('input[name="radio-q9"]:checked').id) {
+  switch (document.querySelector('input[name="radio-q9"]:checked').id) {
   	case "radio1-q9":
   	document.getElementById("sum-9-q1").classList.remove(`sum-li`);
   	document.getElementById("sum-9-q2").classList.add(`sum-li`);
