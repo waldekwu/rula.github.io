@@ -22,6 +22,9 @@
 		<div class="logo" id="osmond-logo">
 			<a href="./index.html">
 				<img src="./media/Osmond-Ergonomics.svg" alt="Osmond Ergonomics Logo" width="150" height="80"></a>
+				<button type="button" id="modal-btn" class="btn btn-primary" data-toggle="modal" data-target="#results-modal">
+					Modal
+				</button>
 			</div>
 			<div class="about">
 				<!-- dropdown menu -->
@@ -555,7 +558,7 @@
 										<input class="form-control" type="date" placeholder="e.g., 12/06/2020" id="form-date" maxlength="40">
 									</div>
 									<p style=""><strong>*This step is optional for a beta version.</strong><br>Your details are passed into the PDF file for your use only.<br>No data is retained.<br><br>Leave fields blank to skip.</p>
-									<button id="results-btn" type="submit" class="next-btn btn-success btn" onclick="showResults()">Show Results</button>
+									<button id="results-btn" type="submit" class="next-btn btn-success btn" onclick="showResults();" data-toggle="modal" data-target="#results-modal">Show Results</button>
 								</form>
 							</div>
 							<!-- step ten end -->
@@ -579,8 +582,8 @@
 								</div>
 								<div id="your-details">
 									<h4><img src="./media/icons/next-steps.png" alt="Personal Details Icon" style="float: left; margin-right: 5px;">Next steps:</h4>
-									<button id="2canvas-btn" type="button" class="btn btn-light next-steps-btn" onclick="" style="text-transform: none;">View full summary (COMING SOON)</button>
-									<button type="button" class="btn btn-light next-steps-btn" onclick="location.href='assessment.html'" style="text-transform: none;">Start over</button>
+									<button id="2canvas-btn" type="button" class="btn btn-primary next-steps-btn" onclick="" style="text-transform: none;">View full summary (COMING SOON)</button>
+									<button type="button" class="btn btn-primary next-steps-btn" onclick="location.href='assessment.html'" style="text-transform: none;">New assessment</button>
 
 								</div>
 							</div>
@@ -634,63 +637,203 @@
 		<button class="mobile-results text-center animated bounce" id="show-results" onclick="toggleResultsMobile()"><img src="./media/arrow-up.png"><br><h6><strong>Show scores</strong></h6>
 		</button>
 		<!-- The Modal -->
-		<div id="results-modal" class="modal">
+		<div id="results-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
 			<!-- Modal content -->
-			<div class="modal-content">
-				<div class="modal-header">
-					<h2 style="width: 100%; text-align: center;">Summary</h2>
-					<span class="close">&times;</span>
-				</div>
-				<div class="modal-body" id="modal-body">
-
-
-						<div class="sum-answers">
-							<div id="sum-sum" style="width: 100%">
-							<img src="./media/logo.png" alt="Osmond Ergonomics Logo" width="158" height="57" style="float: right;">
-							<h4>Rapid Upper Limb Assessment</h4>
-
-
-									<div style="padding: 5px 0 5px 15px; text-align: left;" id="details-list">
-										<span class="personal-details">Email: <span id="email"></span></span>
-										<span class="personal-details">Subject: <span id="subject"></span></span>
-										<span class="personal-details">Scorer: <span id="scorer"></span></span>
-										<span class="personal-details">Department: <span id="department"></span></span>
-										<span class="personal-details">Company: <span id="company"></span></span>
-										<span class="personal-details" style="margin-bottom: 10px;">Date: <span id="date"></span></span>
-									</div>
-
-							</div>
-
-							<div id="sum-1" class="sum-cont">
-								<p class="sum-header">Step 1: Locate Upper Arm Position</p>
-								<span id="sum-1-img"></span>
-								<br>
-								<p class="sum-header">Step 1a: Also tick the following boxes if appropriate</p>
-								<ul style="list-style: circle;">
-									<li class="sum-li" id="sum-customCheck1-q1">Shoulder is raised</li>
-									<li class="sum-li" id="sum-customCheck2-q1">Upper arm is abducted (away from the side of the body)</li>
-									<li class="sum-li" id="sum-customCheck3-q1">Leaning or supporting the weight of the arm</li>
-								</ul>
-							</div>
-
-
-							<div id="sum-2" class="sum-cont">
-								<p class="sum-header">Step 2: Locate Lower Arm Position</p>
-								<span id="sum-2-img"></span>
-								<br>
-								<p class="sum-header">Step 2a: Also tick the following box if appropriate</p>
-								<ul style="list-style: circle;">
-									<li class="sum-li" id="sum-customCheck1-q1">Is either arm working across midline or out to side of body?</li>
-								</ul>
-							</div>
-
-
+			<div class="modal-dialog modal-dialog-scrollable" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h2 style="width: 100%; text-align: center;">Full Summary</h2>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
 						</div>
 
-					</div>
-					<div class="modal-footer">
-						<h3 onclick="html2canvas();" id="html2canvas">Save to PDF</h3>
+						<div class="modal-body" id="modal-body">
+							<div class="sum-answers" id="sum-answers">
+								<span style="width: 100%"><img src="./media/logo.png" alt="Osmond Ergonomics Logo" width="158" height="57" style="float: right;">
+									<h2 style="margin-top: 10px;">Rapid Upper Limb Assessment</h2>
+								</span>
+								<div id="rula-scorecard" class="sum-cont" style="margin-top: 15px"></div>
+
+								<div style="padding: 5px 0 5px 15px; text-align: left; float: right; margin-top: 15px;" class="sum-cont" id="details-list">
+									<h4 style="text-align: left;"><img src="./media/icons/details.png" alt="Personal Details Icon" style="float: left; margin-right: 5px;">Personal details:</h4>
+									<span class="personal-details">Subject: <span id="subject"></span></span>
+									<span class="personal-details">Scorer: <span id="scorer"></span></span>
+									<span class="personal-details">Email: <span id="email"></span></span>
+									<span class="personal-details">Department: <span id="department"></span></span>
+									<span class="personal-details">Company: <span id="company"></span></span>
+									<span class="personal-details" style="margin-bottom: 10px;">Date: <span id="date"></span></span>
+								</div>
+								
+								<h4 style="text-align: left; width: 100%"><img src="./media/icons/select.png" alt="Answers Selected Icon" style="float: left; margin-right: 5px;">Answers seleted:</h4>
+
+								<div id="sum-1" class="sum-cont" style="order: 1">
+									<p class="sum-header">Step 1: Locate Upper Arm Position</p>
+									<span id="sum-1-img"></span>
+									<br>
+									<p class="sum-header">Step 1a: Also tick the following boxes if appropriate</p>
+									<ul style="list-style: circle;">
+										<li class="sum-li" id="sum-customCheck1-q1">Shoulder is raised</li>
+										<li class="sum-li" id="sum-customCheck2-q1">Upper arm is abducted (away from the side of the body)</li>
+										<li class="sum-li" id="sum-customCheck3-q1">Leaning or supporting the weight of the arm</li>
+									</ul>
+								</div>
+
+								<div id="sum-2" class="sum-cont" style="order: 2">
+									<p class="sum-header">Step 2: Locate Lower Arm Position</p>
+									<span id="sum-2-img"></span>
+									<span class="sum-li" id="sum-customCheck-q2">
+										<p class="sum-header" style="opacity: 1;">Step 2a: Also tick the following box if appropriate</p>
+										<img src="./media/Q2/lowerarm4.jpg" alt="" style="height: 50px; margin-top: 10px; margin-left: 50px">
+										<ul style="list-style: circle;">
+											<li>Is either arm working across midline or out to side of body?</li>
+										</ul>
+									</span>
+								</div>
+
+
+								<div id="sum-3" class="sum-cont" style="order: 3">
+									<p class="sum-header">Step 3: Locate Wrist Position</p>
+									<span id="sum-3-img"></span>
+									<span class="sum-li" id="sum-customCheck-q3">
+										<p class="sum-header" style="opacity: 1;">Step 3a: Also tick the following box if appropriate</p>
+										<img src="./media/Q3/wrist5.jpg" alt="" style="height: 50px; margin-top: 10px; margin-left: 50px">
+										<ul style="list-style: circle;">
+											<li>Is wrist bent away from midline?</li>
+										</ul>
+									</span>
+								</div>
+
+								<div id="sum-4" class="sum-cont" style="order: 4">
+									<p class="sum-header">Step 4: Wrist Twist</p>
+									<span id="sum-4-img"></span>
+									<!-- html2pdf page break -->
+									<div class="html2pdf__page-break"></div>
+								</div>
+
+
+								<div id="sum-5" class="sum-cont" style="order: 5">
+									<p class="sum-header">Step 5: Select the force and load that most reflects the working situation</p>
+									<div id="sum-5-cont">
+										<div id="sum-5-q1" class="sum-li" style="grid-area: 1 / 1 / 2 / 2;">
+											<ul>
+												<strong>Score 0</strong>
+												<li>No resistance</li>
+												<li>Less than 2 kg intermittent load or force</li>
+											</ul>
+										</div>
+										<div id="sum-5-q2" class="sum-li" style="grid-area: 1 / 2 / 2 / 3;">
+											<ul>
+												<strong>Score 1</strong>
+												<li>2 - 10 kg intermittent load or force</li>
+												<h2 style="visibility: hidden;">#</h2>
+											</ul>
+										</div>
+										<div id="sum-5-q3" class="sum-li" style="grid-area: 2 / 1 / 3 / 2;">
+											<ul>
+												<strong>Score 2</strong>
+												<li>2 - 10 kg static load</li>
+												<li>2 - 10 kg repeated loads or forces</li>
+												<li>10 kg or more, intermittent load or force</li>
+											</ul>
+										</div>
+										<div id="sum-5-q4" class="sum-li" style="grid-area: 2 / 2 / 3 / 3;">
+											<ul>
+												<strong>Score 3</strong>
+												<li>More than 10 kg static load</li>
+												<li>10+ kg repeated loads or forces</li>
+												<li>Shock or forces with rapid buildup</li>
+											</ul>
+										</div>
+									</div>
+									<span class="sum-li" id="sum-customCheck-q5">
+										<p class="sum-header" style="opacity: 1;">Step 5a: Select this box if it reflects your muscle use</p>
+										<ul style="list-style: circle;">
+											<li><strong>Score 1</strong><br>Posture is mainly static, e.g. held for longer than 1 minute or repeated more than 4 times per minute.</li>
+										</ul>
+									</span>
+								</div>
+
+								<div id="sum-6" class="sum-cont" style="order: 6">
+									<p class="sum-header">Step 6: Locate Neck Position</p>
+									<span id="sum-6-img"></span>
+
+									<span class="sum-li" id="sum-customCheck1-q6">
+										<p class="sum-header" style="opacity: 1;">Step 6a: Also tick the following box if appropriate</p>
+										<img src="./media/Q6/neck5.jpg" alt="" style="height: 80px; margin-top: 10px; margin-left: 50px">
+									</span>
+									<span class="sum-li" id="sum-customCheck2-q6">
+										<img src="./media/Q6/neck6.jpg" alt="" style="height: 80px; margin-top: 10px; margin-left: 50px">
+									</span>
+								</div>
+
+								<div id="sum-7" class="sum-cont" style="order: 7">
+									<p class="sum-header">Step 7: Locate Trunk Position</p>
+									<span id="sum-7-img"></span>
+
+									<span class="sum-li" id="sum-customCheck1-q7">
+										<p class="sum-header" style="opacity: 1;">Step 7a: Also tick the following box if appropriate</p>
+										<img src="./media/Q7/trunk5.jpg" alt="" style="height: 80px; margin-top: 10px; margin-left: 50px">
+									</span>
+									<span class="sum-li" id="sum-customCheck2-q7">
+										<img src="./media/Q7/trunk6.jpg" alt="" style="height: 80px; margin-top: 10px; margin-left: 50px">
+									</span>
+								</div>
+
+								<div id="sum-8" class="sum-cont" style="order: 8">
+									<p class="sum-header">Step 8: Legs</p>
+									<span id="sum-8-img"></span>
+								</div>
+
+								<div id="sum-9" class="sum-cont" style="order: 9">
+									<p class="sum-header">Step 9: Select the force and load that most reflects the working situation</p>
+									<div id="sum-9-cont">
+										<div id="sum-9-q1" class="sum-li" style="grid-area: 1 / 1 / 2 / 2;">
+											<ul>
+												<strong>Score 0</strong>
+												<li>No resistance</li>
+												<li>Less than 2 kg intermittent load or force</li>
+											</ul>
+										</div>
+										<div id="sum-9-q2" class="sum-li" style="grid-area: 1 / 2 / 2 / 3;">
+											<ul>
+												<strong>Score 1</strong>
+												<li>2 - 10 kg intermittent load or force</li>
+												<h2 style="visibility: hidden;">#</h2>
+											</ul>
+										</div>
+										<div id="sum-9-q3" class="sum-li" style="grid-area: 2 / 1 / 3 / 2;">
+											<ul>
+												<strong>Score 2</strong>
+												<li>2 - 10 kg static load</li>
+												<li>2 - 10 kg repeated loads or forces</li>
+												<li>10 kg or more, intermittent load or force</li>
+											</ul>
+										</div>
+										<div id="sum-9-q4" class="sum-li" style="grid-area: 2 / 2 / 3 / 3;">
+											<ul>
+												<strong>Score 3</strong>
+												<li>More than 10 kg static load</li>
+												<li>10+ kg repeated loads or forces</li>
+												<li>Shock or forces with rapid buildup</li>
+											</ul>
+										</div>
+									</div>
+									<span class="sum-li" id="sum-customCheck-q9">
+										<p class="sum-header" style="opacity: 1;">Step 9a: Select this box if it reflects your muscle use</p>
+										<ul style="list-style: circle;">
+											<li><strong>Score 1</strong><br>Posture is mainly static, e.g. held for longer than 1 minute or repeated more than 4 times per minute.</li>
+										</ul>
+									</span>
+								</div>
+
+
+							</div>
+
+						</div>
+						<div class="modal-footer">
+							<button id="html2canvas" class="btn btn-success" onclick="html2canvas();">Save to PDF<img src="./media/icons/print.png" alt="Print icon" style=" margin-left: 5px;"></button>
+						</div>
 					</div>
 				</div>
 
@@ -707,13 +850,13 @@
 						</ul>
 					</span>
 					<div class="break"></div> <!-- break -->
-					<p class="footerTxt" id="footer-text" onclick="resultsModal();">Copyright © 2019 Osmond Group Limited. | Registered Company Number 00736813 | VAT Number 189738788 | Website built by <a href="https://www.linkedin.com/in/waldemar-walczak-697651192/" target="_blank">Waldemar Walczak</a></p>
+					<p class="footerTxt" id="footer-text">Copyright © 2019 Osmond Group Limited. | Registered Company Number 00736813 | VAT Number 189738788 | Website built by <a href="https://www.linkedin.com/in/waldemar-walczak-697651192/" target="_blank">Waldemar Walczak</a></p>
 				</div>
 			</footer>
 			<script type="text/javascript" defer src="./js/main.js"></script>
-			<script type="text/javascript" defer src="./js/plugins/html2canvas.js"></script>
-			<script type="text/javascript" defer src="./js/plugins/jspdf.min.js"></script>
-			<script type="text/javascript" defer src="./js/plugins/html2pdf.bundle.min.js"></script>
+			<script type="text/javascript" defer src="./js/util/html2canvas.js"></script>
+			<script type="text/javascript" defer src="./js/util/jspdf.min.js"></script>
+			<script type="text/javascript" defer src="./js/util/html2pdf.bundle.min.js"></script>
 			<!-- <script type="text/javascript" defer src="./js/html.js"></script> -->
 			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>

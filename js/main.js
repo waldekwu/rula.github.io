@@ -248,8 +248,6 @@ function topFunction() {
 
 function toggleResultsMobile() {
 
-	// $('#results-card').find('.card-header').remove();
-
 	if ($('#results-card').hasClass('slideInUp')) {
 
 		$(".results-card").toggleClass("slideInUp slideOutDown");
@@ -293,7 +291,7 @@ function changeTitle() {
 	} else if (currentQuestionIndex > 5 && currentQuestionIndex < 10) {
 		$('#title').text('Part B. Neck, Trunk & Leg Analysis');
 	} else {
-		$('#title').text('Rapid Upper Limb Assessment - Short Summary');
+		$('#title').text('Rapid Upper Limb Assessment');
 	}
 }
 
@@ -323,10 +321,6 @@ function getInput() {
 		upperArmAdjValue = 0;
 		//checkboxes
 
-		document.getElementById("sum-customCheck1-q1").classList.add("sum-li");
-		document.getElementById("sum-customCheck2-q1").classList.add("sum-li");
-		document.getElementById("sum-customCheck3-q1").classList.add("sum-li");
-
 
 		if (document.querySelector('input[name="customCheck-q1"]:checked')) {
 			options = document.getElementsByName("customCheck-q1");
@@ -335,24 +329,37 @@ function getInput() {
 				if (options[i].type === 'checkbox' && options[i].checked === true) {
 					upperArmAdjValue += parseInt(options[i].value);
 					//summary
-					document.getElementById("sum-"+options[i].id).classList.toggle("sum-li");
+					document.getElementById("sum-"+options[i].id).classList.remove("sum-li");
+				}
+
+
+			}
+		} else {
+			upperArmAdjValue = 0; 
+		}
+
+		for (var i = 0; i < document.getElementsByName("customCheck-q1").length; i++) {
+			if (document.getElementsByName("customCheck-q1")[i].checked === false) {
+					//summary
+					document.getElementById("sum-"+document.getElementsByName("customCheck-q1")[i].id).classList.add("sum-li");
+					console.log(document.getElementById("sum-"+document.getElementsByName("customCheck-q1")[i].id));
+
 				}
 			}
 
-		} else {
-			upperArmAdjValue = 0; 
-		}	
+			break;
 
-		break;
+			case 3:
+			lowerArmValue = parseInt(document.querySelector('input[name="radio-q2"]:checked').value);
 
-		case 3:
-		lowerArmValue = parseInt(document.querySelector('input[name="radio-q2"]:checked').value);
-
-		if (document.querySelector('input[name="customCheck-q2"]:checked')) {
-			lowerArmAdjValue = parseInt(document.querySelector('input[name="customCheck-q2"]:checked').value);
+			if (document.querySelector('input[name="customCheck-q2"]:checked')) {
+				lowerArmAdjValue = parseInt(document.querySelector('input[name="customCheck-q2"]:checked').value);
+			//summary
+			document.getElementById("sum-customCheck-q2").classList.toggle("sum-li");
 
 		} else {
 			lowerArmAdjValue = 0; 
+			document.getElementById("sum-customCheck-q2").classList.add("sum-li");
 		}
 
 		break;
@@ -365,9 +372,12 @@ function getInput() {
 
 		if (document.querySelector('input[name="customCheck-q3"]:checked')) {
 			wristAdjValue = parseInt(document.querySelector('input[name="customCheck-q3"]:checked').value);
+			//summary
+			document.getElementById("sum-customCheck-q3").classList.toggle("sum-li");
 
 		} else {
 			wristAdjValue = 0; 
+			document.getElementById("sum-customCheck-q3").classList.add("sum-li");
 		}
 
 		break;
@@ -388,9 +398,13 @@ function getInput() {
 
 		if (document.querySelector('input[name="customCheck-q5"]:checked')) {
 			muscleUseValue = parseInt(document.querySelector('input[name="customCheck-q5"]:checked').value);
+			//summary
+			//document.getElementById("sum-customCheck-q5").classList.toggle("sum-li");
+			document.getElementById("sum-customCheck-q5").classList.toggle("sum-li");
 
 		} else {
 			muscleUseValue = 0; 
+			document.getElementById("sum-customCheck-q5").classList.add("sum-li");
 		}
 
 		break;
@@ -407,6 +421,8 @@ function getInput() {
 			for (var i = 0; i < options.length; i++) {
 				if (options[i].type === 'checkbox' && options[i].checked === true) {
 					neckAdjValue += parseInt(options[i].value);
+					//summary
+					document.getElementById("sum-"+options[i].id).classList.remove("sum-li");
 				}
 			} 
 
@@ -414,11 +430,21 @@ function getInput() {
 			neckAdjValue = 0; 
 		}
 
-		break;
+		for (var i = 0; i < document.getElementsByName("customCheck-q6").length; i++) {
+			if (document.getElementsByName("customCheck-q6")[i].checked === false) {
+					//summary
+					document.getElementById("sum-"+document.getElementsByName("customCheck-q6")[i].id).classList.add("sum-li");
+					console.log(document.getElementById("sum-"+document.getElementsByName("customCheck-q6")[i].id));
 
-		case 8:
+				}
+			}
 
-		trunkValue = parseInt(document.querySelector('input[name="radio-q7"]:checked').value);
+			break;
+
+			case 8:
+
+			trunkValue = parseInt(document.querySelector('input[name="radio-q7"]:checked').value);
+
 
 		//checkboxes
 		if (document.querySelector('input[name="customCheck-q7"]:checked')) {
@@ -428,11 +454,22 @@ function getInput() {
 			for (var i = 0; i < options.length; i++) {
 				if (options[i].type === 'checkbox' && options[i].checked === true) {
 					trunkAdjValue += parseInt(options[i].value);
+					//summary
+					document.getElementById("sum-"+options[i].id).classList.remove("sum-li");
 				}
 			} 
 
 		} else {
 			trunkAdjValue = 0; 
+		}
+
+		for (var i = 0; i < document.getElementsByName("customCheck-q7").length; i++) {
+			if (document.getElementsByName("customCheck-q7")[i].checked === false) {
+				//summary
+				document.getElementById("sum-"+document.getElementsByName("customCheck-q7")[i].id).classList.add("sum-li");
+				console.log(document.getElementById("sum-"+document.getElementsByName("customCheck-q7")[i].id));
+
+			}
 		}
 
 		break;
@@ -451,6 +488,8 @@ function getInput() {
 
 		if (document.querySelector('input[name="customCheck-q9"]:checked')) {
 			muscleUseB = parseInt(document.querySelector('input[name="customCheck-q9"]:checked').value);
+			//summary
+			//document.getElementById("sum-customCheck-q9").classList.remove("sum-li");
 		} else {
 			muscleUseB = 0; 
 		}
@@ -458,8 +497,6 @@ function getInput() {
 		document.getElementById('nav10').style.color = "#2aa747";
 		document.getElementById('nav10').style.cursor = "pointer";
 		document.getElementById('nav10').classList.add("animated", "flipInY", "font-weight-bold");
-
-
 
 		$('#nav10').on('click', function (e) {
 			e.preventDefault();
@@ -476,6 +513,15 @@ function getInput() {
 		case 11:
 
 		getFormInput();
+
+		$('#nav11').on('click', function (e) {
+			e.preventDefault();
+			$(this).tab('show');
+			nextBtn.classList.add("hide");
+		});
+
+		document.getElementById('nav11').style.cursor = "pointer";
+		document.getElementById('nav11').style.color = "black";
 
 		console.log("THIS IS IT: " + document.querySelector('input[name="radio-q1"]:checked').id);
 
@@ -592,11 +638,6 @@ function showResults() {
 
 	$('#final-results').html($('#results-list-cont').html());
 
-
-
-
-	// $('#div2').html($('#div1').html());
-
 }
 
 function rulaScore() {
@@ -604,130 +645,95 @@ function rulaScore() {
 	if (finalScore < 3) {
         // resultsContainer.classList.add("acceptable-posture");
         // resultsImageContainer.innerHTML = "<img src='media/manikin_logo.png' class='card-img'>"
-        scoreContainer.innerHTML = 
-        `<h4 style="text-align: left;"><img src="./media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Final RULA score:</h4>
-        <div class="bg-success rula-card">
-        <ul style="list-style: none; padding: 15px;">
-        <li style="color: white;">
-        <h5>RULA Score: ${finalScore}</h5>
-        Action level 1: The posture is acceptable if it is not maintained or repeated for long periods
-        </li>
-        </ul>
-        </div>`;
+        $('#score-container, #rula-scorecard').html(
+        	`<h4 style="text-align: left;"><img src="./media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Final RULA score:</h4>
+        	<div class="bg-success rula-card">
+        	<ul style="list-style: none; padding: 15px;">
+        	<li style="color: white;">
+        	<h5>RULA Score: ${finalScore}</h5>
+        	Action level 1: The posture is acceptable if it is not maintained or repeated for long periods
+        	</li>
+        	</ul>
+        	</div>`);
         
     } else if (finalScore > 2 && finalScore < 5) {
         // resultsContainer.classList.add("f-investigation");
         // resultsImageContainer.innerHTML = "<img src='media/manikin_logo.png' class='card-img'>"
-        scoreContainer.innerHTML = 
-        `<h4 style="text-align: left;"><img src="./media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Final RULA score:</h4>
-        <div class="bg-warning rula-card">
-        <ul style="list-style: none; padding: 15px;">
-        <li style="color: white;">
-        <h5>RULA Score: ${finalScore}</h5>
-        Action level 2:
-        Further investigation is needed and changes may be required
-        </li>
-        </ul>
-        </div>`;
+        $('#score-container, #rula-scorecard').html(
+        	`<h4 style="text-align: left;"><img src="./media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Final RULA score:</h4>
+        	<div class="bg-warning rula-card">
+        	<ul style="list-style: none; padding: 15px;">
+        	<li style="color: white;">
+        	<h5>RULA Score: ${finalScore}</h5>
+        	Action level 2:
+        	Further investigation is needed and changes may be required
+        	</li>
+        	</ul>
+        	</div>`);
     } 
     else if (finalScore > 4 && finalScore < 7) {
         // resultsContainer.classList.add("change-soon");
         // resultsImageContainer.innerHTML = "<img src='media/manikin_logo.png' class='card-img'>"
-        scoreContainer.innerHTML = 
-        `<h4 style="text-align: left;"><img src="./media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Final RULA score:</h4>
-        <div class="bg-warning rula-card">
-        <ul style="list-style: none; padding: 15px;">
-        <li style="color: white;">
-        <h5>RULA Score: ${finalScore}</h5>
-        Action level 3:
-        Further investigation and changes are required soon
-        </li>
-        </ul>
-        </div>`;
+        $('#score-container, #rula-scorecard').html(
+        	`<h4 style="text-align: left;"><img src="./media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Final RULA score:</h4>
+        	<div class="bg-warning rula-card">
+        	<ul style="list-style: none; padding: 15px;">
+        	<li style="color: white;">
+        	<h5>RULA Score: ${finalScore}</h5>
+        	Action level 3:
+        	Further investigation and changes are required soon
+        	</li>
+        	</ul>
+        	</div>`);
     }
     else if (finalScore >= 7) {
         // resultsContainer.classList.add("investigate-change");
         // resultsImageContainer.innerHTML = "<img src='media/manikin_logo.png' class='card-img'>"
-        scoreContainer.innerHTML = 
-        `<h4 style="text-align: left;"><img src="./media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Final RULA score:</h4>
-        <div class="bg-danger rula-card">
-        <ul style="list-style: none; padding: 15px;">
-        <li style="color: white;">
-        <h5>RULA Score: ${finalScore}</h5>
-        Action level 4:
-        Further investigation and changes are required immediately
-        </li>
-        </ul>
-        </div>`;
+        $('#score-container, #rula-scorecard').html( 
+        	`<h4 style="text-align: left;"><img src="./media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Final RULA score:</h4>
+        	<div class="bg-danger rula-card">
+        	<ul style="list-style: none; padding: 15px;">
+        	<li style="color: white;">
+        	<h5>RULA Score: ${finalScore}</h5>
+        	Action level 4:
+        	Further investigation and changes are required immediately
+        	</li>
+        	</ul>
+        	</div>`);
     }
 
 }
 
-
-
-// $("#html2canvas").click(function(e) {
-
-// 	e.preventDefault();
-
-// 	html2canvas(document.getElementById("results-modal"), { letterRendering: 1, allowTaint : true, onrendered : function (canvas) { } }).then(canvas => {
-//     document.body.appendChild(canvas)
-// 	});
-
-
-// }); 
-
-
-
-
 $("#html2canvas").click(function(e) {
 
-let element = document.getElementById('modal-body');
-let opt = {
+	for(let i=0; i<document.getElementById('sum-answers').length; i++) {
+		document.getElementById('sum-answers')[i].classList.remove("sum-cont-mob");
+
+
+	}
+
+
+	let element = document.getElementById('modal-body');
+	let opt = {
   margin:       [0.53, 0.3, 0.2, 0.3], //anticlockwise
   filename:     'myfile.pdf',
   image:        { type: 'jpeg', quality: 1 },
   html2canvas:  {  },
   jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
 };
- 
+
 // New Promise-based usage:
 html2pdf().from(element).set(opt).save();
-
 
 
 }); 
 
 
+$("#modal-btn, #results-btn").click(function(e) {
 
-
-
-function resultsModal(){
-
-let modal = document.getElementById("results-modal");
-
-// Get the button that opens the modal
-let btn = document.getElementById("footer-text");
-
-// Get the <span> element that closes the modal
-let span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-
-  }
-}
+	var elmnt = document.getElementById("modal-body");
+	var x = elmnt.scrollLeft;
+	var y = elmnt.scrollTop;
 
 //clone personal details
   // let itm = 0;
@@ -737,34 +743,206 @@ window.onclick = function(event) {
   // cln = itm.cloneNode(true);
   // document.getElementById("sum-sum").appendChild(cln);
 
-switch (document.querySelector('input[name="radio-q1"]:checked').id) {
-	case "radio1-q1":
-		$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-1.jpg" alt="" height="90px">`);
-		break;
+  switch (document.querySelector('input[name="radio-q1"]:checked').id) {
+  	case "radio1-q1":
+  	$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-1.jpg" alt="" height="90px">`);
+  	break;
 
-		case "radio2-q1":
-		$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-2.jpg" alt="" height="90px">`);
-		break;
+  	case "radio2-q1":
+  	$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-2.jpg" alt="" height="90px">`);
+  	break;
 
-		case "radio3-q1":
-		$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-3.jpg" alt="" height="90px">`);
-		break;
+  	case "radio3-q1":
+  	$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-3.jpg" alt="" height="90px">`);
+  	break;
 
-		case "radio4-q1":
-		$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-4.jpg" alt="" height="90px">`);
-		break;
+  	case "radio4-q1":
+  	$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-4.jpg" alt="" height="90px">`);
+  	break;
 
-		case "radio5-q1":
-		$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-5.jpg" alt="" height="90px">`);
-		break;
+  	case "radio5-q1":
+  	$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-5.jpg" alt="" height="90px">`);
+  	break;
 
-		default:
-		console.log("Error");
-	}
+  	default:
+  	console.log("Error");
+  }
+
+  switch (document.querySelector('input[name="radio-q2"]:checked').id) {
+  	case "radio1-q2":
+  	$("#sum-2-img").html(`<img src="./media/summary/sum-2/sum-2-1.jpg" alt="" height="90px">`);
+  	break;
+
+  	case "radio2-q2":
+  	$("#sum-2-img").html(`<img src="./media/summary/sum-2/sum-2-2.jpg" alt="" height="90px">`);
+  	break;
+
+  	case "radio3-q2":
+  	$("#sum-2-img").html(`<img src="./media/summary/sum-2/sum-2-3.jpg" alt="" height="90px">`);
+  	break;
+
+  	default:
+  	console.log("Error");
+  }
+
+  switch (document.querySelector('input[name="radio-q3"]:checked').id) {
+  	case "radio1-q3":
+  	$("#sum-3-img").html(`<img src="./media/summary/sum-3/sum-3-1.jpg" alt="" height="130px">`);
+  	break;
+
+  	case "radio2-q3":
+  	$("#sum-3-img").html(`<img src="./media/summary/sum-3/sum-3-2.jpg" alt="" height="130px">`);
+  	break;
+
+  	case "radio3-q3":
+  	$("#sum-3-img").html(`<img src="./media/summary/sum-3/sum-3-3.jpg" alt="" height="130px">`);
+  	break;
+
+  	case "radio4-q3":
+  	$("#sum-3-img").html(`<img src="./media/summary/sum-3/sum-3-4.jpg" alt="" height="130px">`);
+  	break;
+
+  	default:
+  	console.log("Error");
+  }
+
+  switch (document.querySelector('input[name="radio-q4"]:checked').id) {
+  	case "radio1-q4":
+  	$("#sum-4-img").html(`<img src="./media/summary/sum-4/sum-4-1.jpg" alt="" height="90px">`);
+  	break;
+
+  	case "radio2-q4":
+  	$("#sum-4-img").html(`<img src="./media/summary/sum-4/sum-4-2.jpg" alt="" height="90px">`);
+  	break;
+
+  	default:
+  	console.log("Error");
+  }
+
+
+  switch (document.querySelector('input[name="radio-q5"]:checked').id) {
+  	case "radio1-q5":
+  	document.getElementById("sum-5-q1").classList.remove(`sum-li`);
+  	document.getElementById("sum-5-q2").classList.add(`sum-li`);
+  	document.getElementById("sum-5-q3").classList.add(`sum-li`);
+  	document.getElementById("sum-5-q4").classList.add(`sum-li`);
+  	break;
+
+  	case "radio2-q5":
+  	document.getElementById("sum-5-q2").classList.remove(`sum-li`);
+  	document.getElementById("sum-5-q1").classList.add(`sum-li`);
+  	document.getElementById("sum-5-q3").classList.add(`sum-li`);
+  	document.getElementById("sum-5-q4").classList.add(`sum-li`);
+  	break;
+
+  	case "radio3-q5":
+  	document.getElementById("sum-5-q3").classList.remove(`sum-li`);
+  	document.getElementById("sum-5-q1").classList.add(`sum-li`);
+  	document.getElementById("sum-5-q2").classList.add(`sum-li`);
+  	document.getElementById("sum-5-q4").classList.add(`sum-li`);
+  	break;
+
+  	case "radio4-q5":
+  	document.getElementById("sum-5-q4").classList.remove(`sum-li`);
+  	document.getElementById("sum-5-q1").classList.add(`sum-li`);
+  	document.getElementById("sum-5-q2").classList.add(`sum-li`);
+  	document.getElementById("sum-5-q3").classList.add(`sum-li`);
+  	break;
+
+  	default:
+  	console.log("Error");
+  }
+
+  switch (document.querySelector('input[name="radio-q6"]:checked').id) {
+  	case "radio1-q6":
+  	$("#sum-6-img").html(`<img src="./media/summary/sum-6/sum-6-1.jpg" alt="" height="90px">`);
+  	break;
+
+  	case "radio2-q6":
+  	$("#sum-6-img").html(`<img src="./media/summary/sum-6/sum-6-2.jpg" alt="" height="90px">`);
+  	break;
+
+  	case "radio3-q6":
+  	$("#sum-6-img").html(`<img src="./media/summary/sum-6/sum-6-3.jpg" alt="" height="90px">`);
+  	break;
+
+  	case "radio4-q6":
+  	$("#sum-6-img").html(`<img src="./media/summary/sum-6/sum-6-4.jpg" alt="" height="90px">`);
+  	break;
+
+  	default:
+  	console.log("Error");
+  }
+
+    switch (document.querySelector('input[name="radio-q7"]:checked').id) {
+  	case "radio1-q7":
+  	$("#sum-7-img").html(`<img src="./media/summary/sum-7/sum-7-1.jpg" alt="" height="90px">`);
+  	break;
+
+  	case "radio2-q7":
+  	$("#sum-7-img").html(`<img src="./media/summary/sum-7/sum-7-2.jpg" alt="" height="90px">`);
+  	break;
+
+  	case "radio3-q7":
+  	$("#sum-7-img").html(`<img src="./media/summary/sum-7/sum-7-3.jpg" alt="" height="90px">`);
+  	break;
+
+  	case "radio4-q7":
+  	$("#sum-7-img").html(`<img src="./media/summary/sum-7/sum-7-4.jpg" alt="" height="90px">`);
+  	break;
+
+  	default:
+  	console.log("Error");
+  }
+
+    switch (document.querySelector('input[name="radio-q8"]:checked').id) {
+  	case "radio1-q8":
+  	$("#sum-8-img").html(`Legs and feet are well supported and in an evenly balanced posture.<br>
+  		<img src="./media/summary/sum-8/sum-8-1.jpg" alt="" height="90px">`);
+  	break;
+
+  	case "radio2-q8":
+  	$("#sum-8-img").html(`Legs and feet are NOT evenly balanced and supported.<br>
+  		<img src="./media/summary/sum-8/sum-8-2.jpg" alt="" height="90px">`);
+  	break;
+
+  	default:
+  	console.log("Error");
+  }
+
+    switch (document.querySelector('input[name="radio-q9"]:checked').id) {
+  	case "radio1-q9":
+  	document.getElementById("sum-9-q1").classList.remove(`sum-li`);
+  	document.getElementById("sum-9-q2").classList.add(`sum-li`);
+  	document.getElementById("sum-9-q3").classList.add(`sum-li`);
+  	document.getElementById("sum-9-q4").classList.add(`sum-li`);
+  	break;
+
+  	case "radio2-q9":
+  	document.getElementById("sum-9-q2").classList.remove(`sum-li`);
+  	document.getElementById("sum-9-q1").classList.add(`sum-li`);
+  	document.getElementById("sum-9-q3").classList.add(`sum-li`);
+  	document.getElementById("sum-9-q4").classList.add(`sum-li`);
+  	break;
+
+  	case "radio3-q9":
+  	document.getElementById("sum-9-q3").classList.remove(`sum-li`);
+  	document.getElementById("sum-9-q1").classList.add(`sum-li`);
+  	document.getElementById("sum-9-q2").classList.add(`sum-li`);
+  	document.getElementById("sum-9-q4").classList.add(`sum-li`);
+  	break;
+
+  	case "radio4-q9":
+  	document.getElementById("sum-9-q4").classList.remove(`sum-li`);
+  	document.getElementById("sum-9-q1").classList.add(`sum-li`);
+  	document.getElementById("sum-9-q2").classList.add(`sum-li`);
+  	document.getElementById("sum-9-q3").classList.add(`sum-li`);
+  	break;
+
+  	default:
+  	console.log("Error");
+  }
 
 
 
-
-}
-
-
+});
