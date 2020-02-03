@@ -128,6 +128,13 @@ let tables = [
 // 	console.log(currentQuestionIndex);
 // })
 
+$(document).ready(function(){
+  $('[data-toggle="popover"]').popover();
+});
+
+$('.popover-dismiss').popover({
+  trigger: 'focus'
+})
 
 //set today's date in form (step 10)
 let today = new Date();
@@ -702,10 +709,11 @@ function rulaScore() {
 
 $("#html2canvas").click(function(e) {
 
+	document.getElementById("html2canvas").disabled = true;
+    setTimeout(function(){document.getElementById("html2canvas").disabled = false;},5000)
+
 	for(let i=0; i<document.getElementById('sum-answers').length; i++) {
 		document.getElementById('sum-answers')[i].classList.remove("sum-cont-mob");
-
-
 	}
 
 
