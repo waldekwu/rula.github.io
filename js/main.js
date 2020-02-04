@@ -128,12 +128,18 @@ let tables = [
 // 	console.log(currentQuestionIndex);
 // })
 
+
+//enable popover and tooltip
 $(document).ready(function(){
   $('[data-toggle="popover"]').popover();
 });
 
 $('.popover-dismiss').popover({
   trigger: 'focus'
+})
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
 })
 
 //set today's date in form (step 10)

@@ -20,11 +20,11 @@
 	<div class="zone navbar">
 		<div>Beta Version<br>No data is retained</div>
 		<div class="logo" id="osmond-logo">
-			<a href="./index.html" data-toggle="tooltip" data-placement="bottom" title="Tooltip on top">
+			<a href="./index.html">
 				<img src="./media/Osmond-Ergonomics.svg" alt="Osmond Ergonomics Logo" width="150" height="80"></a>
-<!-- 				<button type="button" id="modal-btn" class="btn btn-primary" data-toggle="modal" data-target="#results-modal">
+				<button type="button" id="modal-btn" class="btn btn-primary" data-toggle="modal" data-target="#results-modal">
 					Modal
-				</button> -->
+				</button>
 			</div>
 			<div class="about">
 				<!-- dropdown menu -->
@@ -49,40 +49,37 @@
 				<div class="card-header">
 					<ul class="nav nav-tabs card-header-tabs" id="question-list" role="tablist">
 						<li class="nav-item">
-							<p class="card-text mr-2">Steps: </p>
+							<a class="nav-link active" id="nav1" href="#step-1" role="tab" aria-controls="step-1" aria-selected="true" alt="Step 1: Locate Upper Arm Position" data-toggle="tooltip" data-placement="top" title="Upper Arm">1</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link active" id="nav1" href="#step-1" role="tab" aria-controls="step-1" aria-selected="true" alt="Step 1: Locate Upper Arm Position">1</a>
+							<a class="nav-link" id="nav2" href="#step-2" role="tab" aria-controls="step-2" aria-selected="false" data-toggle="tooltip" data-placement="top" title="Lower Arm">2</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" id="nav2" href="#step-2" role="tab" aria-controls="step-2" aria-selected="false">2</a>
+							<a class="nav-link" id="nav3" href="#step-3" role="tab" aria-controls="step-3" aria-selected="false" data-toggle="tooltip" data-placement="top" title="Wrist">3</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" id="nav3" href="#step-3" role="tab" aria-controls="step-3" aria-selected="false">3</a>
+							<a class="nav-link" id="nav4" href="#step-4" role="tab" aria-controls="step-4" aria-selected="false" data-toggle="tooltip" data-placement="top" title="Wrist Twist">4</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" id="nav4" href="#step-4" role="tab" aria-controls="step-4" aria-selected="false">4</a>
+							<a class="nav-link" id="nav5" href="#step-5" role="tab" aria-controls="step-5" aria-selected="false" data-toggle="tooltip" data-placement="top" title="Arm & Wrist - Muscle Use & Force">5</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" id="nav5" href="#step-5" role="tab" aria-controls="step-5" aria-selected="false">5</a>
+							<a class="nav-link" id="nav6" href="#step-6" role="tab" aria-controls="step-6" aria-selected="false" data-toggle="tooltip" data-placement="top" title="Neck">6</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" id="nav6" href="#step-6" role="tab" aria-controls="step-6" aria-selected="false">6</a>
+							<a class="nav-link" id="nav7" href="#step-7" role="tab" aria-controls="step-7" aria-selected="false" data-toggle="tooltip" data-placement="top" title="Trunk">7</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" id="nav7" href="#step-7" role="tab" aria-controls="step-7" aria-selected="false">7</a>
+							<a class="nav-link" id="nav8" href="#step-8" role="tab" aria-controls="step-8" aria-selected="false" data-toggle="tooltip" data-placement="top" title="Legs">8</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" id="nav8" href="#step-8" role="tab" aria-controls="step-8" aria-selected="false">8</a>
+							<a class="nav-link" id="nav9" href="#step-9" role="tab" aria-controls="step-9" aria-selected="false" data-toggle="tooltip" data-placement="top" title="Neck, Trunk & Leg - Muscle Use & Force">9</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" id="nav9" href="#step-9" role="tab" aria-controls="step-9" aria-selected="false">9</a>
+							<a class="nav-link" id="nav10" href="#step-10" role="tab" aria-controls="step-10" aria-selected="false" data-toggle="tooltip" data-placement="top" title="Personal Details">10</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" id="nav10" href="#step-10" role="tab" aria-controls="step-10" aria-selected="false">10</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link hide" id="nav11" href="#step-11" role="tab" aria-controls="step-11" aria-selected="false">Results</a>
+							<a class="nav-link hide" id="nav11" href="#step-11" role="tab" aria-controls="step-11" aria-selected="false" data-toggle="tooltip" data-placement="top" title="Results"><img src="./media/icons/calc.png" alt="results" height="16px;"></a>
 						</li>
 					</ul>
 				</div>
@@ -264,7 +261,7 @@
 						<div class="tab-pane" id="step-5" role="tabpanel" aria-labelledby="step-5-tab">
 							<!-- step five start -->
 							<div class="question-container">
-								<div><h3 id="q5" class="text-center">Step 5: Select the force and load that most reflects the working situation</h3></div>
+								<div><h3 id="q5" class="text-center">Step 5: Arm & wrist - select the force and load that most reflects the working situation</h3></div>
 								<div class="answer-grid">
 
 									<span class="btn quiz-zone">
@@ -462,7 +459,7 @@
 						<div class="tab-pane" id="step-9" role="tabpanel" aria-labelledby="step-9-tab">
 							<!-- step nine start -->
 							<div class="question-container">
-								<div><h3 id="q9" class="text-center">Step 9: Select the force and load that most reflects the working situation</h3></div>
+								<div><h3 id="q9" class="text-center">Step 9: Neck, trunk & leg - select the force and load that most reflects the working situation</h3></div>
 								<div class="answer-grid">
 									<span class="btn quiz-zone">
 										<input type="radio" name="radio-q9" class="radio option-input" value="0" id="radio1-q9">
@@ -546,7 +543,7 @@
 										<input class="form-control" type="text" placeholder="e.g., Jane Doe" id="form-scorer" maxlength="40">
 									</div>
 									<div class="form-group">
-										<label for="form-department" class="form-label"><h5>Department</h5></label>
+										<label for="form-department" class="form-label"><h5>Department/Location</h5></label>
 										<input class="form-control" type="text" placeholder="e.g., HR" id="form-department" maxlength="40">
 									</div>
 									<div class="form-group">
@@ -647,9 +644,9 @@
 				<div class="modal-dialog modal-dialog-scrollable" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h2 style="width: 100%; text-align: center;">Full Summary</h2>
+							<h2 style="width: 100%; text-align: center; margin-bottom: 5px;">Full Summary</h2>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true" style="font-size: 24px;">&times;</span>
+								<span aria-hidden="true" style="font-size: 28px;">&times;</span>
 							</div>
 
 							<div class="modal-body" id="modal-body">
@@ -664,7 +661,7 @@
 										<span class="personal-details">Subject: <span id="subject"></span></span>
 										<span class="personal-details">Scorer: <span id="scorer"></span></span>
 										<span class="personal-details">Email: <span id="email"></span></span>
-										<span class="personal-details">Department: <span id="department"></span></span>
+										<span class="personal-details">Department/Location: <span id="department"></span></span>
 										<span class="personal-details">Company: <span id="company"></span></span>
 										<span class="personal-details" style="margin-bottom: 10px;">Date: <span id="date"></span></span>
 									</div>
@@ -717,7 +714,7 @@
 
 
 									<div id="sum-5" class="sum-cont" style="order: 5">
-										<p class="sum-header">Step 5: Select the force and load that most reflects the working situation</p>
+										<p class="sum-header">Step 5: Arm & wrist - select the force and load that most reflects the working situation</p>
 										<div id="sum-5-cont">
 											<div id="sum-5-q1" class="sum-li" style="grid-area: 1 / 1 / 2 / 2;">
 												<ul>
@@ -792,7 +789,7 @@
 								</div>
 
 								<div id="sum-9" class="sum-cont" style="order: 9; width: 100%; margin-bottom: 20px;">
-									<p class="sum-header">Step 9: Select the force and load that most reflects the working situation</p>
+									<p class="sum-header">Step 9: Neck, trunk & leg - select the force and load that most reflects the working situation</p>
 									<div id="sum-9-cont" style="max-width: 400px;">
 										<div id="sum-9-q1" class="sum-li" style="grid-area: 1 / 1 / 2 / 2;">
 											<ul>
@@ -839,7 +836,7 @@
 
 							</div>
 							<div class="modal-footer">
-								<button id="html2canvas" class="btn btn-success" onclick="html2canvas();">Save to PDF<img src="./media/icons/print.png" alt="Print icon" style=" margin-left: 5px;"></button>
+								<button id="html2canvas" class="btn btn-success" onclick="html2canvas();" style="margin: 5px;">Save to PDF<img src="./media/icons/print.png" alt="Print icon" style=" margin-left: 5px;"></button>
 							</div>
 						</div>
 					</div>

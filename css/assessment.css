@@ -8,6 +8,10 @@ align-items: flex-start;
 justify-content: space-between;
 }
 
+label {
+	cursor: pointer;
+}
+
 .main-card {
 	min-width: 850px;
 	max-width: 1000px;
@@ -15,14 +19,8 @@ justify-content: space-between;
 	justify-self: center;
 }
 
-
-
 .results-card {
 	max-width: 200px;
-}
-
-label {
-	cursor: pointer;
 }
 
 .main-header {
@@ -334,7 +332,6 @@ input {
 .modal-footer {
 	padding: 5px 16px 5px 16px;
 	background-color: #f7f6f7;
-
 }
 
 .sum-cont {
@@ -377,7 +374,6 @@ input {
 		/*Here's what sticks it*/
 		bottom: 10%;          /*to the bottom of the window*/
 		right: 0;
-
 	}
 }
 
@@ -453,10 +449,7 @@ input {
 		max-width: 400px;
 	}
 
-
-
 }
-
 
 @media screen and (max-width: 600px) {
 	.answer-grid {
