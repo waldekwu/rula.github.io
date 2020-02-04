@@ -1,0 +1,21 @@
+
+#sum-9-cont, #sum-13-cont {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: 40% 60%;
+	font-size: x-small;
+}
+
+@media screen and (max-width: 1200px) {
+
+}
+
+@media screen and (max-width: 900px) {
+
+
+}
+
+@media screen and (max-width: 600px) {
+
+
+}
