@@ -525,6 +525,7 @@ function getInput() {
 			e.preventDefault();
 			$(this).tab('show');
 			nextBtn.classList.add("hide");
+			showResults();
 		});
 
 		document.getElementById('nav11').style.cursor = "pointer";
@@ -636,7 +637,7 @@ function showResults() {
 	document.getElementById("results-card").classList.add("hide");
 	document.getElementById("show-results").classList.add("hide");
 
-	$("#results-list-cont>ul>li.hide").removeClass("hide");
+	$(".results-list>li.hide").removeClass("hide");
 
 
 
