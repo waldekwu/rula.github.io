@@ -721,7 +721,7 @@ $("#html2canvas").click(function(e) {
 	let element = document.getElementById('modal-body');
 	let opt = {
   margin:       [0.53, 0.3, 0.2, 0.3], //anticlockwise
-  filename:     'myfile.pdf',
+  filename:     'rula-scoresheet.pdf',
   image:        { type: 'jpeg', quality: 1 },
   html2canvas:  {  },
   jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
