@@ -202,11 +202,17 @@ $('.next-btn').on('click', (e) => {
 })
 
 $("#prev-btn").on('click', (e) => {
-	topFunction();
-	selectAnswer();
 	e.preventDefault();
+	
 	if (currentQuestionIndex > 1) {
 		currentQuestionIndex--;
+	}
+
+	topFunction();
+	selectAnswer();
+
+	if (currentQuestionIndex === 1) {
+		prevBtn.classList.add("hide");
 	}
 
 	// setOutput();
@@ -222,11 +228,10 @@ function selectAnswer() {
 	changeTitle();
 	nextBtn.classList.add("hide");
 
-	if (currentQuestionIndex > 1) {
-		prevBtn.classList.remove("hide");
-
-	} else {
+	if (currentQuestionIndex === 1) {
 		prevBtn.classList.add("hide");
+	} else {
+		prevBtn.classList.remove("hide");
 	}
 
 	if (document.querySelector('input[name="radio-q' + currentQuestionIndex + '"]:checked')) {

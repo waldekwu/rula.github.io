@@ -131,15 +131,15 @@ let tables = [
 
 //enable popover and tooltip
 $(document).ready(function(){
-  $('[data-toggle="popover"]').popover();
+	$('[data-toggle="popover"]').popover();
 });
 
 $('.popover-dismiss').popover({
-  trigger: 'focus'
+	trigger: 'focus'
 })
 
 $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
+	$('[data-toggle="tooltip"]').tooltip()
 })
 
 //set today's date in form (step 10)
@@ -180,7 +180,7 @@ $('.next-btn').on('click', (e) => {
 
 $("#prev-btn").on('click', (e) => {
 	e.preventDefault();
-	
+
 	if (currentQuestionIndex > 1) {
 		currentQuestionIndex--;
 	}
@@ -247,13 +247,17 @@ function selectAnswer() {
 
 		})
 
-		if (currentQuestionIndex === 10) {
+		if (currentQuestionIndex < 10) {
+
+			nextBtn.classList.remove("hide");
+
+		} else if (currentQuestionIndex === 10) {
 
 			nextBtn.classList.add("hide");
-		} else {
-			nextBtn.classList.remove("hide");
 		}
 	} 
+
+
 }
 
 //go to the top of the page
@@ -272,7 +276,7 @@ function toggleResultsMobile() {
 
 		$('#show-results').html(
 			`<div class="animated flipInX">
-			<img src="./media/arrow-up.png"><br>
+			<img src="media/arrow-up.png"><br>
 			<h6><strong>Show scores</strong></h6>
 			</div>`
 			);
@@ -283,7 +287,7 @@ function toggleResultsMobile() {
 
 		$('#show-results').html(
 			`<div class="animated flipInX">
-			<img src="./media/arrow-down.png"><br>
+			<img src="media/arrow-down.png"><br>
 			<h6><strong>Hide scores</strong></h6>
 			</div>`
 			);
@@ -294,7 +298,7 @@ function toggleResultsMobile() {
 
 		$('#show-results').html(`
 			<div class="animated flipInX">
-			<img src="./media/arrow-down.png"><br>
+			<img src="media/arrow-down.png"><br>
 			<h6><strong>Hide scores</strong></h6>
 			</div>`
 			);
@@ -304,12 +308,12 @@ function toggleResultsMobile() {
 function changeTitle() {
 
 	if (currentQuestionIndex > 0 && currentQuestionIndex < 6){
-		$('#title').text('Part A. Arm & Wrist Analysis');
+		$('#title').text('Part A. Arm & Wrist Analysis (Left Side)');
 
 	} else if (currentQuestionIndex > 5 && currentQuestionIndex < 10) {
 		$('#title').text('Part B. Neck, Trunk & Leg Analysis');
 	} else {
-		$('#title').text('Rapid Upper Limb Assessment');
+		$('#title').text('Rapid Upper Limb Assessment (Left Side)');
 	}
 }
 
@@ -661,7 +665,7 @@ function rulaScore() {
         // resultsContainer.classList.add("acceptable-posture");
         // resultsImageContainer.innerHTML = "<img src='media/manikin_logo.png' class='card-img'>"
         $('#score-container, #rula-scorecard').html(
-        	`<h4 style="text-align: left;"><img src="./media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Final RULA score:</h4>
+        	`<h4 style="text-align: left;"><img src="media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Final RULA score:</h4>
         	<div class="bg-success rula-card">
         	<ul style="list-style: none; padding: 15px;">
         	<li style="color: white;">
@@ -675,7 +679,7 @@ function rulaScore() {
         // resultsContainer.classList.add("f-investigation");
         // resultsImageContainer.innerHTML = "<img src='media/manikin_logo.png' class='card-img'>"
         $('#score-container, #rula-scorecard').html(
-        	`<h4 style="text-align: left;"><img src="./media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Final RULA score:</h4>
+        	`<h4 style="text-align: left;"><img src="media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Final RULA score:</h4>
         	<div class="bg-warning rula-card">
         	<ul style="list-style: none; padding: 15px;">
         	<li style="color: white;">
@@ -690,7 +694,7 @@ function rulaScore() {
         // resultsContainer.classList.add("change-soon");
         // resultsImageContainer.innerHTML = "<img src='media/manikin_logo.png' class='card-img'>"
         $('#score-container, #rula-scorecard').html(
-        	`<h4 style="text-align: left;"><img src="./media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Final RULA score:</h4>
+        	`<h4 style="text-align: left;"><img src="media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Final RULA score:</h4>
         	<div class="bg-warning rula-card">
         	<ul style="list-style: none; padding: 15px;">
         	<li style="color: white;">
@@ -705,7 +709,7 @@ function rulaScore() {
         // resultsContainer.classList.add("investigate-change");
         // resultsImageContainer.innerHTML = "<img src='media/manikin_logo.png' class='card-img'>"
         $('#score-container, #rula-scorecard').html( 
-        	`<h4 style="text-align: left;"><img src="./media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Final RULA score:</h4>
+        	`<h4 style="text-align: left;"><img src="media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Final RULA score:</h4>
         	<div class="bg-danger rula-card">
         	<ul style="list-style: none; padding: 15px;">
         	<li style="color: white;">
@@ -722,7 +726,7 @@ function rulaScore() {
 $("#html2canvas").click(function(e) {
 
 	document.getElementById("html2canvas").disabled = true;
-    setTimeout(function(){document.getElementById("html2canvas").disabled = false;},5000)
+	setTimeout(function(){document.getElementById("html2canvas").disabled = false;},5000)
 
 	for(let i=0; i<document.getElementById('sum-answers').length; i++) {
 		document.getElementById('sum-answers')[i].classList.remove("sum-cont-mob");
@@ -732,7 +736,7 @@ $("#html2canvas").click(function(e) {
 	let element = document.getElementById('modal-body');
 	let opt = {
   margin:       [0.53, 0.3, 0.2, 0.3], //anticlockwise
-  filename:     'rula-scoresheet.pdf',
+  filename:     'rula-scoresheet-left.pdf',
   image:        { type: 'jpeg', quality: 1 },
   html2canvas:  {  },
   jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
@@ -765,31 +769,31 @@ $("#modal-btn, #results-btn, #full-sum-btn").click(function(e) {
 
   }
 
-  	itm = document.getElementById("results-list-cont");
-	cln = itm.cloneNode(true);
-	document.getElementById("modal-body").appendChild(cln);
+  itm = document.getElementById("results-list-cont");
+  cln = itm.cloneNode(true);
+  document.getElementById("modal-body").appendChild(cln);
 
 
 
   switch (document.querySelector('input[name="radio-q1"]:checked').id) {
   	case "radio1-q1":
-  	$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-1.jpg" alt="" height="90px">`);
+  	$("#sum-1-img").html(`<img src="media/summary/left-side/sum-1/sum-1-1.jpg" alt="" height="180px">`);
   	break;
 
   	case "radio2-q1":
-  	$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-2.jpg" alt="" height="90px">`);
+  	$("#sum-1-img").html(`<img src="media/summary/left-side/sum-1/sum-1-2.jpg" alt="" height="180px">`);
   	break;
 
   	case "radio3-q1":
-  	$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-3.jpg" alt="" height="90px">`);
+  	$("#sum-1-img").html(`<img src="media/summary/left-side/sum-1/sum-1-3.jpg" alt="" height="180px">`);
   	break;
 
   	case "radio4-q1":
-  	$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-4.jpg" alt="" height="90px">`);
+  	$("#sum-1-img").html(`<img src="media/summary/left-side/sum-1/sum-1-4.jpg" alt="" height="180px">`);
   	break;
 
   	case "radio5-q1":
-  	$("#sum-1-img").html(`<img src="./media/summary/sum-1/sum-1-5.jpg" alt="" height="90px">`);
+  	$("#sum-1-img").html(`<img src="media/summary/left-side/sum-1/sum-1-5.jpg" alt="" height="180px">`);
   	break;
 
   	default:
@@ -798,15 +802,15 @@ $("#modal-btn, #results-btn, #full-sum-btn").click(function(e) {
 
   switch (document.querySelector('input[name="radio-q2"]:checked').id) {
   	case "radio1-q2":
-  	$("#sum-2-img").html(`<img src="./media/summary/sum-2/sum-2-1.jpg" alt="" height="90px">`);
+  	$("#sum-2-img").html(`<img src="media/summary/left-side/sum-2/sum-2-1.jpg" alt="" height="90px">`);
   	break;
 
   	case "radio2-q2":
-  	$("#sum-2-img").html(`<img src="./media/summary/sum-2/sum-2-2.jpg" alt="" height="90px">`);
+  	$("#sum-2-img").html(`<img src="media/summary/left-side/sum-2/sum-2-2.jpg" alt="" height="90px">`);
   	break;
 
   	case "radio3-q2":
-  	$("#sum-2-img").html(`<img src="./media/summary/sum-2/sum-2-3.jpg" alt="" height="90px">`);
+  	$("#sum-2-img").html(`<img src="media/summary/left-side/sum-2/sum-2-3.jpg" alt="" height="90px">`);
   	break;
 
   	default:
@@ -815,19 +819,19 @@ $("#modal-btn, #results-btn, #full-sum-btn").click(function(e) {
 
   switch (document.querySelector('input[name="radio-q3"]:checked').id) {
   	case "radio1-q3":
-  	$("#sum-3-img").html(`<img src="./media/summary/sum-3/sum-3-1.jpg" alt="" height="130px">`);
+  	$("#sum-3-img").html(`<img src="media/summary/left-side/sum-3/sum-3-1.jpg" alt="" height="130px">`);
   	break;
 
   	case "radio2-q3":
-  	$("#sum-3-img").html(`<img src="./media/summary/sum-3/sum-3-2.jpg" alt="" height="130px">`);
+  	$("#sum-3-img").html(`<img src="media/summary/left-side/sum-3/sum-3-2.jpg" alt="" height="130px">`);
   	break;
 
   	case "radio3-q3":
-  	$("#sum-3-img").html(`<img src="./media/summary/sum-3/sum-3-3.jpg" alt="" height="130px">`);
+  	$("#sum-3-img").html(`<img src="media/summary/left-side/sum-3/sum-3-3.jpg" alt="" height="130px">`);
   	break;
 
   	case "radio4-q3":
-  	$("#sum-3-img").html(`<img src="./media/summary/sum-3/sum-3-4.jpg" alt="" height="130px">`);
+  	$("#sum-3-img").html(`<img src="media/summary/left-side/sum-3/sum-3-4.jpg" alt="" height="130px">`);
   	break;
 
   	default:
@@ -836,11 +840,11 @@ $("#modal-btn, #results-btn, #full-sum-btn").click(function(e) {
 
   switch (document.querySelector('input[name="radio-q4"]:checked').id) {
   	case "radio1-q4":
-  	$("#sum-4-img").html(`<img src="./media/summary/sum-4/sum-4-1.jpg" alt="" height="90px">`);
+  	$("#sum-4-img").html(`<img src="media/summary/sum-4/sum-4-1.jpg" alt="" height="90px">`);
   	break;
 
   	case "radio2-q4":
-  	$("#sum-4-img").html(`<img src="./media/summary/sum-4/sum-4-2.jpg" alt="" height="90px">`);
+  	$("#sum-4-img").html(`<img src="media/summary/sum-4/sum-4-2.jpg" alt="" height="90px">`);
   	break;
 
   	default:
@@ -883,19 +887,19 @@ $("#modal-btn, #results-btn, #full-sum-btn").click(function(e) {
 
   switch (document.querySelector('input[name="radio-q6"]:checked').id) {
   	case "radio1-q6":
-  	$("#sum-6-img").html(`<img src="./media/summary/sum-6/sum-6-1.jpg" alt="" height="90px">`);
+  	$("#sum-6-img").html(`<img src="media/summary/sum-6/sum-6-1.jpg" alt="" height="90px">`);
   	break;
 
   	case "radio2-q6":
-  	$("#sum-6-img").html(`<img src="./media/summary/sum-6/sum-6-2.jpg" alt="" height="90px">`);
+  	$("#sum-6-img").html(`<img src="media/summary/sum-6/sum-6-2.jpg" alt="" height="90px">`);
   	break;
 
   	case "radio3-q6":
-  	$("#sum-6-img").html(`<img src="./media/summary/sum-6/sum-6-3.jpg" alt="" height="90px">`);
+  	$("#sum-6-img").html(`<img src="media/summary/sum-6/sum-6-3.jpg" alt="" height="90px">`);
   	break;
 
   	case "radio4-q6":
-  	$("#sum-6-img").html(`<img src="./media/summary/sum-6/sum-6-4.jpg" alt="" height="90px">`);
+  	$("#sum-6-img").html(`<img src="media/summary/sum-6/sum-6-4.jpg" alt="" height="90px">`);
   	break;
 
   	default:
@@ -904,19 +908,19 @@ $("#modal-btn, #results-btn, #full-sum-btn").click(function(e) {
 
   switch (document.querySelector('input[name="radio-q7"]:checked').id) {
   	case "radio1-q7":
-  	$("#sum-7-img").html(`<img src="./media/summary/sum-7/sum-7-1.jpg" alt="" height="90px">`);
+  	$("#sum-7-img").html(`<img src="media/summary/sum-7/sum-7-1.jpg" alt="" height="90px">`);
   	break;
 
   	case "radio2-q7":
-  	$("#sum-7-img").html(`<img src="./media/summary/sum-7/sum-7-2.jpg" alt="" height="90px">`);
+  	$("#sum-7-img").html(`<img src="media/summary/sum-7/sum-7-2.jpg" alt="" height="90px">`);
   	break;
 
   	case "radio3-q7":
-  	$("#sum-7-img").html(`<img src="./media/summary/sum-7/sum-7-3.jpg" alt="" height="90px">`);
+  	$("#sum-7-img").html(`<img src="media/summary/sum-7/sum-7-3.jpg" alt="" height="90px">`);
   	break;
 
   	case "radio4-q7":
-  	$("#sum-7-img").html(`<img src="./media/summary/sum-7/sum-7-4.jpg" alt="" height="90px">`);
+  	$("#sum-7-img").html(`<img src="media/summary/sum-7/sum-7-4.jpg" alt="" height="90px">`);
   	break;
 
   	default:
@@ -926,12 +930,12 @@ $("#modal-btn, #results-btn, #full-sum-btn").click(function(e) {
   switch (document.querySelector('input[name="radio-q8"]:checked').id) {
   	case "radio1-q8":
   	$("#sum-8-img").html(`Legs and feet are well supported and in an evenly balanced posture.<br>
-  		<img src="./media/summary/sum-8/sum-8-1.jpg" alt="" height="90px">`);
+  		<img src="media/summary/sum-8/sum-8-1.jpg" alt="" height="90px">`);
   	break;
 
   	case "radio2-q8":
   	$("#sum-8-img").html(`Legs and feet are NOT evenly balanced and supported.<br>
-  		<img src="./media/summary/sum-8/sum-8-2.jpg" alt="" height="90px">`);
+  		<img src="media/summary/sum-8/sum-8-2.jpg" alt="" height="90px">`);
   	break;
 
   	default:
