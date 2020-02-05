@@ -313,8 +313,6 @@ function getFormInput() {
 	inputCompany = document.getElementById('form-company').value;
 	inputDate = document.getElementById('form-date').value;
 
-
-	console.log(inputEmail, inputSubject, inputScorer);
 }
 
 /*///////////////////////////////////////////////////////////////////////
