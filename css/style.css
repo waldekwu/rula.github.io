@@ -97,7 +97,6 @@ p {
 .bounce {
     animation-iteration-count: 1;
     animation-duration: 3s;
-    animation-delay: 4s;
 }
 
 .footer {
