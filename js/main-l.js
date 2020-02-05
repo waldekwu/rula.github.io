@@ -202,7 +202,6 @@ $("#prev-btn").on('click', (e) => {
 })
 
 function selectAnswer() {
-	changeTitle();
 	nextBtn.classList.add("hide");
 
 	if (currentQuestionIndex === 1) {
@@ -227,7 +226,6 @@ function selectAnswer() {
 
 			currentQuestionIndex = parseInt($(this).text());
 			console.log(currentQuestionIndex);
-			changeTitle();
 			if (currentQuestionIndex < 10) {
 
 				nextBtn.classList.remove("hide");
@@ -305,17 +303,6 @@ function toggleResultsMobile() {
 	}
 }
 
-function changeTitle() {
-
-	if (currentQuestionIndex > 0 && currentQuestionIndex < 6){
-		$('#title').text('Part A. Arm & Wrist Analysis (Left Side)');
-
-	} else if (currentQuestionIndex > 5 && currentQuestionIndex < 10) {
-		$('#title').text('Part B. Neck, Trunk & Leg Analysis');
-	} else {
-		$('#title').text('Rapid Upper Limb Assessment (Left Side)');
-	}
-}
 
 function getFormInput() {
 
@@ -523,7 +510,6 @@ function getInput() {
 		$('#nav10').on('click', function (e) {
 			e.preventDefault();
 			$(this).tab('show');
-			changeTitle();
 			currentQuestionIndex = 10;
 			console.log(currentQuestionIndex);
 			nextBtn.classList.add("hide");

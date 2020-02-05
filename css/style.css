@@ -85,6 +85,10 @@ p {
     font-size: 14px;
 }
 
+.sub-heading {
+    font-size: large;
+}
+
 .btn-success {
     margin: 10px;
     text-transform: uppercase;
