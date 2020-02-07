@@ -862,7 +862,7 @@ function rulaScore() {
         // resultsContainer.classList.add("acceptable-posture");
         // resultsImageContainer.innerHTML = "<img src='media/manikin_logo.png' class='card-img'>"
         $('#score-container, #rula-scorecard').html(
-        	`<h4 style="text-align: left;">Right side:</h4>
+        	`<h4 style="text-align: left;"><img src="./media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Right side:</h4>
         	<div class="bg-success rula-card">
         	<ul style="list-style: none; padding: 15px;">
         	<li style="color: white;">
@@ -876,7 +876,7 @@ function rulaScore() {
         // resultsContainer.classList.add("f-investigation");
         // resultsImageContainer.innerHTML = "<img src='media/manikin_logo.png' class='card-img'>"
         $('#score-container, #rula-scorecard').html(
-        	`<h4 style="text-align: left;">Right side:</h4>
+        	`<h4 style="text-align: left;"><img src="./media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Right side:</h4>
         	<div class="bg-warning rula-card">
         	<ul style="list-style: none; padding: 15px;">
         	<li style="color: white;">
@@ -891,7 +891,7 @@ function rulaScore() {
         // resultsContainer.classList.add("change-soon");
         // resultsImageContainer.innerHTML = "<img src='media/manikin_logo.png' class='card-img'>"
         $('#score-container, #rula-scorecard').html(
-        	`<h4 style="text-align: left;">Right side:</h4>
+        	`<h4 style="text-align: left;"><img src="./media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Right side:</h4>
         	<div class="bg-warning rula-card">
         	<ul style="list-style: none; padding: 15px;">
         	<li style="color: white;">
@@ -906,7 +906,7 @@ function rulaScore() {
         // resultsContainer.classList.add("investigate-change");
         // resultsImageContainer.innerHTML = "<img src='media/manikin_logo.png' class='card-img'>"
         $('#score-container, #rula-scorecard').html( 
-        	`<h4 style="text-align: left;">Right side:</h4>
+        	`<h4 style="text-align: left;"><img src="./media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Right side:</h4>
         	<div class="bg-danger rula-card">
         	<ul style="list-style: none; padding: 15px;">
         	<li style="color: white;">
@@ -932,7 +932,7 @@ if (finalScoreL < 3) {
         // resultsContainer.classList.add("acceptable-posture");
         // resultsImageContainer.innerHTML = "<img src='media/manikin_logo.png' class='card-img'>"
         $('#score-container-l, #rula-scorecard-l').html(
-        	`<h4 style="text-align: left;"><img src="./media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Left side:</h4>
+        	`<h4 style="text-align: left;">Left side:</h4>
         	<div class="bg-success rula-card">
         	<ul style="list-style: none; padding: 15px;">
         	<li style="color: white;">
@@ -946,7 +946,7 @@ if (finalScoreL < 3) {
         // resultsContainer.classList.add("f-investigation");
         // resultsImageContainer.innerHTML = "<img src='media/manikin_logo.png' class='card-img'>"
         $('#score-container-l, #rula-scorecard-l').html(
-        	`<h4 style="text-align: left;"><img src="./media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Left side:</h4>
+        	`<h4 style="text-align: left;">Left side:</h4>
         	<div class="bg-warning rula-card">
         	<ul style="list-style: none; padding: 15px;">
         	<li style="color: white;">
@@ -961,7 +961,7 @@ if (finalScoreL < 3) {
         // resultsContainer.classList.add("change-soon");
         // resultsImageContainer.innerHTML = "<img src='media/manikin_logo.png' class='card-img'>"
         $('#score-container-l, #rula-scorecard-l').html(
-        	`<h4 style="text-align: left;"><img src="./media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Left side:</h4>
+        	`<h4 style="text-align: left;">Left side:</h4>
         	<div class="bg-warning rula-card">
         	<ul style="list-style: none; padding: 15px;">
         	<li style="color: white;">
@@ -976,7 +976,7 @@ if (finalScoreL < 3) {
         // resultsContainer.classList.add("investigate-change");
         // resultsImageContainer.innerHTML = "<img src='media/manikin_logo.png' class='card-img'>"
         $('#score-container-l, #rula-scorecard-l').html( 
-        	`<h4 style="text-align: left;"><img src="./media/icons/target.png" alt="Final RULA Score Icon" style="float: left; margin-right: 5px;">Left side:</h4>
+        	`<h4 style="text-align: left;">Left side:</h4>
         	<div class="bg-danger rula-card">
         	<ul style="list-style: none; padding: 15px;">
         	<li style="color: white;">
