@@ -942,14 +942,6 @@ function rulaScore() {
 
 
 
-
-
-
-
-
-
-
-
 if (finalScoreL < 3) {
         // resultsContainer.classList.add("acceptable-posture");
         // resultsImageContainer.innerHTML = "<img src='media/manikin_logo.png' class='card-img'>"
@@ -1009,15 +1001,6 @@ if (finalScoreL < 3) {
         	</ul>
         	</div>`);
     }
-
-
-
-
-
-
-
-
-
 
 
 }
@@ -1190,19 +1173,6 @@ $("#modal-btn, #results-btn, #full-sum-btn").click(function(e) {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   switch (document.querySelector('input[name="radio-q6"]:checked').id) {
   	case "radio1-q6":
   	$("#sum-6-img").html(`<img src="./media/summary/left-side/sum-1/sum-1-1.jpg" alt="" height="180px">`);
@@ -1278,32 +1248,6 @@ $("#modal-btn, #results-btn, #full-sum-btn").click(function(e) {
   	default:
   	console.log("Error");
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
