@@ -1,5 +1,5 @@
 
-#sum-9-cont, #sum-13-cont {
+#sum-5-cont, #sum-10-cont, #sum-14-cont {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	grid-template-rows: 40% 60%;

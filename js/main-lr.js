@@ -49,6 +49,11 @@
  let forceLoadValue = 0;
  let muscleUseValue = 0;
 
+
+ let forceLoadValueR = 0;
+ let muscleUseValueR = 0;
+
+
  let neckValue = 0;
  let neckAdjValue = 0;
 
@@ -70,7 +75,7 @@
 
 
 //Part A total
-let wristArmScore = 0;
+let wristArmScoreR = 0;
 //Part B total
 let neckTrunkLegsScore = 0;
 
@@ -185,7 +190,7 @@ for (var i = 0; i < $('.radio').length; i++) {
 $('.next-btn').on('click', (e) => {
 	e.preventDefault();
 
-	if (currentQuestionIndex < 14) {
+	if (currentQuestionIndex < 15) {
 		currentQuestionIndex++;
 	}
 
@@ -251,11 +256,11 @@ function selectAnswer() {
 			currentQuestionIndex = parseInt($(this).text());
 			console.log(currentQuestionIndex);
 
-			if (currentQuestionIndex < 14) {
+			if (currentQuestionIndex < 15) {
 
 				nextBtn.classList.remove("hide");
 
-			} else if (currentQuestionIndex === 14) {
+			} else if (currentQuestionIndex === 15) {
 
 				nextBtn.classList.add("hide");
 			}
@@ -270,7 +275,7 @@ function selectAnswer() {
 
 		})
 
-		if (currentQuestionIndex === 14) {
+		if (currentQuestionIndex === 15) {
 
 			nextBtn.classList.add("hide");
 		} else {
@@ -429,28 +434,43 @@ function getInput() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		case 6:
 
-		upperArmValueL = parseInt(document.querySelector('input[name="radio-q5"]:checked').value);
+		forceLoadValueR = parseInt(document.querySelector('input[name="radio-q5"]:checked').value);
+
+		if (document.querySelector('input[name="customCheck-q5"]:checked')) {
+			muscleUseValueR = parseInt(document.querySelector('input[name="customCheck-q5"]:checked').value);
+			//summary
+			//document.getElementById("sum-customCheck-q5").classList.toggle("sum-li");
+			document.getElementById("sum-customCheck-q5").classList.toggle("sum-li");
+
+		} else {
+			muscleUseValueR = 0; 
+			document.getElementById("sum-customCheck-q5").classList.add("sum-li");
+		}
+
+		break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+		case 7:
+
+		upperArmValueL = parseInt(document.querySelector('input[name="radio-q6"]:checked').value);
 		upperArmAdjValueL = 0;
 		//checkboxes
 
-		if (document.querySelector('input[name="customCheck-q5"]:checked')) {
-			options = document.getElementsByName("customCheck-q5");
+		if (document.querySelector('input[name="customCheck-q6"]:checked')) {
+			options = document.getElementsByName("customCheck-q6");
 
 			for (var i = 0; i < options.length; i++) {
 				if (options[i].type === 'checkbox' && options[i].checked === true) {
@@ -465,10 +485,10 @@ function getInput() {
 			upperArmAdjValueL = 0; 
 		}
 
-		for (var i = 0; i < document.getElementsByName("customCheck-q5").length; i++) {
-			if (document.getElementsByName("customCheck-q5")[i].checked === false) {
+		for (var i = 0; i < document.getElementsByName("customCheck-q6").length; i++) {
+			if (document.getElementsByName("customCheck-q6")[i].checked === false) {
 					//summary
-					document.getElementById("sum-"+document.getElementsByName("customCheck-q5")[i].id).classList.add("sum-li");
+					document.getElementById("sum-"+document.getElementsByName("customCheck-q6")[i].id).classList.add("sum-li");
 					//console.log(document.getElementById("sum-"+document.getElementsByName("customCheck-q5")[i].id));
 
 				}
@@ -476,34 +496,16 @@ function getInput() {
 
 			break;
 
-			case 7:
-			lowerArmValueL = parseInt(document.querySelector('input[name="radio-q6"]:checked').value);
+			case 8:
+			lowerArmValueL = parseInt(document.querySelector('input[name="radio-q7"]:checked').value);
 
-			if (document.querySelector('input[name="customCheck-q6"]:checked')) {
-				lowerArmAdjValueL = parseInt(document.querySelector('input[name="customCheck-q6"]:checked').value);
-			//summary
-			document.getElementById("sum-customCheck-q6").classList.toggle("sum-li");
-
-		} else {
-			lowerArmAdjValueL = 0; 
-			document.getElementById("sum-customCheck-q6").classList.add("sum-li");
-		}
-
-		break;
-
-		case 8:
-
-		document.getElementById("show-results").classList.remove("bounce");
-
-		wristValueL = parseInt(document.querySelector('input[name="radio-q7"]:checked').value);
-
-		if (document.querySelector('input[name="customCheck-q7"]:checked')) {
-			wristAdjValueL = parseInt(document.querySelector('input[name="customCheck-q7"]:checked').value);
+			if (document.querySelector('input[name="customCheck-q7"]:checked')) {
+				lowerArmAdjValueL = parseInt(document.querySelector('input[name="customCheck-q7"]:checked').value);
 			//summary
 			document.getElementById("sum-customCheck-q7").classList.toggle("sum-li");
 
 		} else {
-			wristAdjValueL = 0; 
+			lowerArmAdjValueL = 0; 
 			document.getElementById("sum-customCheck-q7").classList.add("sum-li");
 		}
 
@@ -511,82 +513,100 @@ function getInput() {
 
 		case 9:
 
+		document.getElementById("show-results").classList.remove("bounce");
 
-		document.getElementById("show-results").classList.add("bounce");
+		wristValueL = parseInt(document.querySelector('input[name="radio-q8"]:checked').value);
 
-		wristTwistValueL = parseInt(document.querySelector('input[name="radio-q8"]:checked').value);
-
-
-		break;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		case 10:
-
-		forceLoadValue = parseInt(document.querySelector('input[name="radio-q9"]:checked').value);
-
-		if (document.querySelector('input[name="customCheck-q9"]:checked')) {
-			muscleUseValue = parseInt(document.querySelector('input[name="customCheck-q9"]:checked').value);
+		if (document.querySelector('input[name="customCheck-q8"]:checked')) {
+			wristAdjValueL = parseInt(document.querySelector('input[name="customCheck-q8"]:checked').value);
 			//summary
-			//document.getElementById("sum-customCheck-q5").classList.toggle("sum-li");
-			document.getElementById("sum-customCheck-q9").classList.toggle("sum-li");
+			document.getElementById("sum-customCheck-q8").classList.toggle("sum-li");
 
 		} else {
-			muscleUseValue = 0; 
-			document.getElementById("sum-customCheck-q9").classList.add("sum-li");
+			wristAdjValueL = 0; 
+			document.getElementById("sum-customCheck-q8").classList.add("sum-li");
 		}
 
 		break;
 
+		case 10:
+
+
+		document.getElementById("show-results").classList.add("bounce");
+
+		wristTwistValueL = parseInt(document.querySelector('input[name="radio-q9"]:checked').value);
+
+
+		break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		case 11:
 
-		neckValue = parseInt(document.querySelector('input[name="radio-q10"]:checked').value);
+		forceLoadValue = parseInt(document.querySelector('input[name="radio-q10"]:checked').value);
+
+		if (document.querySelector('input[name="customCheck-q10"]:checked')) {
+			muscleUseValue = parseInt(document.querySelector('input[name="customCheck-q10"]:checked').value);
+			//summary
+			//document.getElementById("sum-customCheck-q5").classList.toggle("sum-li");
+			document.getElementById("sum-customCheck-q10").classList.toggle("sum-li");
+
+		} else {
+			muscleUseValue = 0; 
+			document.getElementById("sum-customCheck-q10").classList.add("sum-li");
+		}
+
+		break;
+
+		case 12:
+
+		neckValue = parseInt(document.querySelector('input[name="radio-q11"]:checked').value);
 
 		//checkboxes
-		if (document.querySelector('input[name="customCheck-q10"]:checked')) {
+		if (document.querySelector('input[name="customCheck-q11"]:checked')) {
 			neckAdjValue = 0;
-			let options = document.getElementsByName("customCheck-q10");
+			let options = document.getElementsByName("customCheck-q11");
 
 			for (var i = 0; i < options.length; i++) {
 				if (options[i].type === 'checkbox' && options[i].checked === true) {
@@ -600,10 +620,10 @@ function getInput() {
 			neckAdjValue = 0; 
 		}
 
-		for (var i = 0; i < document.getElementsByName("customCheck-q10").length; i++) {
-			if (document.getElementsByName("customCheck-q10")[i].checked === false) {
+		for (var i = 0; i < document.getElementsByName("customCheck-q11").length; i++) {
+			if (document.getElementsByName("customCheck-q11")[i].checked === false) {
 					//summary
-					document.getElementById("sum-"+document.getElementsByName("customCheck-q10")[i].id).classList.add("sum-li");
+					document.getElementById("sum-"+document.getElementsByName("customCheck-q11")[i].id).classList.add("sum-li");
 					//console.log(document.getElementById("sum-"+document.getElementsByName("customCheck-q10")[i].id));
 
 				}
@@ -611,15 +631,15 @@ function getInput() {
 
 			break;
 
-			case 12:
+			case 13:
 
-			trunkValue = parseInt(document.querySelector('input[name="radio-q11"]:checked').value);
+			trunkValue = parseInt(document.querySelector('input[name="radio-q12"]:checked').value);
 
 
 		//checkboxes
-		if (document.querySelector('input[name="customCheck-q11"]:checked')) {
+		if (document.querySelector('input[name="customCheck-q12"]:checked')) {
 			trunkAdjValue = 0;
-			let options = document.getElementsByName("customCheck-q11");
+			let options = document.getElementsByName("customCheck-q12");
 
 			for (var i = 0; i < options.length; i++) {
 				if (options[i].type === 'checkbox' && options[i].checked === true) {
@@ -633,10 +653,10 @@ function getInput() {
 			trunkAdjValue = 0; 
 		}
 
-		for (var i = 0; i < document.getElementsByName("customCheck-q11").length; i++) {
-			if (document.getElementsByName("customCheck-q11")[i].checked === false) {
+		for (var i = 0; i < document.getElementsByName("customCheck-q12").length; i++) {
+			if (document.getElementsByName("customCheck-q12")[i].checked === false) {
 				//summary
-				document.getElementById("sum-"+document.getElementsByName("customCheck-q11")[i].id).classList.add("sum-li");
+				document.getElementById("sum-"+document.getElementsByName("customCheck-q12")[i].id).classList.add("sum-li");
 				//console.log(document.getElementById("sum-"+document.getElementsByName("customCheck-q11")[i].id));
 
 			}
@@ -644,36 +664,36 @@ function getInput() {
 
 		break;
 
-		case 13:
+		case 14:
 
-		legsValue = parseInt(document.querySelector('input[name="radio-q12"]:checked').value);
+		legsValue = parseInt(document.querySelector('input[name="radio-q13"]:checked').value);
 
 		break;
 
-		case 14:
+		case 15:
 
-		document.getElementById("nav15").classList.remove("hide");
+		document.getElementById("nav16").classList.remove("hide");
 
-		forceLoadB = parseInt(document.querySelector('input[name="radio-q13"]:checked').value);
+		forceLoadB = parseInt(document.querySelector('input[name="radio-q14"]:checked').value);
 
-		if (document.querySelector('input[name="customCheck-q13"]:checked')) {
-			muscleUseB = parseInt(document.querySelector('input[name="customCheck-q13"]:checked').value);
+		if (document.querySelector('input[name="customCheck-q14"]:checked')) {
+			muscleUseB = parseInt(document.querySelector('input[name="customCheck-q14"]:checked').value);
 			//summary
-			document.getElementById("sum-customCheck-q13").classList.remove("sum-li");
+			document.getElementById("sum-customCheck-q14").classList.remove("sum-li");
 		} else {
 			muscleUseB = 0; 
-			document.getElementById("sum-customCheck-q13").classList.add("sum-li");
+			document.getElementById("sum-customCheck-q14").classList.add("sum-li");
 		}
 
-		document.getElementById('nav14').style.color = "#2aa747";
-		document.getElementById('nav14').style.cursor = "pointer";
-		document.getElementById('nav14').classList.add("animated", "flipInY", "font-weight-bold");
+		document.getElementById('nav15').style.color = "#2aa747";
+		document.getElementById('nav15').style.cursor = "pointer";
+		document.getElementById('nav15').classList.add("animated", "flipInY", "font-weight-bold");
 
-		$('#nav14').on('click', function (e) {
+		$('#nav15').on('click', function (e) {
 			e.preventDefault();
 			$(this).tab('show');
 
-			currentQuestionIndex = 14;
+			currentQuestionIndex = 15;
 			console.log(currentQuestionIndex);
 			nextBtn.classList.add("hide");
 			prevBtn.classList.remove("hide");
@@ -681,19 +701,19 @@ function getInput() {
 
 		break;
 
-		case 15:
+		case 16:
 
 		getFormInput();
 
-		$('#nav15').on('click', function (e) {
+		$('#nav16').on('click', function (e) {
 			e.preventDefault();
 			$(this).tab('show');
 			nextBtn.classList.add("hide");
 			showResults();
 		});
 
-		document.getElementById('nav15').style.cursor = "pointer";
-		document.getElementById('nav15').style.color = "black";
+		document.getElementById('nav16').style.cursor = "pointer";
+		document.getElementById('nav16').style.color = "black";
 
 		prevBtn.classList.add("hide");
 
@@ -775,12 +795,14 @@ function setOutput() {
 	$("#wrist-twist").html(parseInt(wristTwistValue));
 
 
+	$("#muscle-a-r").html(parseInt(forceLoadValueR + muscleUseValueR));
+
+
 	//left
 	$("#upper-arm-l").html(parseInt(upperArmValueL + upperArmAdjValueL));
 	$("#lower-arm-l").html(parseInt(lowerArmValueL + lowerArmAdjValueL));
 	$("#wrist-l").html(parseInt(wristValueL + wristAdjValueL));
 	$("#wrist-twist-l").html(parseInt(wristTwistValueL));
-
 
 
 
@@ -798,10 +820,10 @@ function setOutput() {
 		$("part-a-score").html('0');
 
 	} else {
-		wristArmScore = AScore + parseInt(forceLoadValue + muscleUseValue);
+		wristArmScoreR = AScore + parseInt(forceLoadValueR + muscleUseValueR);
 
 		$("#posture-a").html(parseInt(AScore));
-		$("#part-a-score").html(wristArmScore);
+		$("#part-a-score").html(wristArmScoreR);
 	}
 
 	//left
@@ -825,7 +847,7 @@ function setOutput() {
 		$("#posture-b").html(parseInt(BScore));
 		$("#part-b-score").html(neckTrunkLegsScore);
 
-		let tableCScore = wristArmScore + "x" + neckTrunkLegsScore;
+		let tableCScore = wristArmScoreR + "x" + neckTrunkLegsScore;
 
 		finalScore = parseInt(tables[2][tableCScore]);
 
@@ -844,7 +866,7 @@ function showResults() {
 	topFunction();
 	rulaScore();
 
-	currentQuestionIndex = 15;
+	currentQuestionIndex = 16;
 
 	document.getElementById("results-card").classList.add("hide");
 	document.getElementById("show-results").classList.add("hide");
@@ -1012,7 +1034,7 @@ $("#html2canvas").click(function(e) {
 
 	let element = document.getElementById('modal-body');
 	let opt = {
-  margin:       [0.53, 0.3, 0.2, 0.3], //anticlockwise
+  margin:       [0.2, 0.3, 0.2, 0.3], //anticlockwise
   filename:     'rula-scoresheet-left-right.pdf',
   image:        { type: 'jpeg', quality: 1 },
   html2canvas:  {  },
@@ -1134,58 +1156,72 @@ $("#modal-btn, #results-btn, #full-sum-btn").click(function(e) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   switch (document.querySelector('input[name="radio-q5"]:checked').id) {
   	case "radio1-q5":
-  	$("#sum-5-img").html(`<img src="./media/summary/left-side/sum-1/sum-1-1.jpg" alt="" height="180px">`);
+  	document.getElementById("sum-5-q1").classList.remove(`sum-li`);
+  	document.getElementById("sum-5-q2").classList.add(`sum-li`);
+  	document.getElementById("sum-5-q3").classList.add(`sum-li`);
+  	document.getElementById("sum-5-q4").classList.add(`sum-li`);
   	break;
 
   	case "radio2-q5":
-  	$("#sum-5-img").html(`<img src="./media/summary/left-side/sum-1/sum-1-2.jpg" alt="" height="180px">`);
+  	document.getElementById("sum-5-q2").classList.remove(`sum-li`);
+  	document.getElementById("sum-5-q1").classList.add(`sum-li`);
+  	document.getElementById("sum-5-q3").classList.add(`sum-li`);
+  	document.getElementById("sum-5-q4").classList.add(`sum-li`);
   	break;
 
   	case "radio3-q5":
-  	$("#sum-5-img").html(`<img src="./media/summary/left-side/sum-1/sum-1-3.jpg" alt="" height="180px">`);
+  	document.getElementById("sum-5-q3").classList.remove(`sum-li`);
+  	document.getElementById("sum-5-q1").classList.add(`sum-li`);
+  	document.getElementById("sum-5-q2").classList.add(`sum-li`);
+  	document.getElementById("sum-5-q4").classList.add(`sum-li`);
   	break;
 
   	case "radio4-q5":
-  	$("#sum-5-img").html(`<img src="./media/summary/left-side/sum-1/sum-1-4.jpg" alt="" height="180px">`);
-  	break;
-
-  	case "radio5-q5":
-  	$("#sum-5-img").html(`<img src="./media/summary/left-side/sum-1/sum-1-5.jpg" alt="" height="180px">`);
+  	document.getElementById("sum-5-q4").classList.remove(`sum-li`);
+  	document.getElementById("sum-5-q1").classList.add(`sum-li`);
+  	document.getElementById("sum-5-q2").classList.add(`sum-li`);
+  	document.getElementById("sum-5-q3").classList.add(`sum-li`);
   	break;
 
   	default:
   	console.log("Error");
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   switch (document.querySelector('input[name="radio-q6"]:checked').id) {
   	case "radio1-q6":
-  	$("#sum-6-img").html(`<img src="./media/summary/left-side/sum-2/sum-2-1.jpg" alt="" height="90px">`);
+  	$("#sum-6-img").html(`<img src="./media/summary/left-side/sum-1/sum-1-1.jpg" alt="" height="180px">`);
   	break;
 
   	case "radio2-q6":
-  	$("#sum-6-img").html(`<img src="./media/summary/left-side/sum-2/sum-2-2.jpg" alt="" height="90px">`);
+  	$("#sum-6-img").html(`<img src="./media/summary/left-side/sum-1/sum-1-2.jpg" alt="" height="180px">`);
   	break;
 
   	case "radio3-q6":
-  	$("#sum-6-img").html(`<img src="./media/summary/left-side/sum-2/sum-2-3.jpg" alt="" height="90px">`);
+  	$("#sum-6-img").html(`<img src="./media/summary/left-side/sum-1/sum-1-3.jpg" alt="" height="180px">`);
+  	break;
+
+  	case "radio4-q6":
+  	$("#sum-6-img").html(`<img src="./media/summary/left-side/sum-1/sum-1-4.jpg" alt="" height="180px">`);
+  	break;
+
+  	case "radio5-q6":
+  	$("#sum-6-img").html(`<img src="./media/summary/left-side/sum-1/sum-1-5.jpg" alt="" height="180px">`);
   	break;
 
   	default:
@@ -1194,19 +1230,15 @@ $("#modal-btn, #results-btn, #full-sum-btn").click(function(e) {
 
   switch (document.querySelector('input[name="radio-q7"]:checked').id) {
   	case "radio1-q7":
-  	$("#sum-7-img").html(`<img src="./media/summary/left-side/sum-3/sum-3-1.jpg" alt="" height="130px">`);
+  	$("#sum-7-img").html(`<img src="./media/summary/left-side/sum-2/sum-2-1.jpg" alt="" height="90px">`);
   	break;
 
   	case "radio2-q7":
-  	$("#sum-7-img").html(`<img src="./media/summary/left-side/sum-3/sum-3-2.jpg" alt="" height="130px">`);
+  	$("#sum-7-img").html(`<img src="./media/summary/left-side/sum-2/sum-2-2.jpg" alt="" height="90px">`);
   	break;
 
   	case "radio3-q7":
-  	$("#sum-7-img").html(`<img src="./media/summary/left-side/sum-3/sum-3-3.jpg" alt="" height="130px">`);
-  	break;
-
-  	case "radio4-q7":
-  	$("#sum-7-img").html(`<img src="./media/summary/left-side/sum-3/sum-3-4.jpg" alt="" height="130px">`);
+  	$("#sum-7-img").html(`<img src="./media/summary/left-side/sum-2/sum-2-3.jpg" alt="" height="90px">`);
   	break;
 
   	default:
@@ -1215,94 +1247,94 @@ $("#modal-btn, #results-btn, #full-sum-btn").click(function(e) {
 
   switch (document.querySelector('input[name="radio-q8"]:checked').id) {
   	case "radio1-q8":
-  	$("#sum-8-img").html(`<img src="./media/summary/left-side/sum-4/sum-4-1.jpg" alt="" height="90px">`);
+  	$("#sum-8-img").html(`<img src="./media/summary/left-side/sum-3/sum-3-1.jpg" alt="" height="130px">`);
   	break;
 
   	case "radio2-q8":
-  	$("#sum-8-img").html(`<img src="./media/summary/left-side/sum-4/sum-4-2.jpg" alt="" height="90px">`);
+  	$("#sum-8-img").html(`<img src="./media/summary/left-side/sum-3/sum-3-2.jpg" alt="" height="130px">`);
+  	break;
+
+  	case "radio3-q8":
+  	$("#sum-8-img").html(`<img src="./media/summary/left-side/sum-3/sum-3-3.jpg" alt="" height="130px">`);
+  	break;
+
+  	case "radio4-q8":
+  	$("#sum-8-img").html(`<img src="./media/summary/left-side/sum-3/sum-3-4.jpg" alt="" height="130px">`);
   	break;
 
   	default:
   	console.log("Error");
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   switch (document.querySelector('input[name="radio-q9"]:checked').id) {
   	case "radio1-q9":
-  	document.getElementById("sum-9-q1").classList.remove(`sum-li`);
-  	document.getElementById("sum-9-q2").classList.add(`sum-li`);
-  	document.getElementById("sum-9-q3").classList.add(`sum-li`);
-  	document.getElementById("sum-9-q4").classList.add(`sum-li`);
+  	$("#sum-9-img").html(`<img src="./media/summary/left-side/sum-4/sum-4-1.jpg" alt="" height="90px">`);
   	break;
 
   	case "radio2-q9":
-  	document.getElementById("sum-9-q2").classList.remove(`sum-li`);
-  	document.getElementById("sum-9-q1").classList.add(`sum-li`);
-  	document.getElementById("sum-9-q3").classList.add(`sum-li`);
-  	document.getElementById("sum-9-q4").classList.add(`sum-li`);
-  	break;
-
-  	case "radio3-q9":
-  	document.getElementById("sum-9-q3").classList.remove(`sum-li`);
-  	document.getElementById("sum-9-q1").classList.add(`sum-li`);
-  	document.getElementById("sum-9-q2").classList.add(`sum-li`);
-  	document.getElementById("sum-9-q4").classList.add(`sum-li`);
-  	break;
-
-  	case "radio4-q9":
-  	document.getElementById("sum-9-q4").classList.remove(`sum-li`);
-  	document.getElementById("sum-9-q1").classList.add(`sum-li`);
-  	document.getElementById("sum-9-q2").classList.add(`sum-li`);
-  	document.getElementById("sum-9-q3").classList.add(`sum-li`);
+  	$("#sum-9-img").html(`<img src="./media/summary/left-side/sum-4/sum-4-2.jpg" alt="" height="90px">`);
   	break;
 
   	default:
   	console.log("Error");
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   switch (document.querySelector('input[name="radio-q10"]:checked').id) {
   	case "radio1-q10":
-  	$("#sum-10-img").html(`<img src="./media/summary/sum-6/sum-6-1.jpg" alt="" height="90px">`);
+  	document.getElementById("sum-10-q1").classList.remove(`sum-li`);
+  	document.getElementById("sum-10-q2").classList.add(`sum-li`);
+  	document.getElementById("sum-10-q3").classList.add(`sum-li`);
+  	document.getElementById("sum-10-q4").classList.add(`sum-li`);
   	break;
 
   	case "radio2-q10":
-  	$("#sum-10-img").html(`<img src="./media/summary/sum-6/sum-6-2.jpg" alt="" height="90px">`);
+  	document.getElementById("sum-10-q2").classList.remove(`sum-li`);
+  	document.getElementById("sum-10-q1").classList.add(`sum-li`);
+  	document.getElementById("sum-10-q3").classList.add(`sum-li`);
+  	document.getElementById("sum-10-q4").classList.add(`sum-li`);
   	break;
 
   	case "radio3-q10":
-  	$("#sum-10-img").html(`<img src="./media/summary/sum-6/sum-6-3.jpg" alt="" height="90px">`);
+  	document.getElementById("sum-10-q3").classList.remove(`sum-li`);
+  	document.getElementById("sum-10-q1").classList.add(`sum-li`);
+  	document.getElementById("sum-10-q2").classList.add(`sum-li`);
+  	document.getElementById("sum-10-q4").classList.add(`sum-li`);
   	break;
 
   	case "radio4-q10":
-  	$("#sum-10-img").html(`<img src="./media/summary/sum-6/sum-6-4.jpg" alt="" height="90px">`);
+  	document.getElementById("sum-10-q4").classList.remove(`sum-li`);
+  	document.getElementById("sum-10-q1").classList.add(`sum-li`);
+  	document.getElementById("sum-10-q2").classList.add(`sum-li`);
+  	document.getElementById("sum-10-q3").classList.add(`sum-li`);
   	break;
 
   	default:
@@ -1311,19 +1343,19 @@ $("#modal-btn, #results-btn, #full-sum-btn").click(function(e) {
 
   switch (document.querySelector('input[name="radio-q11"]:checked').id) {
   	case "radio1-q11":
-  	$("#sum-11-img").html(`<img src="./media/summary/sum-7/sum-7-1.jpg" alt="" height="90px">`);
+  	$("#sum-11-img").html(`<img src="./media/summary/sum-6/sum-6-1.jpg" alt="" height="90px">`);
   	break;
 
   	case "radio2-q11":
-  	$("#sum-11-img").html(`<img src="./media/summary/sum-7/sum-7-2.jpg" alt="" height="90px">`);
+  	$("#sum-11-img").html(`<img src="./media/summary/sum-6/sum-6-2.jpg" alt="" height="90px">`);
   	break;
 
   	case "radio3-q11":
-  	$("#sum-11-img").html(`<img src="./media/summary/sum-7/sum-7-3.jpg" alt="" height="90px">`);
+  	$("#sum-11-img").html(`<img src="./media/summary/sum-6/sum-6-3.jpg" alt="" height="90px">`);
   	break;
 
   	case "radio4-q11":
-  	$("#sum-11-img").html(`<img src="./media/summary/sum-7/sum-7-4.jpg" alt="" height="90px">`);
+  	$("#sum-11-img").html(`<img src="./media/summary/sum-6/sum-6-4.jpg" alt="" height="90px">`);
   	break;
 
   	default:
@@ -1332,13 +1364,19 @@ $("#modal-btn, #results-btn, #full-sum-btn").click(function(e) {
 
   switch (document.querySelector('input[name="radio-q12"]:checked').id) {
   	case "radio1-q12":
-  	$("#sum-12-img").html(`Legs and feet are well supported and in an evenly balanced posture.<br>
-  		<img src="./media/summary/sum-8/sum-8-1.jpg" alt="" height="90px">`);
+  	$("#sum-12-img").html(`<img src="./media/summary/sum-7/sum-7-1.jpg" alt="" height="90px">`);
   	break;
 
   	case "radio2-q12":
-  	$("#sum-12-img").html(`Legs and feet are NOT evenly balanced and supported.<br>
-  		<img src="./media/summary/sum-8/sum-8-2.jpg" alt="" height="90px">`);
+  	$("#sum-12-img").html(`<img src="./media/summary/sum-7/sum-7-2.jpg" alt="" height="90px">`);
+  	break;
+
+  	case "radio3-q12":
+  	$("#sum-12-img").html(`<img src="./media/summary/sum-7/sum-7-3.jpg" alt="" height="90px">`);
+  	break;
+
+  	case "radio4-q12":
+  	$("#sum-12-img").html(`<img src="./media/summary/sum-7/sum-7-4.jpg" alt="" height="90px">`);
   	break;
 
   	default:
@@ -1347,31 +1385,46 @@ $("#modal-btn, #results-btn, #full-sum-btn").click(function(e) {
 
   switch (document.querySelector('input[name="radio-q13"]:checked').id) {
   	case "radio1-q13":
-  	document.getElementById("sum-13-q1").classList.remove(`sum-li`);
-  	document.getElementById("sum-13-q2").classList.add(`sum-li`);
-  	document.getElementById("sum-13-q3").classList.add(`sum-li`);
-  	document.getElementById("sum-13-q4").classList.add(`sum-li`);
+  	$("#sum-13-img").html(`Legs and feet are well supported and in an evenly balanced posture.<br>
+  		<img src="./media/summary/sum-8/sum-8-1.jpg" alt="" height="90px">`);
   	break;
 
   	case "radio2-q13":
-  	document.getElementById("sum-13-q2").classList.remove(`sum-li`);
-  	document.getElementById("sum-13-q1").classList.add(`sum-li`);
-  	document.getElementById("sum-13-q3").classList.add(`sum-li`);
-  	document.getElementById("sum-13-q4").classList.add(`sum-li`);
+  	$("#sum-13-img").html(`Legs and feet are NOT evenly balanced and supported.<br>
+  		<img src="./media/summary/sum-8/sum-8-2.jpg" alt="" height="90px">`);
   	break;
 
-  	case "radio3-q13":
-  	document.getElementById("sum-13-q3").classList.remove(`sum-li`);
-  	document.getElementById("sum-13-q1").classList.add(`sum-li`);
-  	document.getElementById("sum-13-q2").classList.add(`sum-li`);
-  	document.getElementById("sum-13-q4").classList.add(`sum-li`);
+  	default:
+  	console.log("Error");
+  }
+
+  switch (document.querySelector('input[name="radio-q14"]:checked').id) {
+  	case "radio1-q14":
+  	document.getElementById("sum-14-q1").classList.remove(`sum-li`);
+  	document.getElementById("sum-14-q2").classList.add(`sum-li`);
+  	document.getElementById("sum-14-q3").classList.add(`sum-li`);
+  	document.getElementById("sum-14-q4").classList.add(`sum-li`);
   	break;
 
-  	case "radio4-q13":
-  	document.getElementById("sum-13-q4").classList.remove(`sum-li`);
-  	document.getElementById("sum-13-q1").classList.add(`sum-li`);
-  	document.getElementById("sum-13-q2").classList.add(`sum-li`);
-  	document.getElementById("sum-13-q3").classList.add(`sum-li`);
+  	case "radio2-q14":
+  	document.getElementById("sum-14-q2").classList.remove(`sum-li`);
+  	document.getElementById("sum-14-q1").classList.add(`sum-li`);
+  	document.getElementById("sum-14-q3").classList.add(`sum-li`);
+  	document.getElementById("sum-14-q4").classList.add(`sum-li`);
+  	break;
+
+  	case "radio3-q14":
+  	document.getElementById("sum-14-q3").classList.remove(`sum-li`);
+  	document.getElementById("sum-14-q1").classList.add(`sum-li`);
+  	document.getElementById("sum-14-q2").classList.add(`sum-li`);
+  	document.getElementById("sum-14-q4").classList.add(`sum-li`);
+  	break;
+
+  	case "radio4-q14":
+  	document.getElementById("sum-14-q4").classList.remove(`sum-li`);
+  	document.getElementById("sum-14-q1").classList.add(`sum-li`);
+  	document.getElementById("sum-14-q2").classList.add(`sum-li`);
+  	document.getElementById("sum-14-q3").classList.add(`sum-li`);
   	break;
 
   	default:
