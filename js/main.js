@@ -956,7 +956,4 @@ $("#modal-btn, #results-btn, #full-sum-btn").click(function(e) {
   	default:
   	console.log("Error");
   }
-
-
-
 });
