@@ -94,6 +94,10 @@ p {
     text-transform: uppercase;
 }
 
+.menu-btn, .next-steps-btn {
+	min-width: 20rem;
+}
+
 .bounce {
     animation-iteration-count: 1;
     animation-duration: 3s;
